@@ -1,9 +1,15 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Welcome from "./components/Welcome/Welcome";
 
 export default function App() {
   return (
     <div className="app">
-      <h1>My owner tasks</h1>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Welcome} />
+        </Switch>
+      </Router>
     </div>
   );
 }

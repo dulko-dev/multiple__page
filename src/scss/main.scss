@@ -1,0 +1,14 @@
+$title-font: "Permanent Marker", cursive;
+
+@import "./reset.scss";
+
+// components
+
+@import "../components/Welcome/welcome"; // welcome
+
+body {
+  margin: 0 auto;
+  background-image: url("../assets/fog-city2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}

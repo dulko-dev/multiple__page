@@ -1,0 +1,23 @@
+.welcome {
+  color: #dadad9;
+  text-align: center;
+  h1 {
+    font-family: $title-font;
+    font-size: 3em;
+    padding: 120px 0;
+  }
+  &__icons {
+    display: flex;
+    justify-content: center;
+    div {
+      border: 1px solid #98c1d9;
+      background-color: #393e41;
+      padding: 25px 25px;
+      border-radius: 60%;
+      margin-right: 30px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
