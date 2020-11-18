@@ -39,11 +39,9 @@ export default function Register() {
             <input type="checkbox" />
             <span>Remember me!</span>
           </div>
-          <div className='register__buttonBox'>
-            <button type="submit" className="register__button">
-              Sign Up
-            </button>
-          </div>
+          <button type="submit" className="register__button">
+            Sign Up
+          </button>
         </form>
       </div>
     </div>

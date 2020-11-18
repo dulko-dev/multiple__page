@@ -19,7 +19,7 @@ export default function Welcome() {
           }}
         >
           <div>
-            <img src={login} style={{ width: "50px", height: "50px" }} />
+            <img src={login} alt='login' style={{ width: "50px", height: "50px" }} />
           </div>
         </NavLink>
         <NavLink
@@ -32,7 +32,7 @@ export default function Welcome() {
           }}
         >
           <div>
-            <img src={plus} style={{ width: "50px", height: "50px" }} />
+            <img src={plus} alt='add user' style={{ width: "50px", height: "50px" }} />
           </div>
         </NavLink>
         <NavLink
@@ -45,7 +45,7 @@ export default function Welcome() {
           }}
         >
           <div>
-            <img src={reset} style={{ width: "50px", height: "50px" }} />
+            <img src={reset} alt='reset password' style={{ width: "50px", height: "50px" }} />
           </div>
         </NavLink>
       </div>

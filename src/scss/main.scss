@@ -5,7 +5,9 @@ $title-font: "Permanent Marker", cursive;
 // components
 
 @import "../components/Welcome/welcome"; // welcome
-@import "../components//Register/register"; //register
+@import "../components/Register/register"; //register
+@import "../components/Login/login"; //login
+
 body {
   box-sizing: border-box;
   background-image: url("../assets/fog-city2.jpg");

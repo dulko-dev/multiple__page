@@ -1,5 +1,5 @@
-.register {
-  .register__form {
+.login {
+  .login__form {
     ::placeholder {
       font-size: 0.8em;
       text-align: center;
@@ -32,7 +32,7 @@
         width: 30%;
       }
     }
-    .register__span {
+    .login__span {
       width: 30px;
       height: 30px;
       border-radius: 12px;
@@ -48,7 +48,7 @@
       margin-left: 10px;
       margin-bottom: 15px;
     }
-    .register__checkbox {
+    .login__checkbox {
       color: #dadad9;
       input {
         background-color: #dadad9;
@@ -58,16 +58,15 @@
         padding-top: 10px;
       }
     }
-      .register__button {
-        margin-top: 30px;
-        margin-left: 30px;
-        display: inline-block;
-        padding: 10px 40px;
-        background-color: #dadad9;
-        border: none;
-        border-radius: 25px;
-        font-weight: 600;
-      }
-    
+    .login__button {
+      margin-top: 30px;
+      margin-left: 30px;
+      display: inline-block;
+      padding: 10px 40px;
+      background-color: #dadad9;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+    }
   }
 }
