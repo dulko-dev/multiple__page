@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import Welcome from "../Welcome/Welcome";
 import user from "../../assets/login.png";
 import password from "../../assets/password.png";
@@ -13,6 +14,9 @@ export default function Register() {
     secondPass: "",
     isChecked: false,
   });
+
+  const history = useHistory();
+  console.log(state.userName);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,12 +35,14 @@ export default function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     fire
       .auth()
       .createUserWithEmailAndPassword(state.email, state.pass)
-      .then((info) => {
-        console.log(info);
+      .then((res) => {
+        history.push("/user");
+        return res.user.updateProfile({
+          displayName: state.userName,
+        });
       })
       .catch((err) => {
         console.log(err);

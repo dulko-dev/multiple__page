@@ -28,7 +28,7 @@ export default function Welcome() {
           activeStyle={{
             borderRadius: "60%",
             border: "2px solid gold",
-            outline: "none",
+            outline: "none",  
           }}
         >
           <div>
