@@ -6,7 +6,7 @@ import password from "../../assets/password.png";
 import email from "../../assets/email.png";
 import fire from "../Firebase/firebaseConfig";
 
-export default function Register() {
+export default function Register(props) {
   const [state, setState] = useState({
     userName: "",
     email: "",
@@ -16,7 +16,6 @@ export default function Register() {
   });
 
   const history = useHistory();
-  console.log(state.userName);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,11 +37,8 @@ export default function Register() {
     fire
       .auth()
       .createUserWithEmailAndPassword(state.email, state.pass)
-      .then((res) => {
-        history.push("/user");
-        return res.user.updateProfile({
-          displayName: state.userName,
-        });
+      .then(() => {
+        history.push("/");
       })
       .catch((err) => {
         console.log(err);

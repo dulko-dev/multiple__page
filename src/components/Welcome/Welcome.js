@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import login from "../../assets/login.png";
 import plus from "../../assets/add.png";
 import reset from "../../assets/reset.png";
+import { contex } from "../../App";
+import User from "../User/User";
 
 export default function Welcome() {
-  return (
+
+  const user = useContext(contex);
+
+  return user ? (
+    <User user={user} />
+  ) : (
     <div className="welcome">
       <h1>Welcome to my Site</h1>
       <div className="welcome__icons">
@@ -19,7 +26,11 @@ export default function Welcome() {
           }}
         >
           <div>
-            <img src={login} alt='login' style={{ width: "50px", height: "50px" }} />
+            <img
+              src={login}
+              alt="login"
+              style={{ width: "50px", height: "50px" }}
+            />
           </div>
         </NavLink>
         <NavLink
@@ -28,11 +39,15 @@ export default function Welcome() {
           activeStyle={{
             borderRadius: "60%",
             border: "2px solid gold",
-            outline: "none",  
+            outline: "none",
           }}
         >
           <div>
-            <img src={plus} alt='add user' style={{ width: "50px", height: "50px" }} />
+            <img
+              src={plus}
+              alt="add user"
+              style={{ width: "50px", height: "50px" }}
+            />
           </div>
         </NavLink>
         <NavLink
@@ -45,7 +60,11 @@ export default function Welcome() {
           }}
         >
           <div>
-            <img src={reset} alt='reset password' style={{ width: "50px", height: "50px" }} />
+            <img
+              src={reset}
+              alt="reset password"
+              style={{ width: "50px", height: "50px" }}
+            />
           </div>
         </NavLink>
       </div>

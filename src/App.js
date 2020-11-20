@@ -4,10 +4,9 @@ import Welcome from "./components/Welcome/Welcome";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Reset from "./components/ResetAccount/Reset";
-import User from "./components/User/User";
 import fire from "./components/Firebase/firebaseConfig";
 
-const contex = createContext();
+export const contex = createContext();
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -15,22 +14,19 @@ export default function App() {
   useEffect(() => {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
-        setUser(user);
+        setUser(user.email);
       } else {
         setUser(null);
       }
     });
   }, [user]);
 
-
-  console.log(user)
   return (
     <contex.Provider value={user}>
       <div className="app">
         <Router>
           <Switch>
             <Route exact path="/" component={Welcome} />
-            <Route path="/user" component={User} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/reset" component={Reset} />
