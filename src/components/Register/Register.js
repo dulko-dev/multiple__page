@@ -1,19 +1,23 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import Welcome from "../Welcome/Welcome";
 import user from "../../assets/login.png";
 import password from "../../assets/password.png";
 import email from "../../assets/email.png";
 import fire from "../Firebase/firebaseConfig";
 
-export default function Register(props) {
+export default function Register() {
   const [state, setState] = useState({
     userName: "",
-    email: "",
+    userEmail: "",
     pass: "",
     secondPass: "",
     isChecked: false,
+    errFirebase: "",
   });
+
+  const { register, handleSubmit, errors, watch } = useForm();
 
   const history = useHistory();
 
@@ -25,23 +29,25 @@ export default function Register(props) {
     }));
   };
 
-  const handleCheckbox = () => {
+  const handleCheckbox = ({ target }) => {
+    const value = target.type === "checkbox" ? target.checked : target.value;
     setState((prevState) => ({
       ...prevState,
-      isChecked: !state.isChecked,
+      isChecked: value,
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  console.log(state);
+
+  const handleSubmitForm = () => {
     fire
       .auth()
-      .createUserWithEmailAndPassword(state.email, state.pass)
+      .createUserWithEmailAndPassword(state.userEmail, state.pass)
       .then(() => {
         history.push("/");
       })
       .catch((err) => {
-        console.log(err);
+        setState((prev) => ({ ...prev, errFirebase: err.message }));
       });
   };
 
@@ -50,12 +56,23 @@ export default function Register(props) {
       <Welcome />
       <div className="register__form">
         <h3>Register</h3>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(handleSubmitForm)}>
           <label>
+            <span className="register__required">
+              {errors.userName?.message}
+            </span>
+            <span className="register__required"> {state.errFirebase}</span>
             <span>
               <img src={user} className="register__span" alt="login user" />
             </span>
             <input
+              ref={register({
+                required: "This is required",
+                minLength: {
+                  value: 6,
+                  message: "You must have pass at least 6 characters",
+                },
+              })}
               name="userName"
               type="text"
               placeholder="enter your login"
@@ -63,10 +80,18 @@ export default function Register(props) {
             />
           </label>
           <label>
+            <span className="register__required">{errors.pass?.message}</span>
             <span>
               <img src={password} className="register__span" alt="password" />
             </span>
             <input
+              ref={register({
+                required: "This is required",
+                minLength: {
+                  value: 6,
+                  message: "You must have pass at least 6 characters",
+                },
+              })}
               name="pass"
               type="password"
               placeholder="enter your password"
@@ -74,10 +99,18 @@ export default function Register(props) {
             />
           </label>
           <label>
+            <span className="register__required">
+              {errors.secondPass?.message}
+            </span>
             <span>
               <img src={password} className="register__span" alt="password" />
             </span>
             <input
+              ref={register({
+                required: "This is required",
+                validate: (name) =>
+                  name === watch("pass") || "Password dont't match",
+              })}
               name="secondPass"
               type="password"
               placeholder="repeat your password"
@@ -85,11 +118,21 @@ export default function Register(props) {
             />
           </label>
           <label>
+            <span className="register__required">
+              {errors.userEmail?.message}
+            </span>
             <span>
               <img src={email} className="register__span" alt="email" />
             </span>
             <input
-              name="email"
+              ref={register({
+                required: "This is required",
+                pattern: {
+                  value: /^\S+@\S+\.\S+$/,
+                  message: "Invalid email",
+                },
+              })}
+              name="userEmail"
               type="email"
               placeholder="enter your email"
               onChange={handleChange}
