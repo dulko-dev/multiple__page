@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import Welcome from "../Welcome/Welcome";
 import password from "../../assets/password.png";
 import email from "../../assets/email.png";
@@ -9,7 +10,10 @@ export default function Login() {
   const [state, setState] = useState({
     email: "",
     pass: "",
+    errFirebase: "",
   });
+
+  const { register, errors, handleSubmit } = useForm();
 
   const history = useHistory();
 
@@ -21,8 +25,7 @@ export default function Login() {
     }));
   };
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const handleLogin = () => {
     fire
       .auth()
       .signInWithEmailAndPassword(state.email, state.pass)
@@ -30,8 +33,7 @@ export default function Login() {
         history.push("/");
       })
       .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
+        setState((prev) => ({ ...prev, errFirebase: error.message }));
       });
   };
 
@@ -40,12 +42,20 @@ export default function Login() {
       <Welcome />
       <div className="login__form">
         <h3>Login</h3>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleSubmit(handleLogin)}>
           <label>
+            <span className="login__required">{errors.email?.message}</span>
             <span>
               <img src={email} alt="email" className="login__span" />
             </span>
             <input
+              ref={register({
+                required: "This is required",
+                pattern: {
+                  value: /^\S+@\S+\.\S+$/,
+                  message: "Invalid email",
+                },
+              })}
               type="email"
               placeholder="enter your email"
               onChange={handleSetState}
@@ -53,10 +63,18 @@ export default function Login() {
             />
           </label>
           <label>
+            <span className="login__required">{errors.pass?.message}</span>
             <span>
               <img src={password} alt="password" className="login__span" />
             </span>
             <input
+              ref={register({
+                required: "This is required",
+                minLength: {
+                  value: 8,
+                  message: "You must have pass at least 6 characters",
+                },
+              })}
               type="password"
               name="pass"
               placeholder="enter your password"

@@ -61,7 +61,7 @@ export default function Register() {
             <span className="register__required">
               {errors.userName?.message}
             </span>
-            <span className="register__required"> {state.errFirebase}</span>
+            {/* <span className="register__required"> {state.errFirebase}</span> */}
             <span>
               <img src={user} className="register__span" alt="login user" />
             </span>
