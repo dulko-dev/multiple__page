@@ -71,7 +71,7 @@ export default function Login() {
               ref={register({
                 required: "This is required",
                 minLength: {
-                  value: 8,
+                  value: 6,
                   message: "You must have pass at least 6 characters",
                 },
               })}

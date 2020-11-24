@@ -1,5 +1,6 @@
 import React from "react";
 import fire from "../Firebase/firebaseConfig";
+import Applications from "./Applications";
 
 function User({ user }) {
   const handleLogOut = (e) => {
@@ -19,15 +20,25 @@ function User({ user }) {
   return (
     <div className="user">
       <div className="user__nav">
-        <h2>Welcome {user}</h2>
-        <button
-          type="button"
-          onClick={handleLogOut}
-          className="user__nav__button"
-        >
-          Wyloguj
-        </button>
+        <div>
+          <h2>Welcome {user}</h2>
+          <p>Today is 24 November 2020</p>
+          <p>TimeZone : 12:33:02 AM</p>
+        </div>
+        <div className="user__buttons">
+          <button type="button" className="user__nav__button">
+            Settings
+          </button>
+          <button
+            type="button"
+            onClick={handleLogOut}
+            className="user__nav__button"
+          >
+            Logout
+          </button>
+        </div>
       </div>
+      <Applications />
     </div>
   );
 }

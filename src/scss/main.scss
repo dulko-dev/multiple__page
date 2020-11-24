@@ -9,6 +9,7 @@ $title-font: "Permanent Marker", cursive;
 @import "../components/Login/login"; //login
 @import "../components/ResetAccount/resetAccount"; //resetAccount
 @import "../components/User/user"; //user
+@import "../components/User/applications"; //applications
 
 body {
   box-sizing: border-box;
