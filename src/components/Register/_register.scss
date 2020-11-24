@@ -13,23 +13,23 @@
       text-transform: uppercase;
       font-size: 2em;
       position: relative;
-      padding: 30px 0 30px 0;
+      padding: 30px 0 60px 0;
       color: #dadad9;
       &:after {
         content: "";
         position: absolute;
         border: 1px solid #dadad9;
         right: 0;
-        top: 49%;
-        width: 30%;
+        top: 39%;
+        width: 10%;
       }
       &:before {
         content: "";
         position: absolute;
         border: 1px solid #dadad9;
         left: 0;
-        top: 49%;
-        width: 30%;
+        top: 39%;
+        width: 10%;
       }
     }
     .register__required {
@@ -40,35 +40,38 @@
       padding-bottom: 10px;
     }
     .register__span {
+      position: absolute;
+      left: 17%;
       width: 30px;
       height: 30px;
       border-radius: 12px;
     }
     label {
+      position: relative;
       display: block;
+      margin: 0 auto;
     }
     input {
       border: none;
       border-radius: 25px;
       background-color: #dadad9;
-      padding: 7px 0 7px 12px;
+      padding: 7px 7px 7px 12px;
       margin-left: 15px;
-      margin-right: 10px;
+      margin-right: 15px;
       margin-bottom: 15px;
     }
     .register__checkbox {
+      text-align: center;
       color: #dadad9;
       input {
         background-color: #dadad9;
         margin-right: 10px;
-      }
-      span {
-        padding-top: 10px;
+        margin-left: 0;
+        margin-top: 10px;
       }
     }
     .register__button {
-      margin-top: 30px;
-      margin-left: 30px;
+      margin-top: 20px;
       display: inline-block;
       padding: 10px 40px;
       background-color: #dadad9;

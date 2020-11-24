@@ -8,6 +8,8 @@ import email from "../../assets/email.png";
 import fire from "../Firebase/firebaseConfig";
 
 export default function Register() {
+
+  const { register, handleSubmit, errors, watch } = useForm();
   const [state, setState] = useState({
     userName: "",
     userEmail: "",
@@ -16,11 +18,10 @@ export default function Register() {
     isChecked: false,
     errFirebase: "",
   });
-
-  const { register, handleSubmit, errors, watch } = useForm();
-
   const history = useHistory();
 
+  
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setState((prevState) => ({
@@ -36,8 +37,6 @@ export default function Register() {
       isChecked: value,
     }));
   };
-
-  console.log(state);
 
   const handleSubmitForm = () => {
     fire

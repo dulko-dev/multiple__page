@@ -21,7 +21,7 @@
         border: 1px solid #dadad9;
         right: 0;
         top: 39%;
-        width: 30%;
+        width: 10%;
       }
       &:before {
         content: "";
@@ -29,15 +29,18 @@
         border: 1px solid #dadad9;
         left: 0;
         top: 39%;
-        width: 30%;
+        width: 10%;
       }
     }
     .reset__span {
+      position: absolute;
+      left: 20%;
       width: 30px;
       height: 30px;
       border-radius: 12px;
     }
     label {
+      position: relative;
       display: block;
     }
     input {
@@ -47,11 +50,10 @@
       padding: 7px 0 7px 12px;
       margin-left: 15px;
       margin-bottom: 15px;
+      margin-right: 15px;
     }
     .reset__button {
-      // font-size: 0.9em;
-      margin-top: 30px;
-      margin-left: 30px;
+      margin-top: 20px;
       display: inline-block;
       padding: 10px 20px;
       background-color: #dadad9;
