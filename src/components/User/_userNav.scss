@@ -1,0 +1,34 @@
+.userNav {
+  .userNav__nav {
+    font-family: $user-nav;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 150px;
+    background-image: none;
+    background-color: rgba(57, 62, 65, 0.6);
+    .userNav__date {
+      color: #dadad9;
+      margin-left: 25px;
+      h2 {
+        font-size: 2.5em;
+        padding: 20px 0;
+      }
+      p {
+        padding-bottom: 10px;
+      }
+      span {
+        color: #bfd5e2;
+        font-weight: 600;
+      }
+    }
+    .userNav__nav__button {
+      border-radius: 10px;
+      border: none;
+      margin-right: 25px;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      background-color: #dadad9;
+    }
+  }
+}

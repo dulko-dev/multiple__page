@@ -7,9 +7,8 @@ import { contex } from "../../App";
 import User from "../User/User";
 
 export default function Welcome() {
-
   const user = useContext(contex);
-
+  
   return user ? (
     <User user={user} />
   ) : (

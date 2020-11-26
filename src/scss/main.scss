@@ -1,4 +1,5 @@
 $title-font: "Permanent Marker", cursive;
+$user-nav: "Roboto", sans-serif;
 
 @import "./reset.scss";
 
@@ -8,8 +9,8 @@ $title-font: "Permanent Marker", cursive;
 @import "../components/Register/register"; //register
 @import "../components/Login/login"; //login
 @import "../components/ResetAccount/resetAccount"; //resetAccount
-@import "../components/User/user"; //user
-@import "../components/User/applications"; //applications
+@import "../components/User/userNav"; //userNav
+@import "../components/User/Applications/applications"; //applications
 
 body {
   box-sizing: border-box;
