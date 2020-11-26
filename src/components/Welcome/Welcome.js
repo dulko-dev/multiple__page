@@ -3,14 +3,14 @@ import { NavLink } from "react-router-dom";
 import login from "../../assets/login.png";
 import plus from "../../assets/add.png";
 import reset from "../../assets/reset.png";
-import { contex } from "../../App";
+import { AuthContext } from "../Firebase/Auth";
 import User from "../User/User";
 
 export default function Welcome() {
-  const user = useContext(contex);
-  
+  const user = useContext(AuthContext);
+
   return user ? (
-    <User user={user} />
+    <User />
   ) : (
     <div className="welcome">
       <h1>Welcome to my Site</h1>

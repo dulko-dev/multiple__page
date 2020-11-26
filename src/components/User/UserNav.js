@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import { contex } from "../../App";
+import { AuthContext } from "../Firebase/Auth";
 import { handleLogOut } from "../Logout/Logout";
 
 function UserNav() {
   const [nameDay, setNameDay] = useState("");
   const [watch, setWatch] = useState("");
 
-  const user = useContext(contex);
+  const user = useContext(AuthContext);
 
   useEffect(() => {
     setInterval(() => {

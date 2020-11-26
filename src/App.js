@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Welcome from "./components/Welcome/Welcome";
 import Login from "./components/Login/Login";
@@ -9,40 +9,25 @@ import Calculator from "./components/User/Calculator/Calculator";
 import Entertainment from "./components/User/Entertainment/Entertainment";
 import Events from "./components/User/Events/Events";
 import Weather from "./components/User/Weather/Weather";
-import fire from "./components/Firebase/firebaseConfig";
-
-export const contex = createContext();
+import GuarderRoute from "./GuarderRoute";
+import { Auth } from "./components/Firebase/Auth";
 
 export default function App() {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    fire.auth().onAuthStateChanged((user) => {
-      if (user) {
-        setUser(user.email);
-      } else {
-        setUser(null);
-      }
-    });
-  }, [user]);
-
   return (
-    <contex.Provider value={user}>
-      <div className="app">
-        <Router>
-          <Switch>
-            <Route exact path="/" component={Welcome} />
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-            <Route path="/reset" component={Reset} />
-            <Route path="/to-do-list" component={Todo} />
-            <Route path="/calculator" component={Calculator} />
-            <Route path="/entertainment" component={Entertainment} />
-            <Route path="/events" component={Events} />
-            <Route path="/weather" component={Weather} />
-          </Switch>
-        </Router>
-      </div>
-    </contex.Provider>
+    <Auth>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Welcome} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/reset" component={Reset} />
+          <GuarderRoute path="/to-do-list" component={Todo} />
+          <GuarderRoute path="/calculator" component={Calculator} />
+          <GuarderRoute path="/entertainment" component={Entertainment} />
+          <GuarderRoute path="/events" component={Events} />
+          <GuarderRoute path="/weather" component={Weather} />
+        </Switch>
+      </Router>
+    </Auth>
   );
 }
