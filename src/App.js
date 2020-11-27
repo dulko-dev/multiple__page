@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Welcome from "./components/Welcome/Welcome";
 import Login from "./components/Login/Login";
@@ -12,7 +12,9 @@ import Weather from "./components/User/Weather/Weather";
 import GuarderRoute from "./GuarderRoute";
 import { Auth } from "./components/Firebase/Auth";
 
+
 export default function App() {
+  
   return (
     <Auth>
       <Router>

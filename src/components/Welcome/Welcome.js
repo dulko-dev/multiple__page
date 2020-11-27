@@ -7,7 +7,8 @@ import { AuthContext } from "../Firebase/Auth";
 import User from "../User/User";
 
 export default function Welcome() {
-  const user = useContext(AuthContext);
+  const { value } = useContext(AuthContext);
+  const [user, setUser] = value;
 
   return user ? (
     <User />

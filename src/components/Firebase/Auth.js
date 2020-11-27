@@ -6,8 +6,6 @@ export const AuthContext = createContext();
 export const Auth = ({ children }) => {
   const [user, setUser] = useState("");
 
-  console.log(user);
-
   useEffect(() => {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -18,5 +16,5 @@ export const Auth = ({ children }) => {
     });
   }, []);
 
-  return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{value:[user,setUser]}}>{children}</AuthContext.Provider>;
 };
