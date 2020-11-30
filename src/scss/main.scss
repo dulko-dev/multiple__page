@@ -11,6 +11,8 @@ $user-nav: "Roboto", sans-serif;
 @import "../components/ResetAccount/resetAccount"; //resetAccount
 @import "../components/User/userNav"; //userNav
 @import "../components/User/Applications/applications"; //applications
+@import "../components/User/Todo/scss/form"; //form
+@import "../components/User/Todo/scss/todo"; //todo
 
 body {
   box-sizing: border-box;

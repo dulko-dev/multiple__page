@@ -2,13 +2,14 @@ import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { AuthContext } from "./components/Firebase/Auth";
 
-const GuarderRoute = ({ component: Component, ...rest }) => {
-  const user = useContext(AuthContext);
+const GuarderRoute = ({ component: Component, auth, ...rest }) => {
+  const {value2} = useContext(AuthContext)
+  const [isAuth, setIsAuth] = value2
   return (
     <Route
       {...rest}
       render={(props) =>
-       user ? <Component {...props} /> : <Redirect to="/login" />
+        isAuth === true ? <Component {...props} /> : <Redirect to="/" />
       }
     />
   );
