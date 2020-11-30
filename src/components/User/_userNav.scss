@@ -6,7 +6,7 @@
     align-items: center;
     height: 150px;
     background-image: none;
-    background-color: rgba(57, 62, 65, 0.6);
+    background-color:rgba(34, 34, 34, 0.9);
     .userNav__date {
       color: #dadad9;
       margin-left: 25px;
@@ -23,7 +23,7 @@
           button {
             border-radius: 10px;
             border: none;
-            &:last-child{
+            &:last-child {
               margin-left: 10px;
             }
           }
