@@ -3,10 +3,13 @@ import ReactDOM from "react-dom";
 import "./scss/main.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { Auth } from "./components/Firebase/Auth";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Auth>
+      <App />
+    </Auth>
   </React.StrictMode>,
   document.getElementById("root")
 );

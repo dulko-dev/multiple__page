@@ -19,20 +19,23 @@ function TodosElement({ element, setTodos, todos, text, setEditing, editing }) {
     );
   };
 
-  const editHandler = () => {
-    setEditing(!editing);
-  };
-
-  if(editing) {
-    return 'Editing'
-  }
   return (
-    
-    <div>
-      <input type="checkbox" onChange={completedHandler} value={todos.text}/>
-      <li>{text}</li>
-      <input onClick={deleteHandler} type="button" value="remove" />
-      <input type="button" value="edit" onClick={editHandler} />
+    <div className="todosElement">
+      <li
+        className={`todosElement__input ${
+          element.completed ? "input__done" : ""
+        }`}
+      >
+        {text}
+      </li>
+      <div>
+        <button onClick={completedHandler}>
+          <i className="far fa-check-circle"></i>
+        </button>
+        <button onClick={deleteHandler}>
+          <i className="far fa-trash-alt"></i>
+        </button>
+      </div>
     </div>
   );
 }

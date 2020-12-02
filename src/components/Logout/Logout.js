@@ -5,9 +5,10 @@ export const handleLogOut = (e) => {
   fire
     .auth()
     .signOut()
-    .then(function () {
-      console.log("wylogowano");
+    .then(() => {
+      window.location.href = "/";
     })
+
     .catch(function (error) {
       console.log(error);
     });

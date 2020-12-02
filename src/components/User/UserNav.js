@@ -28,6 +28,7 @@ function UserNav() {
 
   useEffect(() => {
     takeName();
+    return () => takeName();
   }, []);
 
   const takeName = () => {
@@ -58,7 +59,6 @@ function UserNav() {
     setUser(nickName.current.value);
   };
 
-  console.log(user);
   return (
     <div className="userNav">
       <div className="userNav__nav">

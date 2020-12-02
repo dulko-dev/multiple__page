@@ -35,7 +35,7 @@ const Form = ({ setInputText, setTodos, inputText, todos, setStatus }) => {
           <input
             onChange={onChangeHandler}
             value={inputText}
-            type="input"
+            type="text"
             className="form__field"
             placeholder="Add task"
             id="task"

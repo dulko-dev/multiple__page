@@ -13,6 +13,7 @@ $user-nav: "Roboto", sans-serif;
 @import "../components/User/Applications/applications"; //applications
 @import "../components/User/Todo/scss/form"; //form
 @import "../components/User/Todo/scss/todo"; //todo
+@import "../components/User/Todo/scss/todosElement"; //todosElement
 
 body {
   box-sizing: border-box;

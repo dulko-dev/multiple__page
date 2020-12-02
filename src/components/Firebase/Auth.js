@@ -5,26 +5,29 @@ export const AuthContext = createContext();
 
 export const Auth = ({ children }) => {
   const [user, setUser] = useState("");
-  const [isAuth, setIsAuth] = useState(false);
-console.log(isAuth)
+  const [loaded, setLoaded] = useState(true);
+
+  console.log(loaded)
 
   useEffect(() => {
-    fire.auth().onAuthStateChanged((user) => {
+    const authorizated = fire.auth().onAuthStateChanged((user) => {
       if (user) {
         setUser(user.email);
-        setIsAuth(true);
+        setLoaded(false);
       } else {
-        setUser("");
-        setIsAuth(false);
-      } 
+        setUser(null);
+        setLoaded(true)
+      }
     });
-  },[]);
+
+    return () => authorizated();
+  }, [user]);
 
   return (
-    <AuthContext.Provider
-      value={{ value: [user, setUser], value2: [isAuth,setIsAuth] }}
-    >
-      {children}
+    <AuthContext.Provider value={{ value: [user, setUser], czoko: loaded}}>
+     
+        {children}
+      
     </AuthContext.Provider>
   );
 };
