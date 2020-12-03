@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import Welcome from "../Welcome/Welcome";
 import password from "../../assets/password.png";
@@ -13,9 +13,27 @@ export default function Login() {
     errFirebase: "",
   });
 
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const submitRef = useRef();
   const { register, errors, handleSubmit } = useForm();
-
   const history = useHistory();
+
+  useEffect(() => {
+    emailRef.current.focus();
+  }, []);
+
+  const getToPassword = (e) => {
+    if (e.key === "Enter") {
+      passwordRef.current.focus();
+    }
+  };
+
+  const getToSubmit = (e) => {
+    if (e.key === "Enter") {
+      submitRef.current.focus();
+    }
+  };
 
   const handleSetState = (e) => {
     const { name, value } = e.target;
@@ -42,23 +60,27 @@ export default function Login() {
       <Welcome />
       <div className="login__form">
         <h3>Login</h3>
-        <form onSubmit={handleSubmit(handleLogin)}>
+        <form>
           <label>
             <span className="login__required">{errors.email?.message}</span>
             <span>
               <img src={email} alt="email" className="login__span" />
             </span>
             <input
-              ref={register({
-                required: "This is required",
-                pattern: {
-                  value: /^\S+@\S+\.\S+$/,
-                  message: "Invalid email",
-                },
-              })}
+              ref={(e) => {
+                register(e, {
+                  required: "This is required",
+                  pattern: {
+                    value: /^\S+@\S+\.\S+$/,
+                    message: "Invalid email",
+                  },
+                });
+                emailRef.current = e;
+              }}
               type="email"
               placeholder="enter your email"
               onChange={handleSetState}
+              onKeyPress={getToPassword}
               name="email"
             />
           </label>
@@ -68,24 +90,33 @@ export default function Login() {
               <img src={password} alt="password" className="login__span" />
             </span>
             <input
-              ref={register({
-                required: "This is required",
-                minLength: {
-                  value: 6,
-                  message: "You must have pass at least 6 characters",
-                },
-              })}
+              ref={(e) => {
+                register(e, {
+                  required: "This is required",
+                  minLength: {
+                    value: 6,
+                    message: "You must have pass at least 6 characters",
+                  },
+                });
+                passwordRef.current = e;
+              }}
               type="password"
               name="pass"
               placeholder="enter your password"
               onChange={handleSetState}
+              onKeyDown={getToSubmit}
             />
           </label>
-          <div className="login__checkbox">
+          <div className="login__checkb{ox">
             <input type="checkbox" />
             <span>Remember me!</span>
           </div>
-          <button type="submit" className="login__button">
+          <button
+            ref={submitRef}
+            type="button"
+            className="login__button"
+            onClick={handleSubmit(handleLogin)}
+          >
             Sign In
           </button>
         </form>

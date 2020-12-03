@@ -1,6 +1,7 @@
 import React from "react";
 
 function TodosElement({ element, setTodos, todos, text, setEditing, editing }) {
+  
   const deleteHandler = () => {
     setTodos(todos.filter((el) => el.id !== element.id));
   };
