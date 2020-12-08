@@ -1,23 +1,20 @@
 import React from "react";
+import { db } from "../../Firebase/firebaseConfig";
 
-function TodosElement({ element, setTodos, todos, text, setEditing, editing }) {
-  
+function TodosElement({ element, setTodos, todos, text }) {
   const deleteHandler = () => {
-    setTodos(todos.filter((el) => el.id !== element.id));
+    db.collection("todos")
+      .doc(element.id)
+      .delete()
+      // .then(alert("wykasowano pomyślnie"))
+      .catch((err) => console.log(err));
   };
 
-  const completedHandler = () => {
-    setTodos(
-      todos.map((el) => {
-        if (el.id === element.id) {
-          return {
-            ...el,
-            completed: !el.completed,
-          };
-        }
-        return el;
-      })
-    );
+  const completedHandler = async () => {
+    db.collection("todos").doc(element.id).update({
+      completed: !element.completed,
+    });
+
   };
 
   return (

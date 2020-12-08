@@ -1,4 +1,5 @@
 import React from "react";
+import { db } from "../../Firebase/firebaseConfig";
 
 const Form = ({ setInputText, setTodos, inputText, todos, setStatus }) => {
   const onChangeHandler = (e) => {
@@ -10,14 +11,16 @@ const Form = ({ setInputText, setTodos, inputText, todos, setStatus }) => {
     if (inputText.trim().length === 0) {
       return;
     }
-    setTodos([
-      ...todos,
-      {
-        text: inputText,
-        completed: false,
-        id: Math.random() * 1000,
-      },
-    ]);
+
+    db.collection("todos").doc().set({
+      text: inputText,
+      completed: false,
+    });
+
+    // db.collection('todos').add({
+    //   text: inputText,
+    //   completed: false,
+    // })
     setInputText("");
   };
 

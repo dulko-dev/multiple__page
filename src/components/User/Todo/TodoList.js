@@ -1,7 +1,7 @@
 import React from "react";
 import TodosElement from "./TodosElement";
 
-const TodoList = ({ todos, setTodos, filteredTodos, setEditing, editing }) => {
+const TodoList = ({ todos, setTodos, filteredTodos}) => {
   return (
     <div>
       <ul>
@@ -12,8 +12,7 @@ const TodoList = ({ todos, setTodos, filteredTodos, setEditing, editing }) => {
             setTodos={setTodos}
             todos={todos}
             element={element}
-            setEditing={setEditing}
-            editing={editing}
+    
           />
         ))}
       </ul>

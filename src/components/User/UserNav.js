@@ -5,7 +5,6 @@ import { handleLogOut } from "../Logout/Logout";
 function UserNav() {
   const { value } = useContext(AuthContext);
   const [user, setUser] = value;
-
   const nickName = useRef();
 
   const [nameDay, setNameDay] = useState("");
@@ -28,11 +27,10 @@ function UserNav() {
 
   useEffect(() => {
     takeName();
-    return () => takeName();
   }, []);
 
-  const takeName = () => {
-    fetch("https://api.abalin.net/today")
+  const takeName = async () => {
+    await fetch("https://api.abalin.net/today")
       .then((response) => {
         if (response) {
           return response;

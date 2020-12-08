@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import Form from "./Form";
 import TodoList from "./TodoList";
 import UserNav from "../UserNav";
+import { db } from "../../Firebase/firebaseConfig";
 
 const Todo = () => {
   const [inputText, setInputText] = useState("");
   const [todos, setTodos] = useState([]);
   const [filteredTodos, setFilteredTodos] = useState([]);
   const [status, setStatus] = useState("all");
-  const [editing, setEditing] = useState(false);
+ 
 
   // useEffect(() => {
   //   getLocalStorage();
@@ -18,6 +19,16 @@ const Todo = () => {
     filteredHandler();
     // saveLocalStorage();
   }, [todos, status]);
+
+  useEffect(() => {
+    db.collection("todos")
+      .orderBy("text", "desc")
+      .onSnapshot((snapshot) => {
+        setTodos(
+          snapshot.docs.map((docs) => ({ id: docs.id, text: docs.data().text, completed: docs.data().completed }))
+        );
+      });
+  }, []);
 
   const filteredHandler = () => {
     switch (status) {
@@ -49,19 +60,19 @@ const Todo = () => {
     <>
       <UserNav />
       <div className="todo">
-        <Form className='form'
+        <Form
+          className="form"
           inputText={inputText}
           setInputText={setInputText}
           todos={todos}
           setTodos={setTodos}
           setStatus={setStatus}
         />
-        <TodoList className='todolist'
+        <TodoList
+          className="todolist"
           filteredTodos={filteredTodos}
           todos={todos}
           setTodos={setTodos}
-          setEditing={setEditing}
-          editing={editing}
         />
       </div>
     </>
