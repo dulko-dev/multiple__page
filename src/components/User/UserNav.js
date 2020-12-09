@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { AuthContext } from "../Firebase/Auth";
 import { handleLogOut } from "../Logout/Logout";
 
@@ -6,6 +7,7 @@ function UserNav() {
   const { value } = useContext(AuthContext);
   const [user, setUser] = value;
   const nickName = useRef();
+  const history = useHistory();
 
   const [nameDay, setNameDay] = useState("");
   const [date, setDate] = useState(new Date());
@@ -34,9 +36,6 @@ function UserNav() {
       .then((response) => {
         if (response) {
           return response;
-        } else {
-          const errMessage = `An error has occurred : ${response.status}`;
-          throw Error(errMessage);
         }
       })
       .then((res) => res.json())
@@ -57,6 +56,9 @@ function UserNav() {
     setUser(nickName.current.value);
   };
 
+  const backMenuHandle = () => {
+    history.push("/");
+  };
   return (
     <div className="userNav">
       <div className="userNav__nav">
@@ -84,8 +86,12 @@ function UserNav() {
           </p>
         </div>
         <div className="userNav__buttons">
-          <button type="button" className="userNav__nav__button">
-            Settings
+          <button
+            type="button"
+            onClick={backMenuHandle}
+            className="userNav__nav__button"
+          >
+            Back to Dashboard
           </button>
           <button
             type="button"

@@ -1,7 +1,8 @@
 import React from "react";
 import { db } from "../../Firebase/firebaseConfig";
 
-const Form = ({ setInputText, setTodos, inputText, todos, setStatus }) => {
+
+const Form = ({ setInputText, setTodos, inputText, todos, setStatus, id }) => {
   const onChangeHandler = (e) => {
     setInputText(e.target.value);
   };
@@ -11,10 +12,12 @@ const Form = ({ setInputText, setTodos, inputText, todos, setStatus }) => {
     if (inputText.trim().length === 0) {
       return;
     }
+    console.log(id);
 
-    db.collection('todos').add({
+    db.collection("todos").add({
       text: inputText,
       completed: false,
+      id: id,
     })
     setInputText("");
   };

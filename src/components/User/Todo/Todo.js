@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Form from "./Form";
 import TodoList from "./TodoList";
 import UserNav from "../UserNav";
 import { db } from "../../Firebase/firebaseConfig";
+import { AuthContext } from "../../Firebase/Auth";
+import fire from "../../Firebase/firebaseConfig";
 
 const Todo = () => {
   const [inputText, setInputText] = useState("");
@@ -10,18 +12,24 @@ const Todo = () => {
   const [filteredTodos, setFilteredTodos] = useState([]);
   const [status, setStatus] = useState("all");
 
+  const { userId } = useContext(AuthContext);
+  const id = userId;
+
   // useEffect(() => {
   //   getLocalStorage();
   // }, []);
 
+  console.log(fire.auth());
+
   useEffect(() => {
     filteredHandler();
     // saveLocalStorage();
+    return () => filteredHandler();
   }, [todos, status]);
 
   useEffect(() => {
-    let data = db
-      .collection("todos")
+    db.collection("todos")
+      .where("id", "==", fire.auth().currentUser.uid)
       .orderBy("text", "desc")
       .onSnapshot((snapshot) => {
         setTodos(
@@ -32,7 +40,6 @@ const Todo = () => {
           }))
         );
       });
-    return () => data;
   }, []);
 
   const filteredHandler = () => {
@@ -72,6 +79,7 @@ const Todo = () => {
           todos={todos}
           setTodos={setTodos}
           setStatus={setStatus}
+          id={id}
         />
         <TodoList
           className="todolist"

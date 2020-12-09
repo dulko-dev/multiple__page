@@ -19,7 +19,7 @@ function Applications() {
           <div className="app__common app__info">
             <img src={newsEvents} alt="news and events" />
           </div>
-          {/* news / music events(ticketmaster) / movies and serial /books */}
+          {/* news / music events(ticketmaster)*/}
         </Link>
         <Link to="./weather">
           <div className="app__common">
@@ -34,7 +34,7 @@ function Applications() {
           <div className="app__common app__fun">
             <img src={entertainment} alt="entertainment" />
           </div>
-          {/* - 9gag / quiz */}
+          {/* - 9gag / quiz / movies and serial /books */}
         </Link>
         <Link to="calculator">
           <div className="app__common app__calculator">
