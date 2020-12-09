@@ -9,7 +9,6 @@ const Todo = () => {
   const [todos, setTodos] = useState([]);
   const [filteredTodos, setFilteredTodos] = useState([]);
   const [status, setStatus] = useState("all");
- 
 
   // useEffect(() => {
   //   getLocalStorage();
@@ -21,13 +20,19 @@ const Todo = () => {
   }, [todos, status]);
 
   useEffect(() => {
-    db.collection("todos")
+    let data = db
+      .collection("todos")
       .orderBy("text", "desc")
       .onSnapshot((snapshot) => {
         setTodos(
-          snapshot.docs.map((docs) => ({ id: docs.id, text: docs.data().text, completed: docs.data().completed }))
+          snapshot.docs.map((docs) => ({
+            id: docs.id,
+            text: docs.data().text,
+            completed: docs.data().completed,
+          }))
         );
       });
+    return () => data;
   }, []);
 
   const filteredHandler = () => {

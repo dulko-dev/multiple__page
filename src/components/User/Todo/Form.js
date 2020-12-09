@@ -12,15 +12,10 @@ const Form = ({ setInputText, setTodos, inputText, todos, setStatus }) => {
       return;
     }
 
-    db.collection("todos").doc().set({
+    db.collection('todos').add({
       text: inputText,
       completed: false,
-    });
-
-    // db.collection('todos').add({
-    //   text: inputText,
-    //   completed: false,
-    // })
+    })
     setInputText("");
   };
 
