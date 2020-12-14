@@ -9,6 +9,7 @@ import Calculator from "./components/User/Calculator/Calculator";
 import Entertainment from "./components/User/Entertainment/Entertainment";
 import Events from "./components/User/Events/Events";
 import Weather from "./components/User/Weather/Weather";
+import News from "./components/User/Events/News/News";
 import { AuthContext } from "./components/Firebase/Auth";
 import PrivateRoute from "./PrivateRoute";
 
@@ -49,6 +50,7 @@ export default function App() {
               component={Entertainment}
             />
             <PrivateRoute exact path="/events" user={user} component={Events} />
+            <PrivateRoute path="/events/news" user={user} component={News} />
             <PrivateRoute
               exact
               path="/weather"

@@ -1,10 +1,13 @@
 import React from "react";
+import UserNav from "../UserNav";
 
 function Weather() {
   return (
-    <div>
-      <p>Weather</p>
+    <>
+    <UserNav />
+    <div className='weahter'>
     </div>
+    </>
   );
 }
 

@@ -1,13 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import UserNav from "./UserNav";
 import Applications from "./Applications/Applications";
 
 
 export default function User() {
-
+ const [homePage, setHomePage] = useState('none')
   return (
       <div>
-        <UserNav />
+        <UserNav homePage={homePage}/>
         <Applications />
       </div>
   );

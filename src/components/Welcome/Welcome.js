@@ -10,7 +10,7 @@ export default function Welcome() {
   const { value, czoko } = useContext(AuthContext);
   const [user, setUser] = value;
   const loaded = czoko;
-  console.log(loaded)
+
 
   return !loaded ? (
     <User />
