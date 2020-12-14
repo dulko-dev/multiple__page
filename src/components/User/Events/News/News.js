@@ -16,17 +16,20 @@ function News() {
       })
       .then((response) => {
         setNews(response.results);
-      });
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   return (
     <>
       <UserNav />
       <div className="news">
-        <h2>Most popular arcticles from 24h</h2>
-        {news.map((element) => (
-            <Articles element={element} key={element.id}/>
-        ))}
+        <h2>Most popular daily article</h2>
+        <div className='news__wrapped'>
+          {news.map((element) => (
+            <Articles element={element} key={element.id} />
+          ))}
+        </div>
       </div>
       ;
     </>

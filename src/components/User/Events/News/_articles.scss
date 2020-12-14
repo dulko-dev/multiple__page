@@ -1,0 +1,18 @@
+.articles {
+  width: 400px;
+  margin: 20px;
+  .articles__title {
+    height: 50px;
+    line-height: 24px;
+    font-size: 1.2em;
+    padding-bottom: 15px;
+  }
+  .articles__text {
+    color: #dadad9;
+    text-decoration: none;
+    font-style: italic;
+    p {
+        padding-top: 15px;
+    }
+  }
+}
