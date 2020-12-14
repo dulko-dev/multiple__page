@@ -10,10 +10,10 @@ function Events() {
       <div className="events">
         <div className="events__boxes">
           <Link to="/events/news">
-            <div>News</div>
+            <div className='events__news'>News</div>
           </Link>
-          <Link to="/events/ticket">
-            <div>TicketMaster</div>
+          <Link to="/events/sport">
+            <div className='events__ticketMaster'>Sport</div>
           </Link>
         </div>
       </div>

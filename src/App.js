@@ -1,5 +1,7 @@
+//library
 import React, { useContext } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+//components
 import Welcome from "./components/Welcome/Welcome";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
@@ -10,6 +12,8 @@ import Entertainment from "./components/User/Entertainment/Entertainment";
 import Events from "./components/User/Events/Events";
 import Weather from "./components/User/Weather/Weather";
 import News from "./components/User/Events/News/News";
+import Sport from "./components/User/Events/Sport/Sport";
+//utility
 import { AuthContext } from "./components/Firebase/Auth";
 import PrivateRoute from "./PrivateRoute";
 
@@ -51,6 +55,7 @@ export default function App() {
             />
             <PrivateRoute exact path="/events" user={user} component={Events} />
             <PrivateRoute path="/events/news" user={user} component={News} />
+            <PrivateRoute path="/events/sport" user={user} component={Sport} />
             <PrivateRoute
               exact
               path="/weather"

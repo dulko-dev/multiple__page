@@ -12,7 +12,18 @@
     text-decoration: none;
     font-style: italic;
     p {
-        padding-top: 15px;
+      padding-top: 15px;
     }
+  }
+  .articles__img {
+    -webkit-filter: brightness(50%);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+  }
+  .articles__img:hover {
+    -webkit-filter: brightness(100%);
   }
 }
