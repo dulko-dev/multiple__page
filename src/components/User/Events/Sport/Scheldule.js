@@ -2,16 +2,25 @@ import React from "react";
 
 function Scheldule({ element, data }) {
   return (
-    <span>
-      {data[element].map((e) => (
-        <div className="scheldule__wrapper">
-          <span>{e.dateEvent}</span>
-          <span>{e.strTime}</span>
-          <span>{e.strVenue}</span>
-          <span>{e.strEvent}</span>
-        </div>
-      ))}
-    </span>
+    <table>
+      <caption>Next 15 matches</caption>
+      <thead>
+        <tr>
+          <th>Date Event</th>
+          <th>Time</th>
+          <th>Event</th>
+        </tr>
+      </thead>
+      <tbody>
+        {data[element].map((e) => (
+          <tr>
+            <td>{e.dateEvent}</td>
+            <td>{e.strTime}</td>
+            <td>{e.strEvent}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }
 

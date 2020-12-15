@@ -47,8 +47,7 @@ function Sport() {
             setButtonClick={setButtonClick}
             leagueInfo={leagueInfo}
           />
-
-          <h3>
+          <h3 className='sport__title'>
             {Object.values(data).map((e) => Object.values(e)[0].strLeague)}
           </h3>
           <div className="sport__scoresWrapper">

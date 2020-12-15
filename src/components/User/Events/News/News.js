@@ -22,15 +22,13 @@ function News() {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(waiting);
-
   return (
     <>
       <UserNav />
       <div className="news">
         <h2>Most popular daily article</h2>
         {waiting ? (
-          <p style={{textAlign:'center', fontSize:'5em'}}>Is loading...</p>
+          <p style={{textAlign:'center', fontSize:'5em'}}>...is loading...</p>
         ) : (
           <div className="news__wrapped">
             {news.map((element) => (

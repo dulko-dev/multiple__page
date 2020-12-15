@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import UserNav from "../UserNav";
-import News from "./News/News";
+
 
 function Events() {
   return (

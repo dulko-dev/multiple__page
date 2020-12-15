@@ -6,10 +6,10 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
       <button
         className="sport__button"
         onClick={() => {
-          setButtonClick(leagueInfo.englishChampion);
+          setButtonClick(leagueInfo.englishPremier);
         }}
       >
-        English Champions League
+        English Premier League
       </button>
       <button
         className="sport__button"
@@ -22,90 +22,250 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
       <button
         className="sport__button"
         onClick={() => {
-          setButtonClick(leagueInfo.englishChampion);
+          setButtonClick(leagueInfo.englishLeagueOne);
         }}
       >
-        English Champions League
+        English League One
       </button>
       <button
         className="sport__button"
         onClick={() => {
-          setButtonClick(leagueInfo.englishChampion);
+          setButtonClick(leagueInfo.englishLeagueTwo);
         }}
       >
-        English Champions League
+        English League Two
       </button>
       <button
         className="sport__button"
         onClick={() => {
-          setButtonClick(leagueInfo.englishChampion);
+          setButtonClick(leagueInfo.scottishPremier);
         }}
       >
-        English Champions League
+        Scottish Premier League
       </button>
       <button
         className="sport__button"
         onClick={() => {
-          setButtonClick(leagueInfo.englishChampion);
+          setButtonClick(leagueInfo.scottishChampions);
         }}
       >
-        English Champions League
+        Scottish Champions League
       </button>
       <button
         className="sport__button"
         onClick={() => {
-          setButtonClick(leagueInfo.englishChampion);
+          setButtonClick(leagueInfo.germany);
         }}
       >
-        English Champions League
+        Germany 2 Bundesliga
       </button>
       <button
         className="sport__button"
         onClick={() => {
-          setButtonClick(leagueInfo.englishChampion);
+          setButtonClick(leagueInfo.germanB);
         }}
       >
-        English Champions League
+        Germany
       </button>
       <button
         className="sport__button"
         onClick={() => {
-          setButtonClick(leagueInfo.englishChampion);
+          setButtonClick(leagueInfo.italian);
         }}
       >
-        English Champions League
+        Serie A
       </button>
       <button
         className="sport__button"
         onClick={() => {
-          setButtonClick(leagueInfo.englishChampion);
+          setButtonClick(leagueInfo.italianB);
         }}
       >
-        English Champions League
+        Serie B
       </button>
       <button
         className="sport__button"
         onClick={() => {
-          setButtonClick(leagueInfo.englishChampion);
+          setButtonClick(leagueInfo.italianC);
         }}
       >
-        English Champions League
+        Serie C
       </button>
       <button
         className="sport__button"
         onClick={() => {
-          setButtonClick(leagueInfo.englishChampion);
+          setButtonClick(leagueInfo.spanish);
         }}
       >
-        English Champions League
+        La Liga
       </button>
       <button
         className="sport__button"
         onClick={() => {
-          setButtonClick(leagueInfo.englishChampion);
+          setButtonClick(leagueInfo.spanishB);
         }}
       >
-        English Champions League
+        La Liga B
+      </button>
+      <button
+        className="sport__button"
+        onClick={() => {
+          setButtonClick(leagueInfo.french);
+        }}
+      >
+        Ligue 1
+      </button>
+      <button
+        className="sport__button"
+        onClick={() => {
+          setButtonClick(leagueInfo.frenchB);
+        }}
+      >
+        Ligue 2
+      </button>
+      <button
+        className="sport__button"
+        onClick={() => {
+          setButtonClick(leagueInfo.greek);
+        }}
+      >
+        Superleague Ellada
+      </button>
+      <button
+        className="sport__button"
+        onClick={() => {
+          setButtonClick(leagueInfo.dutch);
+        }}
+      >
+        Eredivisie
+      </button>
+      <button
+        className="sport__button"
+        onClick={() => {
+          setButtonClick(leagueInfo.belgian);
+        }}
+      >
+        Eerste klasse A
+      </button>
+      <button
+        className="sport__button"
+        onClick={() => {
+          setButtonClick(leagueInfo.turkish);
+        }}
+      >
+        Süper Lig
+      </button>
+      <button
+        className="sport__button"
+        onClick={() => {
+          setButtonClick(leagueInfo.danish);
+        }}
+      >
+        Superligaen
+      </button>
+      <button
+        className="sport__button"
+        onClick={() => {
+          setButtonClick(leagueInfo.portugues);
+        }}
+      >
+        Primeira Liga
+      </button>
+      <button
+        className="sport__button"
+        onClick={() => {
+          setButtonClick(leagueInfo.polish);
+        }}
+      >
+        Ekstraklasa
+      </button>
+      <button
+        className="sport__button"
+        onClick={() => {
+          setButtonClick(leagueInfo.ukrainian);
+        }}
+      >
+        Premier Liha
+      </button>
+      <button
+        className="sport__button"
+        onClick={() => {
+          setButtonClick(leagueInfo.russian);
+        }}
+      >
+        Priemjer-Liga
+      </button>
+      <button
+        className="sport__button"
+        onClick={() => {
+          setButtonClick(leagueInfo.norwegian);
+        }}
+      >
+        Eliteserien
+      </button>
+      <button
+        className="sport__button"
+        onClick={() => {
+          setButtonClick(leagueInfo.welsh);
+        }}
+      >
+        Cymru Premier
+      </button>
+      <button
+        className="sport__button"
+        onClick={() => {
+          setButtonClick(leagueInfo.brazilian);
+        }}
+      >
+        Campeonato Brasileiro Série A
+      </button>
+      <button
+        className="sport__button"
+        onClick={() => {
+          setButtonClick(leagueInfo.brazilianB);
+        }}
+      >
+        Campeonato Brasileiro Série B
+      </button>
+      <button
+        className="sport__button"
+        onClick={() => {
+          setButtonClick(leagueInfo.argentinian);
+        }}
+      >
+        Primera División
+      </button>
+      <button
+        className="sport__button"
+        onClick={() => {
+          setButtonClick(leagueInfo.nba);
+        }}
+      >
+        NBA
+      </button>
+      <button
+        className="sport__button"
+        onClick={() => {
+          setButtonClick(leagueInfo.spanishBasket);
+        }}
+      >
+        Liga ACB
+      </button>
+      <button
+        className="sport__button"
+        onClick={() => {
+          setButtonClick(leagueInfo.frenchBasket);
+        }}
+      >
+        LNB Pro A
+      </button>
+      <button
+        className="sport__button"
+        onClick={() => {
+          setButtonClick(leagueInfo.italianBasket);
+        }}
+      >
+        Lega Basket Serie A
       </button>
     </>
   );
