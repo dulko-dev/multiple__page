@@ -4,6 +4,7 @@ import Articles from "./Articles";
 
 function News() {
   const [news, setNews] = useState([]);
+  const [waiting, setWaiting] = useState(true);
 
   useEffect(() => {
     fetch(
@@ -15,21 +16,28 @@ function News() {
         }
       })
       .then((response) => {
+        setWaiting(false);
         setNews(response.results);
       })
       .catch((err) => console.log(err));
   }, []);
+
+  console.log(waiting);
 
   return (
     <>
       <UserNav />
       <div className="news">
         <h2>Most popular daily article</h2>
-        <div className='news__wrapped'>
-          {news.map((element) => (
-            <Articles element={element} key={element.id} />
-          ))}
-        </div>
+        {waiting ? (
+          <p style={{textAlign:'center', fontSize:'5em'}}>Is loading...</p>
+        ) : (
+          <div className="news__wrapped">
+            {news.map((element) => (
+              <Articles element={element} key={element.id} />
+            ))}
+          </div>
+        )}
       </div>
       ;
     </>
