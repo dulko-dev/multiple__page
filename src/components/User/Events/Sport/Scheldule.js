@@ -15,7 +15,7 @@ function Scheldule({ element, data }) {
         {data[element].map((e) => (
           <tr>
             <td>{e.dateEvent}</td>
-            <td>{e.strTime}</td>
+            <td>{e.strTime} GMT</td>
             <td>{e.strEvent}</td>
           </tr>
         ))}

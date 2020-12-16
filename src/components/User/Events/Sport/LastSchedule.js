@@ -17,7 +17,7 @@ function LastSchedule({ scores, data2 }) {
         {data2[scores].map((e) => (
           <tr>
             <td>{e.dateEvent}</td>
-            <td>{e.strTime}</td>
+            <td>{e.strTime} GMT</td>
             <td>{e.strEvent}</td>
             <td>
               {e.intHomeScore} : {e.intAwayScore}

@@ -17,7 +17,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.englishChampion);
         }}
       >
-        English Champions League
+        English League Champions
       </button>
       <button
         className="sport__button"
@@ -25,7 +25,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.englishLeagueOne);
         }}
       >
-        English League One
+        English League 1
       </button>
       <button
         className="sport__button"
@@ -33,7 +33,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.englishLeagueTwo);
         }}
       >
-        English League Two
+        English League 2
       </button>
       <button
         className="sport__button"
@@ -49,7 +49,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.scottishChampions);
         }}
       >
-        Scottish Champions League
+        Scottish Championship
       </button>
       <button
         className="sport__button"
@@ -57,7 +57,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.germany);
         }}
       >
-        Germany 2 Bundesliga
+        German Bundesliga
       </button>
       <button
         className="sport__button"
@@ -65,7 +65,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.germanB);
         }}
       >
-        Germany
+        German 2 Bundesliga
       </button>
       <button
         className="sport__button"
@@ -73,7 +73,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.italian);
         }}
       >
-        Serie A
+        Italian Serie A
       </button>
       <button
         className="sport__button"
@@ -81,7 +81,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.italianB);
         }}
       >
-        Serie B
+        Italian Serie B
       </button>
       <button
         className="sport__button"
@@ -89,7 +89,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.italianC);
         }}
       >
-        Serie C
+        Italian Serie C
       </button>
       <button
         className="sport__button"
@@ -97,7 +97,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.spanish);
         }}
       >
-        La Liga
+        Spanish La Liga
       </button>
       <button
         className="sport__button"
@@ -113,7 +113,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.french);
         }}
       >
-        Ligue 1
+        French Ligue 1
       </button>
       <button
         className="sport__button"
@@ -121,7 +121,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.frenchB);
         }}
       >
-        Ligue 2
+        French Ligue 2
       </button>
       <button
         className="sport__button"
@@ -129,7 +129,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.greek);
         }}
       >
-        Superleague Ellada
+        Greek Superleague Greece
       </button>
       <button
         className="sport__button"
@@ -137,7 +137,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.dutch);
         }}
       >
-        Eredivisie
+        Dutch Eredivisie
       </button>
       <button
         className="sport__button"
@@ -145,7 +145,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.belgian);
         }}
       >
-        Eerste klasse A
+        Belgian First Division A
       </button>
       <button
         className="sport__button"
@@ -153,7 +153,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.turkish);
         }}
       >
-        Süper Lig
+        Turkish Süper Lig
       </button>
       <button
         className="sport__button"
@@ -161,7 +161,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.danish);
         }}
       >
-        Superligaen
+        Danish Superliga
       </button>
       <button
         className="sport__button"
@@ -169,7 +169,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.portugues);
         }}
       >
-        Primeira Liga
+        Portuguese Primeira Liga
       </button>
       <button
         className="sport__button"
@@ -177,7 +177,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.polish);
         }}
       >
-        Ekstraklasa
+        Polish Ekstraklasa
       </button>
       <button
         className="sport__button"
@@ -185,7 +185,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.ukrainian);
         }}
       >
-        Premier Liha
+        Ukrainian Premier League
       </button>
       <button
         className="sport__button"
@@ -193,7 +193,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.russian);
         }}
       >
-        Priemjer-Liga
+        Russian Football Premier League
       </button>
       <button
         className="sport__button"
@@ -201,7 +201,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.norwegian);
         }}
       >
-        Eliteserien
+        Norwegian Eliteserien
       </button>
       <button
         className="sport__button"
@@ -209,7 +209,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.welsh);
         }}
       >
-        Cymru Premier
+        Welsh Premier League
       </button>
       <button
         className="sport__button"
@@ -217,7 +217,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.brazilian);
         }}
       >
-        Campeonato Brasileiro Série A
+        Brazilian Serie A
       </button>
       <button
         className="sport__button"
@@ -225,7 +225,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.brazilianB);
         }}
       >
-        Campeonato Brasileiro Série B
+         Brazilian Serie B
       </button>
       <button
         className="sport__button"
@@ -233,7 +233,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.argentinian);
         }}
       >
-        Primera División
+        Argentinian Primera Division
       </button>
       <button
         className="sport__button"
@@ -249,7 +249,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.spanishBasket);
         }}
       >
-        Liga ACB
+        Spanish Liga ACB
       </button>
       <button
         className="sport__button"
@@ -257,7 +257,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.frenchBasket);
         }}
       >
-        LNB Pro A
+        French LNB
       </button>
       <button
         className="sport__button"
@@ -265,7 +265,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.italianBasket);
         }}
       >
-        Lega Basket Serie A
+        Italian Lega Basket
       </button>
     </>
   );

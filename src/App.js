@@ -56,12 +56,7 @@ export default function App() {
             <PrivateRoute exact path="/events" user={user} component={Events} />
             <PrivateRoute path="/events/news" user={user} component={News} />
             <PrivateRoute path="/events/sport" user={user} component={Sport} />
-            <PrivateRoute
-              exact
-              path="/weather"
-              user={user}
-              component={Weather}
-            />
+            <PrivateRoute path="/weather" user={user} component={Weather} />
           </>
         )}
       </Switch>
