@@ -19,7 +19,7 @@ function Events() {
         <div className="events__boxes">
           <Link to="/events/news">
             <div className="events__news" data-tip="current news from world">
-              <img src={news} className="events__newsImg" />
+              <img src={news} className="events__newsImg" alt='news'/>
             </div>
           </Link>
           <Link to="/events/sport">
@@ -27,7 +27,7 @@ function Events() {
               className="events__sport"
               data-tip="results from football and basketball"
             >
-              <img src={sport} className="events__sportImg" />
+              <img src={sport} className="events__sportImg" alt='sport result'/>
             </div>
           </Link>
         </div>

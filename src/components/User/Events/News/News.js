@@ -6,20 +6,27 @@ function News() {
   const [news, setNews] = useState([]);
   const [waiting, setWaiting] = useState(true);
 
+  const API_KEY = process.env.REACT_APP_NEWS_API_KEY;
+
   useEffect(() => {
-    fetch(
-      "https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=igBpkzksTJMnbjEuGgmgpzVyRz0Z2fEA"
-    )
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-      })
-      .then((response) => {
-        setWaiting(false);
-        setNews(response.results);
-      })
-      .catch((err) => console.log(err));
+    const getNews = () => {
+      fetch(
+        `https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=${API_KEY}`
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+        })
+        .then((response) => {
+          setWaiting(false);
+          setNews(response.results);
+        })
+        .catch((err) => console.log(err));
+    };
+
+    getNews();
+    return () => getNews();
   }, []);
 
   return (
@@ -28,7 +35,9 @@ function News() {
       <div className="news">
         <h2>Most popular daily article</h2>
         {waiting ? (
-          <p style={{textAlign:'center', fontSize:'5em'}}>...is loading...</p>
+          <p style={{ textAlign: "center", fontSize: "5em" }}>
+            ...is loading...
+          </p>
         ) : (
           <div className="news__wrapped">
             {news.map((element) => (
