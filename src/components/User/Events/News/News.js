@@ -5,12 +5,11 @@ import Articles from "./Articles";
 function News() {
   const [news, setNews] = useState([]);
   const [waiting, setWaiting] = useState(true);
-
   const API_KEY = process.env.REACT_APP_NEWS_API_KEY;
 
   useEffect(() => {
-    const getNews = () => {
-      fetch(
+    const getNews = async () => {
+      await fetch(
         `https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=${API_KEY}`
       )
         .then((response) => {
@@ -26,7 +25,7 @@ function News() {
     };
 
     getNews();
-    return () => getNews();
+    // eslint-disable-next-line
   }, []);
 
   return (

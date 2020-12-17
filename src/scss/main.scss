@@ -19,7 +19,7 @@ $title-article: "Bungee", cursive;
 @import "../components/User/Events/News/news"; //news
 @import "../components/User/Events/News/articles"; //articles
 @import "../components/User/Events/Sport/sport"; //sport
-@import "../components/User/Events/Sport/scheldule"; //scheldule
+@import "../components/User/Events/Sport/(last)scheldule"; //scheldule
 @import "../components/User/Weather/weather"; //weather
 
 body {

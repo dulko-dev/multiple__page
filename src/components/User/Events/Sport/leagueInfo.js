@@ -1,4 +1,4 @@
-export const leagueInfo = {
+const leagueInfo = {
   // soccer
   englishPremier: 4328,
   englishChampion: 4329,
@@ -35,3 +35,5 @@ export const leagueInfo = {
   frenchBasket: 4423,
   italianBasket: 4433,
 };
+
+export { leagueInfo };

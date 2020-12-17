@@ -225,7 +225,7 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
           setButtonClick(leagueInfo.brazilianB);
         }}
       >
-         Brazilian Serie B
+        Brazilian Serie B
       </button>
       <button
         className="sport__button"

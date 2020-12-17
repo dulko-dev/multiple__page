@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import UserNav from "../../UserNav";
 import Scheldule from "./Scheldule";
 import LastSchedule from "./LastSchedule";
-import { leagueInfo as leagueInfo } from "./leagueInfo";
+import { leagueInfo } from "./leagueInfo";
 import ButtonsLeague from "./ButtonsLeague";
 
 function Sport() {
@@ -11,56 +11,65 @@ function Sport() {
   const [buttonClick, setButtonClick] = useState(4328);
 
   useEffect(() => {
-    fetch(
-      `https://thesportsdb.com/api/v1/json/1/eventsnextleague.php?id=${buttonClick}`
-    )
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-      })
-      .then((response) => {
-        setData(response);
-      })
-      .catch((err) => console.log(err));
+    const getSchedule = async () => {
+      await fetch(
+        `https://thesportsdb.com/api/v1/json/1/eventsnextleague.php?id=${buttonClick}`
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+        })
+        .then((response) => {
+          setData(response);
+        })
+        .catch((err) => console.log(err));
+    };
 
-    fetch(
-      `https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id=${buttonClick}`
-    )
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-      })
-      .then((response) => {
-        setData2(response);
-      })
-      .catch((err) => console.log(err));
+    const getLastSchedule = async () => {
+      await fetch(
+        `https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id=${buttonClick}`
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+        })
+        .then((response) => {
+          setData2(response);
+        })
+        .catch((err) => console.log(err));
+    };
+
+    getSchedule();
+    getLastSchedule();
   }, [buttonClick]);
 
   return (
     <>
       <UserNav />
       <div className="sport">
-        <div>
+        <div className="sport__buttons">
           <ButtonsLeague
             setButtonClick={setButtonClick}
             leagueInfo={leagueInfo}
           />
-          <h3 className='sport__title'>
-            {Object.values(data).map((e) => Object.values(e)[0].strLeague)}
+        </div>
+        {Object.values(data).map((e, index) => (
+          <h3 className="sport__title" key={index}>
+            {Object.values(e)[0].strLeague}
           </h3>
-          <div className="sport__scoresWrapper">
-            <div>
-              {Object.keys(data).map((element) => (
-                <Scheldule element={element} data={data} />
-              ))}
-            </div>
-            <div>
-              {Object.keys(data2).map((scores) => (
-                <LastSchedule scores={scores} data2={data2} />
-              ))}
-            </div>
+        ))}
+        <div className="sport__scoresWrapper">
+          <div>
+            {Object.keys(data).map((element, index) => (
+              <Scheldule element={element} data={data} key={index} />
+            ))}
+          </div>
+          <div>
+            {Object.keys(data2).map((scores, index) => (
+              <LastSchedule scores={scores} data2={data2} key={index} />
+            ))}
           </div>
         </div>
       </div>
