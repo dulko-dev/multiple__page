@@ -6,6 +6,7 @@ function WeatherInformation({ data }) {
   return (
     <div className="weatherInformation">
       <p>city name: {data.cityName}</p>
+      <p>country: {data.country} </p>
       <p>weather: {data.weather}</p>
       <p>
         temperature: {data.temp} &#8451; [feels like {data.tempFeels} &#8451;]{" "}

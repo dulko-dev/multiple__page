@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
@@ -12,7 +12,8 @@ const style = makeStyles({
 });
 
 function Weather() {
-  const [error, setError] = useState("");
+  const [error, setError] = useState(false);
+  const [info, setInfo] = useState(false);
   const [inputText, setInputText] = useState("");
   const [data, setData] = useState({
     cityName: "",
@@ -26,11 +27,21 @@ function Weather() {
     wind: "",
     sunrise: "",
     sunset: "",
+    country: "",
   });
-  const [info, setInfo] = useState(false);
   const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
   const classess = style();
+  const textRef = useRef(null);
+
+  useEffect(() => {
+    textRef.current.focus();
+  }, []);
+
+  useEffect(() => {
+    setError(false);
+    setInfo(false);
+  }, [inputText]);
 
   const getInfo = async () => {
     await fetch(
@@ -38,9 +49,11 @@ function Weather() {
     )
       .then((response) => {
         if (response.ok) {
+          setError(false);
+          setInfo(true);
           return response.json();
         }
-        throw Error("Chuj");
+        throw Error("błąd");
       })
       .then((response) => {
         setData((prev) => ({
@@ -55,12 +68,15 @@ function Weather() {
           wind: response.wind.speed,
           sunrise: response.sys.sunrise,
           sunset: response.sys.sunset,
+          country: response.sys.country,
         }));
       })
-      .catch((err) => setError(err));
+      .catch((err) => {
+        console.log(err);
+        setError(true);
+      });
   };
 
-  console.log(error);
   const handleInput = (e) => {
     setInputText(e.target.value);
     setData((prev) => ({ ...prev, cityName: e.target.value }));
@@ -70,12 +86,10 @@ function Weather() {
     e.preventDefault();
     getInfo();
     setInputText("");
-    setInfo(!info);
   };
 
   console.log(data);
 
-  
   return (
     <>
       <UserNav />
@@ -83,6 +97,7 @@ function Weather() {
         <div className="weather__form">
           <form onSubmit={handleSubmit}>
             <TextField
+              inputRef={textRef}
               type="text"
               onChange={handleInput}
               value={inputText}
@@ -91,10 +106,24 @@ function Weather() {
               variant="outlined"
               className={classess.TextField}
             />
-            <Button type="submit" variant="outlined" color="primary">
+            <Button
+              type="submit"
+              variant="outlined"
+              color="primary"
+              disabled={inputText.length === 0}
+            >
               Search
             </Button>
           </form>
+          {error && (
+            <p>
+              City
+              <span style={{ fontSize: "2em", textDecoration: "underline" }}>
+                {data.cityName}
+              </span>
+              doesn't matched to result
+            </p>
+          )}
           {info && <WeatherInformation data={data} inputText={inputText} />}
         </div>
       </div>
