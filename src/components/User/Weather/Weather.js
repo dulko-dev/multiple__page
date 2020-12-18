@@ -1,15 +1,35 @@
 import React, { useRef, useState, useEffect } from "react";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
+import { TextField, Button } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
 import UserNav from "../UserNav";
 import WeatherInformation from "./WeatherInformation";
+import SearchIcon from "@material-ui/icons/Search";
 
-const style = makeStyles({
-  TextField: {
-    borderColor: "white",
+const StyleField = withStyles({
+  root: {
+    paddingBottom: "20px",
+    "& label.Mui-focused": {
+      color: "#dadad9",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "#dadad9",
+    },
+    "& .MuiInputBase-input": {
+      color: "#dadad9",
+    },
   },
-});
+})(TextField);
+
+const StyleButton = withStyles({
+  root: {
+    backgroundColor: "#dadad9",
+    padding: "10px 40px",
+    margin: "0 auto",
+    "&:hover": {
+      boxShadow: "0px 0px 10px 8px rgba(0,0,0,0.69)",
+    },
+  },
+})(Button);
 
 function Weather() {
   const [error, setError] = useState(false);
@@ -31,7 +51,6 @@ function Weather() {
   });
   const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
-  const classess = style();
   const textRef = useRef(null);
 
   useEffect(() => {
@@ -96,24 +115,24 @@ function Weather() {
       <div className="weather">
         <div className="weather__form">
           <form onSubmit={handleSubmit}>
-            <TextField
+            <StyleField
               inputRef={textRef}
               type="text"
               onChange={handleInput}
               value={inputText}
-              id="outlined-basic"
+              id="custom-css-standard-input"
               label="City"
-              variant="outlined"
-              className={classess.TextField}
             />
-            <Button
-              type="submit"
-              variant="outlined"
-              color="primary"
-              disabled={inputText.length === 0}
-            >
-              Search
-            </Button>
+            <div>
+              <StyleButton
+                variant="contained"
+                type="submit"
+                disabled={inputText.length === 0}
+                endIcon={<SearchIcon />}
+              >
+                Search
+              </StyleButton>
+            </div>
           </form>
           {error && (
             <p>
