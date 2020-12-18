@@ -21,6 +21,7 @@ $title-article: "Bungee", cursive;
 @import "../components/User/Events/Sport/sport"; //sport
 @import "../components/User/Events/Sport/(last)scheldule"; //scheldule
 @import "../components/User/Weather/weather"; //weather
+@import "../components/User/Weather/weatherInformation"; //weatherInformation
 
 body {
   box-sizing: border-box;

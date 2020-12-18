@@ -135,12 +135,16 @@ function Weather() {
             </div>
           </form>
           {error && (
-            <p>
-              City
-              <span style={{ fontSize: "2em", textDecoration: "underline" }}>
+            <p className="weather__parNotExist">
+              <span
+                className="weather__spanNotExist"
+                style={{
+                  
+                }}
+              >
                 {data.cityName}
               </span>
-              doesn't matched to result
+              city doesn't exist
             </p>
           )}
           {info && <WeatherInformation data={data} inputText={inputText} />}

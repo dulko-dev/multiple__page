@@ -5,19 +5,52 @@ function WeatherInformation({ data }) {
   const sunset = new Date(data.sunset * 1000).toLocaleTimeString();
   return (
     <div className="weatherInformation">
-      <p>city name: {data.cityName}</p>
-      <p>country: {data.country} </p>
-      <p>weather: {data.weather}</p>
       <p>
-        temperature: {data.temp} &#8451; [feels like {data.tempFeels} &#8451;]{" "}
+        <span className="span__name">City name:</span>
+        <span className="span__fetch">{data.cityName.toUpperCase()}</span>
       </p>
-      <p>temperature max: {data.temp_max}</p>
-      <p>temperature min: {data.temp_min}</p>
-      <p>pressure: {data.pressure} &#13169; </p>
-      <p>humidity: {data.humidity}% </p>
-      <p>wind: {data.wind}m/s</p>
-      <p>sunrise: {sunrise}</p>
-      <p>sunset: {sunset}</p>
+      <p>
+        <span className="span__name">Country:</span>
+        <span className="span__fetch">{data.country}</span>
+      </p>
+      <p>
+        <span className="span__name">Weather:</span>
+        <span className="span__fetch">{data.weather}</span>
+      </p>
+      <p>
+        <span className="span__name">Temperature:</span>
+        <span className="span__fetch">
+          {data.temp}&#8451; [feels like {data.tempFeels}&#8451;]
+        </span>
+      </p>
+      <p>
+        <span className="span__name">Temperature max:</span>
+        <span className="span__fetch">{data.temp_max}&#8451;</span>
+      </p>
+      <p>
+        <span className="span__name">Temperature min:</span>
+        <span className="span__fetch">{data.temp_min}&#8451;</span>
+      </p>
+      <p>
+        <span className="span__name">Pressure:</span>
+        <span className="span__fetch">{data.pressure}&#13169;</span>
+      </p>
+      <p>
+        <span className="span__name">Humidity:</span>
+        <span className="span__fetch">{data.humidity}%</span>
+      </p>
+      <p>
+        <span className="span__name">Wind:</span>
+        <span className="span__fetch">{data.wind}m/s</span>
+      </p>
+      <p>
+        <span className="span__name">Sunrise: </span>
+        <span className="span__fetch">{sunrise}</span>
+      </p>
+      <p>
+        <span className="span__name">Sunset:</span>
+        <span className="span__fetch"> {sunset}</span>
+      </p>
     </div>
   );
 }
