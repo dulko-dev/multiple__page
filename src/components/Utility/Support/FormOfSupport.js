@@ -1,13 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Firebase/Auth";
+import restApi from "../Support/restApi";
 
-function FormOfSupport({ name, setName }) {
-  const [state, setState] = useState({
-    name: "",
-    text: "",
-  });
-
+function FormOfSupport({ state, setState, handleShowForm, setIsSend }) {
+  
   const { value } = useContext(AuthContext);
   const [user, setUser] = value;
   const { register, handleSubmit } = useForm();
@@ -22,11 +19,19 @@ function FormOfSupport({ name, setName }) {
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
+    restApi({ user }, state.name, state.text);
+    setState({ name: "", text: "" });
+    handleShowForm(false);
+    setIsSend(true);
   };
+
 
   return (
     <div className="formOfSupport">
-      <form onSubmit={handleSubmit(handleSubmitForm)}>
+      <form onSubmit={handleSubmitForm}>
+        <span onClick={handleShowForm} className="formOfSupport__X">
+          X
+        </span>
         <label className="label">
           <span>email</span>
           <span>{user}</span>
