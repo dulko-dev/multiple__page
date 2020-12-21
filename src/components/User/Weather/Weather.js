@@ -138,9 +138,6 @@ function Weather() {
             <p className="weather__parNotExist">
               <span
                 className="weather__spanNotExist"
-                style={{
-                  
-                }}
               >
                 {data.cityName}
               </span>

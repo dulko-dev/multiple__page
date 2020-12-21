@@ -1,0 +1,15 @@
+.support {
+  position: relative;
+  .support__divSign {
+    // position: absolute;
+    right: 0;
+    bottom: 0;
+    .support__sign {
+      color: white;
+      font-size: 4em;
+      &:hover {
+        padding-top: 10px;
+      }
+    }
+  }
+}

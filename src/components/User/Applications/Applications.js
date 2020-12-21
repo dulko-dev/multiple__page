@@ -19,7 +19,6 @@ function Applications() {
           <div className="app__common app__info">
             <img src={newsEvents} alt="news and events" />
           </div>
-          {/* news / music events(ticketmaster)*/}
         </Link>
         <Link to="./weather">
           <div className="app__common">

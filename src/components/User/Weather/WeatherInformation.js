@@ -45,11 +45,11 @@ function WeatherInformation({ data }) {
       </p>
       <p>
         <span className="span__name">Sunrise: </span>
-        <span className="span__fetch">{sunrise}</span>
+        <span className="span__fetch">{sunrise} CET</span>
       </p>
       <p>
         <span className="span__name">Sunset:</span>
-        <span className="span__fetch"> {sunset}</span>
+        <span className="span__fetch"> {sunset} CET</span>
       </p>
     </div>
   );
