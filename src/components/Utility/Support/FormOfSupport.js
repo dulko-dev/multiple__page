@@ -1,10 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Firebase/Auth";
-import restApi from "../Support/restApi";
+// import restApi from "../Support/restApi";
 
-function FormOfSupport({ state, setState, handleShowForm, setIsSend }) {
-  
+function FormOfSupport({
+  state,
+  setState,
+  handleShowForm,
+  setIsSend,
+  setError,
+}) {
   const { value } = useContext(AuthContext);
   const [user, setUser] = value;
   const { register, handleSubmit } = useForm();
@@ -22,9 +27,31 @@ function FormOfSupport({ state, setState, handleShowForm, setIsSend }) {
     restApi({ user }, state.name, state.text);
     setState({ name: "", text: "" });
     handleShowForm(false);
-    setIsSend(true);
   };
 
+  const restApi = (email, name, msg) => {
+    fetch("https://jsonplaceholder.typicode.com/posts/", {
+      method: "POST",
+      body: JSON.stringify({
+        email: email,
+        name: name,
+        msg: msg,
+      }),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => {
+        if (response.ok) {
+          setIsSend(true);
+          return response;
+        } else {
+          setIsSend(false);
+          setError(true);
+        }
+      })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="formOfSupport">

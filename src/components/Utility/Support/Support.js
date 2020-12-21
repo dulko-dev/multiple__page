@@ -9,7 +9,7 @@ function Support() {
   });
   const [isShow, setIsShow] = useState(false);
   const [isSend, setIsSend] = useState(false);
-  
+  const [error, setError] = useState(false);
 
   const handleShowForm = () => {
     setIsShow(!isShow);
@@ -25,6 +25,16 @@ function Support() {
     };
   }, [isSend]);
 
+  useEffect(() => {
+    const timeId = setTimeout(() => {
+      setError(false);
+    }, 4000);
+
+    return () => {
+      clearTimeout(timeId);
+    };
+  }, [error]);
+
   return (
     <>
       <ReactTooltip border effect="float" />
@@ -36,6 +46,7 @@ function Support() {
               setState={setState}
               handleShowForm={handleShowForm}
               setIsSend={setIsSend}
+              setError={setError}
             />
           ) : (
             <i
@@ -46,9 +57,24 @@ function Support() {
           )}
           {isSend && (
             <p
-              style={{ color: "green", fontSize: "2.5em", textAlign: "center" }}
+              style={{
+                color: "green",
+                fontSize: "2.5em",
+                textAlign: "center",
+              }}
             >
               Your message has been sent successful
+            </p>
+          )}
+          {error && (
+            <p
+              style={{
+                color: "red",
+                fontSize: "2.5em",
+                textAlign: "center",
+              }}
+            >
+              There is some problem with server. Please try again latter
             </p>
           )}
         </div>
