@@ -8,7 +8,7 @@ import Register from "./components/Register/Register";
 import Reset from "./components/ResetAccount/Reset";
 import TODO from "./components/User/Todo/Todo";
 import Calculator from "./components/User/Calculator/Calculator";
-import Entertainment from "./components/User/Entertainment/Entertainment";
+import MoviesDataBase from "./components/User/MoviesDataBase/MoviesDataBase";
 import Events from "./components/User/Events/Events";
 import Weather from "./components/User/Weather/Weather";
 import News from "./components/User/Events/News/News";
@@ -49,9 +49,9 @@ export default function App() {
             />
             <PrivateRoute
               exact
-              path="/entertainment"
+              path="/movies"
               user={user}
-              component={Entertainment}
+              component={MoviesDataBase}
             />
             <PrivateRoute exact path="/events" user={user} component={Events} />
             <PrivateRoute path="/events/news" user={user} component={News} />

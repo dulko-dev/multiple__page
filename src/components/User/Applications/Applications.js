@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import todoPhoto from "../../../assets/to-do-list.jpg";
 import newsEvents from "../../../assets/news.jpg";
 import forecast from "../../../assets/weather.jpeg";
-import entertainment from "../../../assets/entertainment.jpg";
+import movies from "../../../assets/movie.png";
 import calculator from "../../../assets/calculator.jpg";
 
 function Applications() {
@@ -30,11 +30,11 @@ function Applications() {
           </Link>
         </div>
         <div className="app__common app__fun">
-          <Link to="./entertainment">
-            <img src={entertainment} alt="entertainment" />
+          <Link to="./movies">
+            <img src={movies} alt="movies" />
           </Link>
         </div>
-        {/* - 9gag / quiz / movies and serial /books */}
+        {/*/ quiz / movies and serial /books */}
         <div className="app__common app__calculator">
           <Link to="calculator">
             <img src={calculator} alt="calculator" />

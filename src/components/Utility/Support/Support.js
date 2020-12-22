@@ -51,7 +51,7 @@ function Support() {
           ) : (
             <i
               className="far fa-question-circle support__sign"
-              data-tip="Any problem with dashboard?"
+              data-tip="Have you get problem with dashboard?"
               onClick={handleShowForm}
             ></i>
           )}
