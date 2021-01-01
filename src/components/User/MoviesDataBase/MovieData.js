@@ -1,12 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 
-function MovieData({ movie }) {
+function MovieData({ movie, API_KEY }) {
+  const [data, setData] = useState([]);
+
+  const idFetch = async () => {
+    await fetch(
+      `https://api.themoviedb.org/3/movie/${movie.id}?api_key=${API_KEY}`
+    )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .then((data) => setData(data))
+      .catch((err) => console.log(err));
+  };
+
+  idFetch();
+  console.log(data)
   return (
-    <div>
-      <p>{movie.overview}</p>
-      <p>
-        <img src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} />
-      </p>
+    <div className="movieData">
+      <div className="movieData__img">
+        <img
+          src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+          style={{ width: "120px", height: "150px" }}
+        />
+      </div>
+      <div className="movieData__info">
+        <h4>
+          {movie.title} ({movie.release_date})
+        </h4>
+        
+      </div>
     </div>
   );
 }

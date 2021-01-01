@@ -25,6 +25,9 @@ $title-article: "Bungee", cursive;
 @import "../components/Utility/Support/support"; //support
 @import "../components/Utility/Support/formOfSupport"; //formOfSupport
 @import "../components/User/MoviesDataBase/movieDataBase"; //moveiDataBase
+@import "../components/User/MoviesDataBase/movieData"; //movieData
+@import "../components/User/Calculator/calculator"; //calculator
+@import "../components/User/Calculator/Financial/financialCalc"; //calculatorFinancial
 
 body {
   box-sizing: border-box;

@@ -5,6 +5,7 @@ import MovieData from "./MovieData";
 function MoviesDataBase() {
   const [input, setInput] = useState("");
   const [data, setData] = useState([]);
+  const [show, setShow] = useState(false);
 
   const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 
@@ -21,21 +22,17 @@ function MoviesDataBase() {
       .catch((err) => console.log(err));
   };
 
-  const apiFetch2 = async () => {
-    await fetch(`https://api.themoviedb.org/3/movie/343611?api_key=${API_KEY}`)
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-  };
-
-  apiFetch2();
+  
+  
   const handleInput = (e) => {
     setInput(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     apiFetch();
+    // setInput("");
+    setShow(true);
   };
 
   return (
@@ -43,12 +40,25 @@ function MoviesDataBase() {
       <UserNav />
       <div className="moviesDataBase">
         <form onSubmit={handleSubmit}>
-          <input type="text" onChange={handleInput} value={input} />
+          <input
+            type="text"
+            onChange={handleInput}
+            value={input}
+            placeholder="find movies, tv shows and more..."
+          />
           <button type="submit">Search</button>
         </form>
-        {data.map((movie) => (
-          <MovieData movie={movie} />
-        ))}
+        {show && (
+          <>
+            <h3>Result for '{input}'</h3>
+            <h3>Titles</h3>
+            <div className="movieDataBase__wrapper">
+              {data.map((movie) => (
+                <MovieData movie={movie} input={input} key={movie.id} API_KEY={API_KEY} />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </>
   );
