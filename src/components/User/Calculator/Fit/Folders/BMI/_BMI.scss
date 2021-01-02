@@ -1,0 +1,25 @@
+.BMI {
+    padding: 0 20px;
+  color: #393e41;
+  .BMI__title {
+    font-size: 1.5em;
+    text-align: center;
+    padding: 50px 0;
+  }
+  .BMI__bar{
+      position: relative;
+      height: 30px;
+      width: 100%;
+      border-radius: 50px;
+      border: 1px solid black;
+      margin-top: 20px;
+      .BMI__filler{
+          border-radius: inherit;
+          background-color: yellow;
+          width: 60%;
+          height: inherit;
+          display: inline-block;
+          transition: width .2s ease-in;
+      }
+  }
+}

@@ -28,6 +28,9 @@ $title-article: "Bungee", cursive;
 @import "../components/User/MoviesDataBase/movieData"; //movieData
 @import "../components/User/Calculator/calculator"; //calculator
 @import "../components/User/Calculator/Financial/financialCalc"; //calculatorFinancial
+@import "../components/User/Calculator/Fit/fitCalc"; //fitCalc
+@import "../components/User/Calculator/Fit/Folders/BMI/BMI"; //BMI
+
 
 body {
   box-sizing: border-box;
