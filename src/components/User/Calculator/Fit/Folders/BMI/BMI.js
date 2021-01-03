@@ -5,27 +5,32 @@ function BMI() {
     <div className="BMI">
       <h3 className="BMI__title">Calculate your BMI</h3>
       <form>
+        <div></div>
         <span>Gender: </span>
-        <label>
-          <input type="radio" value="male" id='male' name='gender'/>Male
+        <input type="radio" value="female" id="female" name="gender" />
+        <label htmlFor="female" className="BMI__gender">
+          Female
         </label>
-        <label>
-          <input type="radio" value="female" id='female' name='gender'/>Female
-          </label>
-        <label className="BMI__age">
-          Age:
-          <input type="number" />
+        <input type="radio" value="male" id="male" name="gender" />
+        <label htmlFor="male" className="BMI__gender">
+          Male
         </label>
-        <label>
-          Height:
-          <input type="number" />
+        <label className="BMI__label">
+          <div>Age</div>
+          <input type="number" /><span></span>
         </label>
-        <label>
-          Weight:
-          <input type="number" />
+        <label className="BMI__label">
+          <div>Height [cm]</div>
+          <input type="number" /><span></span>
         </label>
-        <button type="submit">Calculate</button>
-        <button>Clear</button>
+        <label className="BMI__label">
+          <div>Weight [kg]</div>
+          <input type="number" /><span></span>
+        </label>
+        <div className='BMI__button'>
+          <button type="submit">Calculate</button>
+          <button>Clear</button>
+        </div>
       </form>
       <h3>Result</h3>
       <p>BMI = 20kg/m2</p>
