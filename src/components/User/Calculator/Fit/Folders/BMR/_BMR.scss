@@ -1,0 +1,76 @@
+.BMR {
+  padding: 0 20px;
+  color: #393e41;
+  .BMR__title {
+    font-size: 1.5em;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  input[type="radio"] {
+    visibility: hidden;
+    position: absolute;
+    display: none;
+  }
+  input[type="radio"]:checked + label {
+    font-weight: 600;
+  }
+  .BMR__gender {
+    display: inline-block;
+    cursor: pointer;
+    padding: 1px 7px;
+  }
+  .BMR__label {
+    div {
+      margin-top: 10px;
+      font-size: 0.7em;
+    }
+    input {
+      box-sizing: border-box;
+      padding: 5px 19px;
+      background-color: #f6f7eb;
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid black;
+    }
+  }
+  .BMR__label input + span::after {
+    content: "";
+    display: block;
+    border-bottom: solid 1px #253d5b;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+  }
+  .BMR__label input:focus + span::after {
+    transform: scaleX(1);
+  }
+  .BMR__button {
+    margin: 10px 0;
+    position: relative;
+    button {
+      display: inline-block;
+      letter-spacing: 1.2px;
+      background-color: #e6e7e6;
+      color: black;
+      border-radius: 5px;
+      border: none;
+      font-size: 0.7em;
+      padding: 5px 10px;
+      text-transform: uppercase;
+      &:last-child {
+        position: absolute;
+        right: 0;
+      }
+      &:hover {
+        background-color: #adb0ad;
+        transition: 0.8s;
+      }
+    }
+  }
+  .BMR__result {
+    padding-top: 5px;
+    span {
+      font-weight: 600;
+      font-size: 1.5em;
+    }
+  }
+}

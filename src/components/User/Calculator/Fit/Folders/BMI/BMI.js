@@ -5,7 +5,6 @@ function BMI() {
     <div className="BMI">
       <h3 className="BMI__title">Calculate your BMI</h3>
       <form>
-        <div></div>
         <span>Gender: </span>
         <input type="radio" value="female" id="female" name="gender" />
         <label htmlFor="female" className="BMI__gender">
