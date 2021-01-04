@@ -17,25 +17,38 @@ function BMI() {
         </label>
         <label className="BMI__label">
           <div>Age</div>
-          <input type="number" /><span></span>
+          <input type="number" />
+          <span></span>
         </label>
         <label className="BMI__label">
           <div>Height [cm]</div>
-          <input type="number" /><span></span>
+          <input type="number" />
+          <span></span>
         </label>
         <label className="BMI__label">
           <div>Weight [kg]</div>
-          <input type="number" /><span></span>
+          <input type="number" />
+          <span></span>
         </label>
-        <div className='BMI__button'>
+        <div className="BMI__button">
           <button type="submit">Calculate</button>
           <button>Clear</button>
         </div>
       </form>
-      <h3>Result</h3>
-      <p>BMI = 20kg/m2</p>
+      <div className="BMI__result">
+        <h3>Result</h3>
+        <p>
+          BMI = <span>20kg/m2</span>
+        </p>
+      </div>
       <div className="BMI__bar">
         <span className="BMI__filler"></span>
+      </div>
+      <div className='BMI__bar__class'>
+        <span>Underweight</span>
+        <span>Normal</span>
+        <span>Overweight</span>
+        <span>Obesity</span>
       </div>
     </div>
   );

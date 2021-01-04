@@ -44,7 +44,37 @@
   transform: scaleX(1);
 }
   .BMI__button {
-    margin-top: 10px;
+    margin: 10px 0;
+    position: relative;
+    button{
+      display: inline-block;
+      letter-spacing: 1.2px;
+      background-color:#E6E7E6;
+      color: black;
+      border-radius: 5px;
+      border:none;
+      font-size: 0.7em;
+      padding: 5px 10px;
+      text-transform: uppercase;
+
+      &:last-child{
+      position: absolute;
+      right: 0;
+      }
+      &:hover{
+        background-color: #ADB0AD;
+        transition: .8s;
+      }
+    }
+  }
+  .BMI__result{
+    p{
+      padding-top:5px;
+      span{
+        font-weight: 600;
+        font-size: 1.5em;
+      }
+    }
   }
   .BMI__bar {
     position: relative;
@@ -55,11 +85,44 @@
     margin-top: 20px;
     .BMI__filler {
       border-radius: inherit;
-      background-color: yellow;
-      width: 60%;
+      border: inherit;
+      background-color: #1A2547;
+      width: 30%;
       height: inherit;
       display: inline-block;
-      transition: width 0.2s ease-in;
+      transition: width 1s ease-in;
+    }
+  }
+  .BMI__bar__class{
+    position: relative;
+    span{
+      font-size: 0.8em;
+      padding-right: 3px;
+      &:nth-child(1)::after{
+        content: '';
+        position: absolute;
+        top:-30px;
+        height: 30px;
+        width: 1px;
+        background: black;
+      }
+      &:nth-child(2):after{
+        content: '';
+        position: absolute;
+        top:-30px;
+        height: 30px;
+        width: 1px;
+        background: black;
+      }
+      &:nth-child(3):after{
+        content: '';
+        position: absolute;
+        top:-30px;
+        height: 30px;
+        width: 1px;
+        background: black;
+      }
+
     }
   }
 }
