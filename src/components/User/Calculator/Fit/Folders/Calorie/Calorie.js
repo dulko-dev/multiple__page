@@ -3,29 +3,36 @@ import React from "react";
 function Calorie() {
   return (
     <div className="calorie">
-      <h3>Calculate Calories</h3>
+      <h3 className="calorie__title">Calculate calories</h3>
       <form>
         <span>Gender: </span>
-        <label>
-          <input type="radio" />
-          Male
-        </label>
-        <label>
-          <input type="radio" />
+        <input type="radio" value="female" id="female" name="gender" />
+        <label htmlFor="female" className="calorie__gender">
           Female
         </label>
-        <label>
-          Age: <input type="number" />
+        <input type="radio" value="male" id="male" name="gender" />
+        <label htmlFor="male" className="calorie__gender">
+          Male
         </label>
-        <label>
-          Height: <input type="number" />
+        <label className="calorie__label">
+          <div>Age</div>
+          <input type="number" />
+          <span></span>
         </label>
-        <label>
-          Weight: <input type="number" />
+        <label className="calorie__label">
+          <div>Height [cm]</div>
+          <input type="number" />
+          <span></span>
         </label>
-        <label>
+        <label className="calorie__label">
+          <div>Weight [kg]</div>
+          <input type="number" />
+          <span></span>
+        </label>
+        <label className="calorie__label__select">
           <span>Activity: </span>
-          <select>
+          <select className="calorie__select">
+            <option>Choose your activity</option>
             <option>Sedentary: little or no exercise</option>
             <option>Light: exercise 1-3 times/week</option>
             <option>Moderate: exercise 4-5 times/week</option>
@@ -38,14 +45,24 @@ function Calorie() {
             </option>
           </select>
         </label>
-        <button type="submit">Calculate</button>
+        <div className="calorie__button">
+          <button type="submit">Calculate</button>
+          <button>Clear</button>
+        </div>
       </form>
-      <div>
-        <p>Result: </p>
-        <p>Maintain weight:</p>
-        <p>Mild weight loss:</p>
-        <p>Weight loss:</p>
-        <p>Extreme weight loss:</p>
+      <div className="calorie__result">
+        <p>
+          Maintain weight: <span>1800 [kcal] </span>
+        </p>
+        <p>
+          Mild weight loss:<span>1600 [kcal]</span>
+        </p>
+        <p>
+          Weight loss: <span> 1400 [kcal]</span>
+        </p>
+        <p>
+          Extreme weight loss: <span> 1200 [kcal]</span>
+        </p>
       </div>
     </div>
   );
