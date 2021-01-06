@@ -28,14 +28,13 @@ $title-article: "Bungee", cursive;
 @import "../components/User/MoviesDataBase/movieData"; //movieData
 @import "../components/User/Calculator/calculator"; //calculator
 @import "../components/User/Calculator/Financial/financialCalc"; //calculatorFinancial
-@import "../components/User/Calculator/Financial/keypad"; //keypad
-@import "../components/User/Calculator/Financial/outPutResult"; //outputresult
 @import "../components/User/Calculator/Fit/fitCalc"; //fitCalc
 @import "../components/User/Calculator/Fit/Folders/BMI/BMI"; //BMI
 @import "../components/User/Calculator/Fit/Folders/BMR/BMR"; //BMR
 @import "../components/User/Calculator/Fit/Folders/WHR/WHR"; //WHR
 @import "../components/User/Calculator/Fit/Folders/YMCA/YMCA"; //YMCA
 @import "../components/User/Calculator/Fit/Folders/Calorie/calorie"; //calorie
+
 
 body {
   box-sizing: border-box;

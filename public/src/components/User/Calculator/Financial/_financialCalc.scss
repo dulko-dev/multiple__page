@@ -1,0 +1,75 @@
+.financialCalc {
+  margin: 20px;
+  .financialCalc__title {
+    text-align: center;
+    color: #dadad9;
+    font-size: 1.8em;
+  }
+  .financialCalc__calc {
+    background-color: #253d5b;
+    width: 275px;
+    height: 450px;
+    border-radius: 15px;
+    .financialCalc__screen__common {
+      background-color: #253d5b;
+      color: white;
+      box-sizing: border-box;
+      display: block;
+      text-align: right;
+      width: 100%;
+      padding: 20px 20px;
+      border: none;
+    }
+    .financialCalc__calc__result {
+      margin-top: 20px;
+      border-radius: 15px;
+      font-size: 1.2em;
+      height: 60px;
+    }
+    .financialCalc__calc__screen {
+      font-size: 1.5em;
+    }
+
+    .financialCalc__calc__1st,
+    .financialCalc__calc__2rd,
+    .financialCalc__calc__3rd,
+    .financialCalc__calc__4th,
+    .financialCalc__calc__5th {
+      display: flex;
+      box-sizing: border-box;
+      span {
+        box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.75);
+        width: 25%;
+        border-radius: 15px;
+        text-align: center;
+        color: white;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        margin: 7px;
+        &:last-child {
+          margin-right: 14px;
+        }
+        &:first-child {
+          margin-left: 14px;
+        }
+        &:hover {
+          cursor: pointer;
+        }
+        &:active {
+          background-color: #162537;
+        }
+      }
+      .calc__grey {
+        color: grey;
+      }
+      .calc__orange {
+        color: orange;
+      }
+      #key0 {
+        width: 55%;
+      }
+    }
+  }
+}

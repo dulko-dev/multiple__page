@@ -1,0 +1,17 @@
+.weather {
+  .weather__form {
+    text-align: center;
+    padding-top: 30px;
+  }
+  .weather__parNotExist {
+    font-size: 1.7em;
+    color: #dadad9;
+    .weather__spanNotExist {
+      font-size: 1.8em;
+      text-decoration: underline;
+      color: black;
+      padding: 15px 0;
+      display: block;
+    }
+  }
+}

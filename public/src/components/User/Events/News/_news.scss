@@ -1,0 +1,14 @@
+.news {
+  color: #dadad9;
+  h2 {
+    font-family: $title-article;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 3em;
+  }
+  .news__wrapped {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

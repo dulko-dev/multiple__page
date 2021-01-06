@@ -1,10 +1,10 @@
-.calorie {
+.YMCA {
   padding: 0 20px;
   color: #393e41;
-  .calorie__title {
+  .YMCA__title {
     font-size: 1.5em;
     text-align: center;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
   }
   input[type="radio"] {
     visibility: hidden;
@@ -14,12 +14,12 @@
   input[type="radio"]:checked + label {
     font-weight: 600;
   }
-  .calorie__gender {
+  .YMCA__gender {
     display: inline-block;
     cursor: pointer;
     padding: 1px 7px;
   }
-  .calorie__label {
+  .YMCA__label {
     div {
       margin-top: 10px;
       font-size: 0.7em;
@@ -33,48 +33,17 @@
       border-bottom: 1px solid black;
     }
   }
-  .calorie__label input + span::after {
+  .YMCA__label input + span::after {
     content: "";
     display: block;
     border-bottom: solid 1px #253d5b;
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
   }
-  .calorie__label input:focus + span::after {
+  .YMCA__label input:focus + span::after {
     transform: scaleX(1);
   }
-  .calorie__label__select {
-    display: block;
-    margin-top: 10px;
-    position: relative;
-    &::after {
-      content: "\f358";
-      font-family: "Font Awesome 5 Free";
-      font-weight: 900;
-      position: absolute;
-      right: 4px;
-      bottom: 2px;
-    }
-    .calorie__select {
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      font-size: 0.9em;
-      margin-top: 10px;
-      width: 100%;
-      padding: 2px 0;
-      padding-right:20px;
-      padding-left:3px;
-      border: none;
-      cursor: pointer;
-      outline: none;
-      border: 1px solid black;
-      border-radius: 15px;
-      line-height: 1.1;
-    }
-  }
-
-  .calorie__button {
+  .YMCA__button {
     margin: 10px 0;
     position: relative;
     button {
@@ -98,10 +67,11 @@
       }
     }
   }
-  .calorie__result {
+  .YMCA__result {
     p {
       padding-top: 5px;
       span {
+        padding-left: 5px;
         font-weight: 600;
         font-size: 1.2em;
       }
