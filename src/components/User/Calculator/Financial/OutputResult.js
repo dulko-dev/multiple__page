@@ -1,12 +1,13 @@
 import React from "react";
 
-function OutputResult() {
+function OutputResult({ result, operations }) {
   return (
     <div>
-      <div className="outPutResult__result outPutResult__screen__common"></div>
+      <div className="outPutResult__result outPutResult__screen__common">{result}
+      </div>
       <input
         type="text"
-        className="outPutResult__screen outPutResult__screen__common"
+        className="outPutResult__screen outPutResult__screen__common" defaultValue={operations}
       />
     </div>
   );
