@@ -12,11 +12,11 @@ function KeyPad({ handleNumber }) {
           AC
         </button>
         <button
-          name="C"
+          name="back"
           className="calc__grey"
           onClick={(e) => handleNumber(e.target.name)}
         >
-          C
+          <i className="fas fa-long-arrow-alt-left"></i>
         </button>
         <button
           name="CE"
