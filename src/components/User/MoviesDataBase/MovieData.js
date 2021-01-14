@@ -17,11 +17,12 @@ function MovieData({ movie, API_KEY }) {
   };
 
   idFetch();
-  console.log(data)
+  console.log(data);
   return (
     <div className="movieData">
       <div className="movieData__img">
         <img
+          alt="movie title"
           src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
           style={{ width: "120px", height: "150px" }}
         />
@@ -30,7 +31,6 @@ function MovieData({ movie, API_KEY }) {
         <h4>
           {movie.title} ({movie.release_date})
         </h4>
-        
       </div>
     </div>
   );

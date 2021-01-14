@@ -6,9 +6,7 @@ function FinancialCalc() {
   const [result, setResult] = useState([]);
   const [operations, setOperations] = useState("");
 
-
   const handleNumber = (keypad) => {
-    
     if (keypad === "=") {
       calculate();
     } else if (keypad === "back") {
@@ -24,16 +22,17 @@ function FinancialCalc() {
     }
   };
 
+  /* eslint no-eval: 0 */
+
   const calculate = () => {
     try {
       setResult([...result, eval(operations)]);
       setOperations("");
-
     } catch (e) {
       setOperations("error");
     }
   };
-  
+
   const reset = () => {
     setOperations("");
     setResult("");
@@ -49,7 +48,7 @@ function FinancialCalc() {
   return (
     <div className="financialCalc">
       <h3 className="financialCalc__title">Finance Calculator</h3>
-    
+
       <div className="financialCalc__calc">
         <OutputResult
           result={result}

@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Firebase/Auth";
 // import restApi from "../Support/restApi";
 
@@ -11,8 +10,7 @@ function FormOfSupport({
   setError,
 }) {
   const { value } = useContext(AuthContext);
-  const [user, setUser] = value;
-  const { register, handleSubmit } = useForm();
+  const [user] = value;
 
   const handleName = (e) => {
     const { name, value } = e.target;

@@ -25,6 +25,7 @@ const Todo = () => {
     filteredHandler();
     // saveLocalStorage();
     return () => filteredHandler();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [todos, status]);
 
   useEffect(() => {

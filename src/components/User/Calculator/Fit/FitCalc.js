@@ -1,5 +1,4 @@
-import { TrainRounded } from "@material-ui/icons";
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import BMI from "./Folders/BMI/BMI";
 import BMR from "./Folders/BMR/BMR";
 import WHR from "./Folders/WHR/WHR";

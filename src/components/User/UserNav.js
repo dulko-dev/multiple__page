@@ -5,7 +5,7 @@ import { handleLogOut } from "../Logout/Logout";
 
 function UserNav({homePage}) {
   const { value } = useContext(AuthContext);
-  const [user, setUser] = value;
+  const [user] = value;
 
   const history = useHistory();
 

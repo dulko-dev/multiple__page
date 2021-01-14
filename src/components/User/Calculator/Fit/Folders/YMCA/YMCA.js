@@ -49,6 +49,6 @@ function YMCA() {
 
 export default YMCA;
 
-{
+
   /* Body Fat Category: Dangerous Low 0-9, Essential Fat 10-13, Athletic 14-20, Acceptable 25-31, Obese 32+ */
-}
+

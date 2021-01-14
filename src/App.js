@@ -19,7 +19,7 @@ import PrivateRoute from "./PrivateRoute";
 
 export default function App() {
   const { value, czoko } = useContext(AuthContext);
-  const [user, setUser] = value;
+  const [user] = value;
   const loaded = czoko;
 
   console.log(loaded);

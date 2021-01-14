@@ -23,7 +23,7 @@ function LastSchedule({ scores, data2 }) {
               {e.intHomeScore} : {e.intAwayScore}
             </td>
             <td>
-              <a href={e.strVideo} target="_blank">
+              <a href={e.strVideo} target="_blank" rel="noreferrer">
                 {e.strVideo ? "watch" : ""}
               </a>
             </td>
