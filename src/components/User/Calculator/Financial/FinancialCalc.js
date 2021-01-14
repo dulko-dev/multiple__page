@@ -49,11 +49,12 @@ function FinancialCalc() {
   return (
     <div className="financialCalc">
       <h3 className="financialCalc__title">Finance Calculator</h3>
+    
       <div className="financialCalc__calc">
         <OutputResult
           result={result}
           operations={operations}
-
+          setResult={setResult}
         />
         <KeyPad handleNumber={handleNumber} />
       </div>

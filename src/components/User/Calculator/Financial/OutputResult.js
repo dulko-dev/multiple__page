@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Pagination from "./Pagination";
 
-function OutputResult({ result, operations }) {
+function OutputResult({ setResult, result, operations }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [numberPerPage] = useState(4);
 
@@ -11,20 +11,20 @@ function OutputResult({ result, operations }) {
 
   // change page
   const paginate = (number) => setCurrentPage(number);
-
-console.log(result)
+    
+  
 
   return (
     <div>
-      <Pagination
-        totalPage={result.length}
-        numberPerPage={numberPerPage}
-        paginate={paginate}
-      />
-      {/* <div className="outPutResult__arrows">
-        <i className="fas fa-arrow-alt-circle-left"></i>
-        <i className="fas fa-arrow-alt-circle-right"></i>
-      </div> */}
+      <div>
+        <Pagination
+          totalPage={result.length}
+          numberPerPage={numberPerPage}
+          paginate={paginate}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      </div>
       <div className="outPutResult__result outPutResult__screen__common">
         {result.slice(indexOfFirstNumber, indexOfLastNumber).map((result) => (
           <span key={Math.random() * 1000}>{result}</span>

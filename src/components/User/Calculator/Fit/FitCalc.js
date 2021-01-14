@@ -82,14 +82,14 @@ function FitCalc() {
             Calorie
           </span>
         </div>
-        <div className='fitCalc__wrapperInfo'>
-        {bmi && <BMI />}
-        {bmr && <BMR />}
-        {whr && <WHR />}
-        {ymca && <YMCA />}
-        {calorie && <Calorie />}
+        <div className="fitCalc__wrapperInfo">
+          {bmi && <BMI />}
+          {bmr && <BMR />}
+          {whr && <WHR />}
+          {ymca && <YMCA />}
+          {calorie && <Calorie />}
           <div style={{ display: `${hidden}` }} className="fitCalc__infoText">
-            Please select what kind of calculator do you interest
+            Select type of Calculator
           </div>
         </div>
       </div>
