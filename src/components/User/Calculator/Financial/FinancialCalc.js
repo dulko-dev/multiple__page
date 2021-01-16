@@ -22,9 +22,11 @@ function FinancialCalc() {
     }
   };
 
+  console.log(operations);
   /* eslint no-eval: 0 */
 
   const calculate = () => {
+    if (operations === "") return;
     try {
       setResult([...result, eval(operations)]);
       setOperations("");

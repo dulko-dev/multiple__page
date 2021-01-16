@@ -198,14 +198,6 @@ function ButtonsLeague({ setButtonClick, leagueInfo }) {
       <button
         className="sport__button"
         onClick={() => {
-          setButtonClick(leagueInfo.norwegian);
-        }}
-      >
-        Norwegian Eliteserien
-      </button>
-      <button
-        className="sport__button"
-        onClick={() => {
           setButtonClick(leagueInfo.welsh);
         }}
       >

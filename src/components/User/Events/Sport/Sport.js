@@ -9,6 +9,7 @@ function Sport() {
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
   const [buttonClick, setButtonClick] = useState(4328);
+  const [fetchOk, setFetchOk] = useState(true);
 
   useEffect(() => {
     const getSchedule = async () => {
@@ -23,6 +24,7 @@ function Sport() {
         .then((response) => {
           setData(response);
         })
+        .then(setFetchOk(false))
         .catch((err) => console.log(err));
     };
 
@@ -38,6 +40,7 @@ function Sport() {
         .then((response) => {
           setData2(response);
         })
+        .then(setFetchOk(false))
         .catch((err) => console.log(err));
     };
 
@@ -61,16 +64,20 @@ function Sport() {
           </h3>
         ))}
         <div className="sport__scoresWrapper">
-          <div>
-            {Object.keys(data).map((element, index) => (
-              <Scheldule element={element} data={data} key={index} />
-            ))}
-          </div>
-          <div>
-            {Object.keys(data2).map((scores, index) => (
-              <LastSchedule scores={scores} data2={data2} key={index} />
-            ))}
-          </div>
+          {!fetchOk && (
+            <div>
+              {Object.keys(data).map((element, index) => (
+                <Scheldule element={element} data={data} key={index} />
+              ))}
+            </div>
+          )}
+          {!fetchOk && (
+            <div>
+              {Object.keys(data2).map((scores, index) => (
+                <LastSchedule scores={scores} data2={data2} key={index} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </>

@@ -1,18 +1,27 @@
 import React, { useState } from "react";
 import Pagination from "./Pagination";
 
-function OutputResult({ setResult, result, operations }) {
+function OutputResult({ result, operations }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [numberPerPage] = useState(4);
+
+  console.log(currentPage);
 
   // get numbers
   const indexOfLastNumber = currentPage * numberPerPage;
   const indexOfFirstNumber = indexOfLastNumber - numberPerPage;
+  const currentResult = result.slice(indexOfFirstNumber, indexOfLastNumber);
 
   // change page
   const paginate = (number) => setCurrentPage(number);
-    
-  
+
+  const handleLeft = () => {
+    if (currentPage < 2) return;
+    setCurrentPage(currentPage - 1);
+  };
+  const handleRight = () => {
+    setCurrentPage(currentPage + 1);
+  };
 
   return (
     <div>
@@ -21,14 +30,22 @@ function OutputResult({ setResult, result, operations }) {
           totalPage={result.length}
           numberPerPage={numberPerPage}
           paginate={paginate}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
+          handleLeft={handleLeft}
+          handleRight={handleRight}
         />
       </div>
       <div className="outPutResult__result outPutResult__screen__common">
-        {result.slice(indexOfFirstNumber, indexOfLastNumber).map((result) => (
+        {currentResult.map((result) => (
           <span key={Math.random() * 1000}>{result}</span>
         ))}
+        <i
+          className={`fas fa-arrow-alt-circle-left arrow-left ${currentPage === 1 && 'arrow-disabled'}`}
+          onClick={handleLeft}
+        ></i>
+        <i
+          className={`fas fa-arrow-alt-circle-right arrow-right`}
+          onClick={handleRight}
+        ></i>
       </div>
       <input
         type="text"
