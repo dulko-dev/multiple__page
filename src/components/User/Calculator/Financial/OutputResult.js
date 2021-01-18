@@ -3,9 +3,10 @@ import Pagination from "./Pagination";
 
 function OutputResult({ result, operations }) {
   const [currentPage, setCurrentPage] = useState(1);
+  const [pageNumbersArray, setPageNumbersArray] = useState("");
   const [numberPerPage] = useState(4);
 
-  console.log(currentPage);
+  console.log(pageNumbersArray);
 
   // get numbers
   const indexOfLastNumber = currentPage * numberPerPage;
@@ -13,10 +14,11 @@ function OutputResult({ result, operations }) {
   const currentResult = result.slice(indexOfFirstNumber, indexOfLastNumber);
 
   // change page
-  const paginate = (number) => setCurrentPage(number);
+  const paginate = (number) => {
+    setCurrentPage(number);
+  };
 
   const handleLeft = () => {
-    if (currentPage < 2) return;
     setCurrentPage(currentPage - 1);
   };
   const handleRight = () => {
@@ -32,6 +34,8 @@ function OutputResult({ result, operations }) {
           paginate={paginate}
           handleLeft={handleLeft}
           handleRight={handleRight}
+          setPageNumbersArray={setPageNumbersArray}
+       
         />
       </div>
       <div className="outPutResult__result outPutResult__screen__common">
@@ -39,11 +43,18 @@ function OutputResult({ result, operations }) {
           <span key={Math.random() * 1000}>{result}</span>
         ))}
         <i
-          className={`fas fa-arrow-alt-circle-left arrow-left ${currentPage === 1 && 'arrow-disabled'}`}
+          className={`fas fa-arrow-alt-circle-left arrow-left ${
+            currentPage === 1 && "arrow-disabled"
+          }`}
           onClick={handleLeft}
         ></i>
         <i
-          className={`fas fa-arrow-alt-circle-right arrow-right`}
+          className={`${
+            currentPage === pageNumbersArray ||
+            currentPage - 1 === pageNumbersArray
+              ? "arrow-disabled"
+              : "fas fa-arrow-alt-circle-right arrow-right"
+          }`}
           onClick={handleRight}
         ></i>
       </div>

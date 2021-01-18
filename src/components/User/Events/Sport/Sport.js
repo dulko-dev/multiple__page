@@ -9,12 +9,13 @@ function Sport() {
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
   const [buttonClick, setButtonClick] = useState(4328);
-  const [fetchOk, setFetchOk] = useState(true);
 
   useEffect(() => {
+    const abortControl = new AbortController();
     const getSchedule = async () => {
       await fetch(
-        `https://thesportsdb.com/api/v1/json/1/eventsnextleague.php?id=${buttonClick}`
+        `https://thesportsdb.com/api/v1/json/1/eventsnextleague.php?id=${buttonClick}`,
+        { signal: abortControl.signal }
       )
         .then((response) => {
           if (response.ok) {
@@ -24,13 +25,20 @@ function Sport() {
         .then((response) => {
           setData(response);
         })
-        .then(setFetchOk(false))
-        .catch((err) => console.log(err));
+
+        .catch((err) => {
+          if (err.name === "AbortError") {
+            console.log("fetch abort");
+          } else {
+            console.log(err);
+          }
+        });
     };
 
     const getLastSchedule = async () => {
       await fetch(
-        `https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id=${buttonClick}`
+        `https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id=${buttonClick}`,
+        { signal: abortControl.signal }
       )
         .then((response) => {
           if (response.ok) {
@@ -40,12 +48,19 @@ function Sport() {
         .then((response) => {
           setData2(response);
         })
-        .then(setFetchOk(false))
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          if (err.name === "AbortError") {
+            console.log("fetch abort");
+          } else {
+            console.log(err);
+          }
+        });
     };
 
     getSchedule();
     getLastSchedule();
+
+    return () => abortControl.abort();
   }, [buttonClick]);
 
   return (
@@ -64,20 +79,17 @@ function Sport() {
           </h3>
         ))}
         <div className="sport__scoresWrapper">
-          {!fetchOk && (
-            <div>
-              {Object.keys(data).map((element, index) => (
-                <Scheldule element={element} data={data} key={index} />
-              ))}
-            </div>
-          )}
-          {!fetchOk && (
-            <div>
-              {Object.keys(data2).map((scores, index) => (
-                <LastSchedule scores={scores} data2={data2} key={index} />
-              ))}
-            </div>
-          )}
+          <div>
+            {Object.keys(data).map((element, index) => (
+              <Scheldule element={element} data={data} key={index} />
+            ))}
+          </div>
+
+          <div>
+            {Object.keys(data2).map((scores, index) => (
+              <LastSchedule scores={scores} data2={data2} key={index} />
+            ))}
+          </div>
         </div>
       </div>
     </>
