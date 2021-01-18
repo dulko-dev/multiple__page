@@ -6,7 +6,6 @@ function FinancialCalc() {
   const [result, setResult] = useState([]);
   const [operations, setOperations] = useState("");
 
- 
   const handleNumber = (keypad) => {
     if (keypad === "=") {
       calculate();
@@ -20,6 +19,12 @@ function FinancialCalc() {
       setOperations(operations / 100);
     } else {
       setOperations(operations + keypad);
+    }
+  };
+
+  const pressEnter = (e) => {
+    if (e.key === "Enter") {
+      calculate();
     }
   };
 
@@ -38,9 +43,10 @@ function FinancialCalc() {
 
   const reset = () => {
     setOperations("");
-    setResult("");
+    setResult([]);
   };
   const backspace = () => {
+    if (operations === "") return;
     setOperations(operations.slice(0, -1));
   };
 
@@ -51,9 +57,14 @@ function FinancialCalc() {
   return (
     <div className="financialCalc">
       <h3 className="financialCalc__title">Finance Calculator</h3>
-     
+
       <div className="financialCalc__calc">
-        <OutputResult result={result} operations={operations} />
+        <OutputResult
+          result={result}
+          operations={operations}
+          setOperations={setOperations}
+          pressEnter={pressEnter}
+        />
         <KeyPad handleNumber={handleNumber} />
       </div>
     </div>

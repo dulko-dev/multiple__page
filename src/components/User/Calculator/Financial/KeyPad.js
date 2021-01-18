@@ -5,106 +5,111 @@ function KeyPad({ handleNumber }) {
     <>
       <div className="financialCalc__calc__1st">
         <button
-          name="AC"
+          value="AC"
           className="calc__grey"
-          onClick={(e) => handleNumber(e.target.name)}
+          onClick={(e) => handleNumber(e.target.value)}
         >
           AC
         </button>
         <button
-          name="back"
+          value="back"
           className="calc__grey"
-          onClick={(e) => handleNumber(e.target.name)}
+          onClick={(e) => handleNumber(e.target.value)}
         >
           <i className="fas fa-long-arrow-alt-left"></i>
         </button>
         <button
-          name="CE"
+          value="CE"
           className="calc__grey"
-          onClick={(e) => handleNumber(e.target.name)}
+          onClick={(e) => handleNumber(e.target.value)}
         >
           CE
         </button>
         <button
-          name="%"
+          value="%"
           className="calc__grey"
-          onClick={(e) => handleNumber(e.target.name)}
+          onClick={(e) => handleNumber(e.target.value)}
         >
           %
         </button>
         <button
-          name="/"
+          value="/"
           className="calc__orange"
-          onClick={(e) => handleNumber(e.target.name)}
+          onClick={(e) => handleNumber(e.target.value)}
         >
           /
         </button>
       </div>
       <div className="financialCalc__calc__2rd">
-        <button name="7" onClick={(e) => handleNumber(e.target.name)}>
+        <button value="7" onClick={(e) => handleNumber(e.target.value)}>
           7
         </button>
-        <button name="8" onClick={(e) => handleNumber(e.target.name)}>
+        <button value="8" onClick={(e) => handleNumber(e.target.value)}>
           8
         </button>
-        <button name="9" onClick={(e) => handleNumber(e.target.name)}>
+        <button value="9" onClick={(e) => handleNumber(e.target.value)}>
           9
         </button>
         <button
-          name="*"
+          value="*"
           className="calc__orange"
-          onClick={(e) => handleNumber(e.target.name)}
+          onClick={(e) => handleNumber(e.target.value)}
         >
           x
         </button>
       </div>
       <div className="financialCalc__calc__3rd">
-        <button name="4" onClick={(e) => handleNumber(e.target.name)}>
+        <button value="4" onClick={(e) => handleNumber(e.target.value)}>
           4
         </button>
-        <button name="5" onClick={(e) => handleNumber(e.target.name)}>
+        <button value="5" onClick={(e) => handleNumber(e.target.value)}>
           5
         </button>
-        <button name="6" onClick={(e) => handleNumber(e.target.name)}>
+        <button value="6" onClick={(e) => handleNumber(e.target.value)}>
           6
         </button>
         <button
-          name="-"
+          value="-"
           className="calc__orange"
-          onClick={(e) => handleNumber(e.target.name)}
+          onClick={(e) => handleNumber(e.target.value)}
         >
           -
         </button>
       </div>
       <div className="financialCalc__calc__4th">
-        <button name="1" onClick={(e) => handleNumber(e.target.name)}>
+        <button onClick={(e) => handleNumber(e.target.value)} value="1">
           1
         </button>
-        <button name="2" onClick={(e) => handleNumber(e.target.name)}>
+        <button onClick={(e) => handleNumber(e.target.value)} value="2">
           2
         </button>
-        <button name="3" onClick={(e) => handleNumber(e.target.name)}>
+        <button onClick={(e) => handleNumber(e.target.value)} value="3">
           3
         </button>
         <button
-          name="+"
+          value="+"
           className="calc__orange"
-          onClick={(e) => handleNumber(e.target.name)}
+          onClick={(e) => handleNumber(e.target.value)}
         >
           +
         </button>
       </div>
       <div className="financialCalc__calc__5th">
-        <button name="0" id="key0" onClick={(e) => handleNumber(e.target.name)}>
+        <button
+          value="0"
+          id="key0"
+          onClick={(e) => handleNumber(e.target.value)}
+        >
           0
         </button>
-        <button name="." onClick={(e) => handleNumber(e.target.name)}>
+        <button value="." onClick={(e) => handleNumber(e.target.value)}>
           .
         </button>
         <button
-          name="="
+          value="="
           className="calc__orange"
-          onClick={(e) => handleNumber(e.target.name)}
+          onClick={(e) => handleNumber(e.target.value)}
+         
         >
           =
         </button>

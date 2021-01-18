@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Pagination from "./Pagination";
 
-function OutputResult({ result, operations }) {
+function OutputResult({ result, operations, setOperations, pressEnter }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageNumbersArray, setPageNumbersArray] = useState("");
-  const [numberPerPage] = useState(4);
+  const [numberPerPage] = useState(1);
 
   console.log(pageNumbersArray);
+  const refInput = useRef(null);
+
+  useEffect(() => {
+    refInput.current.focus();
+  },[]);
 
   // get numbers
   const indexOfLastNumber = currentPage * numberPerPage;
@@ -35,7 +40,6 @@ function OutputResult({ result, operations }) {
           handleLeft={handleLeft}
           handleRight={handleRight}
           setPageNumbersArray={setPageNumbersArray}
-       
         />
       </div>
       <div className="outPutResult__result outPutResult__screen__common">
@@ -59,9 +63,12 @@ function OutputResult({ result, operations }) {
         ></i>
       </div>
       <input
+        ref={refInput}
         type="text"
         className="outPutResult__screen outPutResult__screen__common"
-        defaultValue={operations}
+        onChange={(e) => setOperations(e.target.value)}
+        value={operations}
+        onKeyDown={pressEnter}
       />
     </div>
   );

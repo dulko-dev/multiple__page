@@ -2,7 +2,7 @@
   height: 35px;
   text-align: center;
   position: relative;
-  button {
+  .button__page {
     box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.75);
     -webkit-box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.75);
@@ -15,7 +15,6 @@
     margin: 7px;
   }
 }
-
 .outPutResult__screen__common {
   background-color: #253d5b;
   color: white;
@@ -28,19 +27,17 @@
 .outPutResult__result {
   position: relative;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   border-radius: 15px;
-  font-size: 1.2em;
+  font-size: 1.5em;
   height: 50px;
   text-align: center;
   align-items: center;
   width: 100%;
   span {
-    width: 25%;
     margin-right: 15px;
-    height: 20px;
-    border-bottom: 1px solid black;
-    &:first-child{
+    height: 25px;
+    &:first-child {
       margin-left: 15px;
     }
   }
@@ -74,4 +71,22 @@
 
 .arrow-disabled {
   display: none;
+}
+
+.info__memory {
+  background-color: #ea2b1f;
+  border: none;
+  width: 10px;
+  height: 10px;
+  color: black;
+  position: absolute;
+  right: 0;
+  top: 0;
+  &:hover {
+    border: none;
+    box-shadow: 0 0 5px 3px rgba(234, 43, 31, 0.75);
+    -webkit-box-shadow: 0 0 5px 3px rgba(234, 43, 31, 0.75);
+    -moz-box-shadow: 0 0 5px 3px rgba(234, 43, 31, 0.75);
+    transition: 0.4s;
+  }
 }
