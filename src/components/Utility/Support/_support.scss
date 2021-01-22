@@ -1,16 +1,11 @@
 .support {
-  position: relative;
+  width: 100%;
   .support__divSign {
-    // position: absolute;
-    right: 0;
-    bottom: 0;
+    position: relative;
     .support__sign {
       cursor: pointer;
       color: white;
       font-size: 4em;
-      &:hover {
-        padding-top: 10px;
-      }
     }
   }
 }

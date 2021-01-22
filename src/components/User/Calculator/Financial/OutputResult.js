@@ -1,7 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import Pagination from "./Pagination";
 
-function OutputResult({ result, operations, setOperations, pressEnter }) {
+function OutputResult({
+  result,
+  operations,
+  setOperations,
+  pressEnter,
+  setState,
+}) {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageNumbersArray, setPageNumbersArray] = useState("");
   const [numberPerPage] = useState(1);
@@ -11,7 +17,7 @@ function OutputResult({ result, operations, setOperations, pressEnter }) {
 
   useEffect(() => {
     refInput.current.focus();
-  },[]);
+  }, []);
 
   // get numbers
   const indexOfLastNumber = currentPage * numberPerPage;
@@ -28,6 +34,72 @@ function OutputResult({ result, operations, setOperations, pressEnter }) {
   };
   const handleRight = () => {
     setCurrentPage(currentPage + 1);
+  };
+
+  const styleBtn = (e) => {
+    switch (e.key) {
+      case "1":
+        setState({ one: "#162537" });
+        break;
+      case "2":
+        setState({ two: "#162537" });
+        break;
+      case "3":
+        setState({ three: "#162537" });
+        break;
+      case "4":
+        setState({ four: "#162537" });
+        break;
+      case "5":
+        setState({ five: "#162537" });
+        break;
+      case "6":
+        setState({ six: "#162537" });
+        break;
+      case "7":
+        setState({ seven: "#162537" });
+        break;
+      case "8":
+        setState({ eight: "#162537" });
+        break;
+      case "9":
+        setState({ nine: "#162537" });
+        break;
+      case "0":
+        setState({ zero: "#162537" });
+        break;
+        default:
+          console.log('error')
+    }
+  };
+  const styleBtn2 = (e) => {
+    switch (e.key) {
+      case "1":
+      case "2":
+      case "3":
+      case "4":
+      case "5":
+      case "6":
+      case "7":
+      case "8":
+      case "9":
+      case "0":
+        setState({
+          one: "",
+          two: "",
+          three: "",
+          four: "",
+          five: "",
+          six: "",
+          seven: "",
+          eight: "",
+          nine: "",
+          zero: "",
+        });
+        break;
+        default:
+          console.log('error')
+    }
   };
 
   return (
@@ -68,7 +140,11 @@ function OutputResult({ result, operations, setOperations, pressEnter }) {
         className="outPutResult__screen outPutResult__screen__common"
         onChange={(e) => setOperations(e.target.value)}
         value={operations}
-        onKeyDown={pressEnter}
+        onKeyDown={(e) => {
+          pressEnter(e);
+          styleBtn(e);
+        }}
+        onKeyUp={styleBtn2}
       />
     </div>
   );

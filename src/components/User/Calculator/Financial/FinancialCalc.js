@@ -5,6 +5,18 @@ import OutputResult from "./OutputResult";
 function FinancialCalc() {
   const [result, setResult] = useState([]);
   const [operations, setOperations] = useState("");
+  const [state, setState] = useState({
+    one: "",
+    two: "",
+    three: "",
+    four: "",
+    five: "",
+    six: "",
+    seven: "",
+    eight: "",
+    nine: "",
+    zero: "",
+  });
 
   const handleNumber = (keypad) => {
     if (keypad === "=") {
@@ -64,8 +76,9 @@ function FinancialCalc() {
           operations={operations}
           setOperations={setOperations}
           pressEnter={pressEnter}
+          setState={setState}
         />
-        <KeyPad handleNumber={handleNumber} />
+        <KeyPad handleNumber={handleNumber} state={state} />
       </div>
     </div>
   );

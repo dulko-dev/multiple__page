@@ -22,14 +22,13 @@ function MoviesDataBase() {
       .catch((err) => console.log(err));
   };
 
-  
-  
   const handleInput = (e) => {
     setInput(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (input.length === 0) return;
     apiFetch();
     // setInput("");
     setShow(true);
@@ -54,7 +53,12 @@ function MoviesDataBase() {
             <h3>Titles</h3>
             <div className="movieDataBase__wrapper">
               {data.map((movie) => (
-                <MovieData movie={movie} input={input} key={movie.id} API_KEY={API_KEY} />
+                <MovieData
+                  movie={movie}
+                  input={input}
+                  key={movie.id}
+                  API_KEY={API_KEY}
+                />
               ))}
             </div>
           </>
