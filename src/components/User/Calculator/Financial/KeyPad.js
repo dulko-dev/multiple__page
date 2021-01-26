@@ -5,16 +5,18 @@ function KeyPad({ handleNumber, state }) {
     <>
       <div className="financialCalc__calc__1st">
         <button
-          value="AC"
+          value="Escape"
           className="calc__grey"
           onClick={(e) => handleNumber(e.target.value)}
+          style={{ backgroundColor: `${state.ac}` }}
         >
           AC
         </button>
         <button
-          value="back"
+          value="Backspace"
           className="calc__grey"
           onClick={(e) => handleNumber(e.target.value)}
+          style={{ backgroundColor: `${state.backArrow}` }}
         >
           <i className="fas fa-long-arrow-alt-left"></i>
         </button>
@@ -22,6 +24,7 @@ function KeyPad({ handleNumber, state }) {
           value="CE"
           className="calc__grey"
           onClick={(e) => handleNumber(e.target.value)}
+          style={{ backgroundColor: `${state.ce}` }}
         >
           CE
         </button>
@@ -29,6 +32,7 @@ function KeyPad({ handleNumber, state }) {
           value="%"
           className="calc__grey"
           onClick={(e) => handleNumber(e.target.value)}
+          style={{ backgroundColor: `${state.percentage}` }}
         >
           %
         </button>
@@ -36,6 +40,7 @@ function KeyPad({ handleNumber, state }) {
           value="/"
           className="calc__orange"
           onClick={(e) => handleNumber(e.target.value)}
+          style={{ backgroundColor: `${state.divide}` }}
         >
           /
         </button>
@@ -66,6 +71,7 @@ function KeyPad({ handleNumber, state }) {
           value="*"
           className="calc__orange"
           onClick={(e) => handleNumber(e.target.value)}
+          style={{ backgroundColor: `${state.multiple}` }}
         >
           x
         </button>
@@ -96,6 +102,7 @@ function KeyPad({ handleNumber, state }) {
           value="-"
           className="calc__orange"
           onClick={(e) => handleNumber(e.target.value)}
+          style={{ backgroundColor: `${state.substract}` }}
         >
           -
         </button>
@@ -126,6 +133,7 @@ function KeyPad({ handleNumber, state }) {
           value="+"
           className="calc__orange"
           onClick={(e) => handleNumber(e.target.value)}
+          style={{ backgroundColor: `${state.add}` }}
         >
           +
         </button>
@@ -139,13 +147,18 @@ function KeyPad({ handleNumber, state }) {
         >
           0
         </button>
-        <button value="." onClick={(e) => handleNumber(e.target.value)}>
+        <button
+          value="."
+          onClick={(e) => handleNumber(e.target.value)}
+          style={{ backgroundColor: `${state.dot}` }}
+        >
           .
         </button>
         <button
-          value="="
+          value="Enter"
           className="calc__orange"
           onClick={(e) => handleNumber(e.target.value)}
+          style={{ backgroundColor: `${state.equal}` }}
         >
           =
         </button>

@@ -5,7 +5,7 @@ function OutputResult({
   result,
   operations,
   setOperations,
-  pressEnter,
+  pressKey,
   setState,
 }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -68,8 +68,38 @@ function OutputResult({
       case "0":
         setState({ zero: "#162537" });
         break;
-        default:
-          console.log('error')
+      case "Escape":
+        setState({ ac: "#162537" });
+        break;
+      case "Backspace":
+        setState({ backArrow: "#162537" });
+        break;
+      case "CE":
+        setState({ ce: "#162537" });
+        break;
+      case "%":
+        setState({ percentage: "#162537" });
+        break;
+      case "/":
+        setState({ divide: "#162537" });
+        break;
+      case "-":
+        setState({ substract: "#162537" });
+        break;
+      case "+":
+        setState({ add: "#162537" });
+        break;
+      case ".":
+        setState({ dot: "#162537" });
+        break;
+      case "Enter":
+        setState({ equal: "#162537" });
+        break;
+      case "*":
+        setState({ multiple: "#162537" });
+        break;
+      default:
+        setOperations("wrong key");
     }
   };
   const styleBtn2 = (e) => {
@@ -84,6 +114,16 @@ function OutputResult({
       case "8":
       case "9":
       case "0":
+      case "Escape":
+      case "Backspace":
+      case "CE":
+      case "%":
+      case "/":
+      case "-":
+      case "+":
+      case ".":
+      case "Enter":
+      case "*":
         setState({
           one: "",
           two: "",
@@ -95,10 +135,20 @@ function OutputResult({
           eight: "",
           nine: "",
           zero: "",
+          ac: "",
+          backArrow: "",
+          ce: "",
+          percentage: "",
+          divide: "",
+          substract: "",
+          add: "",
+          dot: "",
+          equal: "",
+          multiple: "",
         });
         break;
-        default:
-          console.log('error')
+      default:
+        setOperations("wrong key");
     }
   };
 
@@ -141,7 +191,7 @@ function OutputResult({
         onChange={(e) => setOperations(e.target.value)}
         value={operations}
         onKeyDown={(e) => {
-          pressEnter(e);
+          pressKey(e);
           styleBtn(e);
         }}
         onKeyUp={styleBtn2}

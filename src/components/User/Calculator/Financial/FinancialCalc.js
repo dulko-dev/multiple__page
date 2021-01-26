@@ -16,35 +16,51 @@ function FinancialCalc() {
     eight: "",
     nine: "",
     zero: "",
+    ac: "",
+    backArrow: "",
+    ce: "",
+    percentage: "",
+    divide: "",
+    substract: "",
+    add: "",
+    dot: "",
+    equal: "",
+    multiple: "",
   });
 
   const handleNumber = (keypad) => {
-    if (keypad === "=") {
+    if (keypad === "Enter") {
       calculate();
-    } else if (keypad === "back") {
+    } else if (keypad === "Backspace") {
       backspace();
-    } else if (keypad === "AC") {
+    } else if (keypad === "Escape") {
       reset();
     } else if (keypad === "CE") {
       clearOperations();
     } else if (keypad === "%") {
-      setOperations(operations / 100);
+      percentage();
     } else {
       setOperations(operations + keypad);
     }
   };
 
-  const pressEnter = (e) => {
+  const pressKey = (e) => {
     if (e.key === "Enter") {
       calculate();
+    } else if (e.key === "Escape") {
+      reset();
     }
+  };
+
+  const percentage = () => {
+    setOperations(operations / 100);
   };
 
   console.log(operations);
   /* eslint no-eval: 0 */
 
   const calculate = () => {
-    if (operations === "") return;
+    if (operations === "" || operations === "wrong key") return;
     try {
       setResult([...result, eval(operations)]);
       setOperations("");
@@ -58,7 +74,7 @@ function FinancialCalc() {
     setResult([]);
   };
   const backspace = () => {
-    if (operations === "") return;
+    if (operations === "" || operations === "wrong key") return;
     setOperations(operations.slice(0, -1));
   };
 
@@ -75,7 +91,7 @@ function FinancialCalc() {
           result={result}
           operations={operations}
           setOperations={setOperations}
-          pressEnter={pressEnter}
+          pressKey={pressKey}
           setState={setState}
         />
         <KeyPad handleNumber={handleNumber} state={state} />
