@@ -11,6 +11,7 @@ function Pagination({
   const pageNumbers = [];
   useEffect(() => {
     setPageNumbersArray(pageNumbers.length);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNumbers]);
 
   const closeWindow = () => {
