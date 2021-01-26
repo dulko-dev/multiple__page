@@ -52,37 +52,41 @@ function FormOfSupport({
   };
 
   return (
-    <div className="formOfSupport">
-      <form onSubmit={handleSubmitForm}>
-        <span onClick={handleShowForm} className="formOfSupport__X">
-          X
-        </span>
-        <label className="label">
-          <span>email</span>
-          <span>{user}</span>
-        </label>
-        <label className="label">
-          <span>Name</span>
-          <input
-            type="text"
-            value={state.name}
-            onChange={handleName}
-            name="name"
-          />
-        </label>
-        <label className="label">
-          <textarea
-            cols="30"
-            rows="5"
-            onChange={handleName}
-            name="text"
-            value={state.text}
-            placeholder="Please, let us know what happen"
-          />
-        </label>
-        <button type="submit">Send</button>
-      </form>
-    </div>
+    <>
+      <div className="formOfSupport">
+        <form onSubmit={handleSubmitForm}>
+          <span onClick={handleShowForm} className="formOfSupport__X">
+            X
+          </span>
+          <label className="label label__email">
+            <span>email: </span>
+            <span>{user}</span>
+          </label>
+          <label className="label label__name">
+            <span>name: </span>
+            <input
+              type="text"
+              value={state.name}
+              onChange={handleName}
+              name="name"
+              autoComplete="off"
+            />
+          </label>
+          <label className="label label__textArea">
+            <textarea
+              cols="45"
+              rows="8"
+              onChange={handleName}
+              name="text"
+              value={state.text}
+              placeholder="click on me, and let us what happen"
+            />
+          </label>
+          <button type="submit" className='label__button'>Send</button>
+        </form>
+      </div>
+      <div className="modal"></div>
+    </>
   );
 }
 

@@ -1,4 +1,6 @@
 .applications {
+  transition: all 1s ease-out;
+
   .applications__blockbuster {
     display: flex;
     justify-content: space-around;
@@ -25,15 +27,5 @@
     .app__weather {
       margin-top: 100px;
     }
-  }
-  .support__modal {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    pointer-events: none;
-    opacity: 0;
   }
 }

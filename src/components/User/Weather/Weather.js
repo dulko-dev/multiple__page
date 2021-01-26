@@ -122,6 +122,7 @@ function Weather() {
               value={inputText}
               id="custom-css-standard-input"
               label="City"
+              autoComplete='off'
             />
             <div>
               <StyleButton

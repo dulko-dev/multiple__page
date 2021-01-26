@@ -41,6 +41,7 @@ const Form = ({ setInputText, setTodos, inputText, todos, setStatus, id }) => {
             placeholder="Add task"
             id="task"
             required
+            autoComplete='off'
           />
           <label htmlFor="task" className="form__label">
             Add task

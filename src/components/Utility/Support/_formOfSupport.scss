@@ -1,13 +1,93 @@
 .formOfSupport {
-  position: absolute;
-  right: 50%;
-
+  width: 350px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
   .formOfSupport__X {
+    position: absolute;
+    top: -15px;
+    right: 0;
     cursor: pointer;
+    color: white;
+    text-align: right;
   }
   .label {
     display: block;
     padding: 10px 0;
     color: whitesmoke;
   }
+  .label__email span {
+    &:first-child {
+      display: inline-block;
+      width: 100px;
+      font-size: 1.2em;
+      letter-spacing: 0.1em;
+    }
+    &:last-child {
+      color: #f28f3b;
+      font-size: 1.5em;
+    }
+  }
+  .label__name {
+    span {
+      display: inline-block;
+      width: 100px;
+      font-size: 1.2em;
+      letter-spacing: 0.1em;
+    }
+    input {
+      width: 65%;
+      border: none;
+      border-bottom: 1px solid whitesmoke;
+      padding-bottom: 5px;
+      color: whitesmoke;
+      background-color: inherit;
+      &:focus {
+        border-bottom: 1px solid #f28f3b;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+  .label__textArea {
+    textarea {
+      resize: none;
+      border: none;
+      padding: 5px;
+      background-color: inherit;
+      color: whitesmoke;
+     &::placeholder{
+       color: #eff7f6;
+     }
+      &:focus {
+        width: max-content;
+        border: 1px solid #f28f3b;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+  .label__button {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 15%;
+    border: none;
+    background-color: #f28f3b;
+    color: whitesmoke;
+    text-transform: uppercase;
+    &:hover{
+      background-color: #dd571c;
+      transition: 0.5s;
+    }
+  }
+}
+.modal {
+  transition: all 1s ease-out;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
 }
