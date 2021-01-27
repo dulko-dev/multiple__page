@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { AuthContext } from "../Firebase/Auth";
 import { handleLogOut } from "../Logout/Logout";
 
-function UserNav({homePage}) {
+function UserNav({ homePage }) {
   const { value } = useContext(AuthContext);
   const [user] = value;
 
@@ -24,27 +24,36 @@ function UserNav({homePage}) {
     return () => {
       clearInterval(intervalId);
     };
-  });
+  }, [date]);
 
   useEffect(() => {
-    takeName();
-  }, []);
+    const abortControl = new AbortController();
+    const takeName = async () => {
+      await fetch("https://api.abalin.net/today", {
+        signal: abortControl.signal,
+      })
+        .then((response) => {
+          if (response) {
+            return response;
+          }
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          setNameDay(data.data.namedays.pl);
+        })
+        .catch((err) => {
+          if (err.name === "AbortError") {
+            console.log("fetch abort");
+          } else {
+            console.log(err);
+          }
+        });
+    };
 
-  const takeName = async () => {
-    await fetch("https://api.abalin.net/today")
-      .then((response) => {
-        if (response) {
-          return response;
-        }
-      })
-      .then((res) => res.json())
-      .then((data) => {
-        setNameDay(data.data.namedays.pl);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+    takeName();
+
+    return () => abortControl.abort();
+  }, []);
 
   const backMenuHandle = () => {
     history.push("/");
@@ -69,8 +78,8 @@ function UserNav({homePage}) {
           </p>
         </div>
         <div className="userNav__buttons">
-          
-          <button style={{display:`${homePage}`}}
+          <button
+            style={{ display: `${homePage}` }}
             type="button"
             onClick={backMenuHandle}
             className="userNav__nav__button"

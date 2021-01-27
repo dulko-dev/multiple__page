@@ -5,12 +5,15 @@ import Articles from "./Articles";
 function News() {
   const [news, setNews] = useState([]);
   const [waiting, setWaiting] = useState(true);
-  const API_KEY = 'igBpkzksTJMnbjEuGgmgpzVyRz0Z2fEA';
+  
+  const API_KEY = "igBpkzksTJMnbjEuGgmgpzVyRz0Z2fEA";
 
   useEffect(() => {
+    const abortControl = new AbortController();
     const getNews = async () => {
       await fetch(
-        `https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=${API_KEY}`
+        `https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=${API_KEY}`,
+        { signal: abortControl.signal }
       )
         .then((response) => {
           if (response.ok) {
@@ -21,11 +24,18 @@ function News() {
           setWaiting(false);
           setNews(response.results);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          if (err.name === "AbortError") {
+            console.log("fetch abort");
+          } else {
+            console.log(err);
+          }
+        });
     };
 
     getNews();
-    // eslint-disable-next-line
+    return () => abortControl.abort();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -45,7 +55,7 @@ function News() {
           </div>
         )}
       </div>
-      ;
+  
     </>
   );
 }
