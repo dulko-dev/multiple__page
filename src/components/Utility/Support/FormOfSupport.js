@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../../Firebase/Auth";
 // import restApi from "../Support/restApi";
 
@@ -11,6 +11,7 @@ function FormOfSupport({
 }) {
   const { value } = useContext(AuthContext);
   const [user] = value;
+  const [errorState, setErrorState] = useState(false);
 
   const handleName = (e) => {
     const { name, value } = e.target;
@@ -22,6 +23,11 @@ function FormOfSupport({
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
+    if (state.name === "" || state.text === "") {
+      setErrorState(true);
+      return;
+    }
+    setErrorState(false);
     restApi({ user }, state.name, state.text);
     setState({ name: "", text: "" });
     handleShowForm(false);
@@ -51,6 +57,12 @@ function FormOfSupport({
       .catch((err) => console.log(err));
   };
 
+  const errorInfo = (
+    <span style={{ color: "#ff495c", paddingLeft: "2.5em", fontSize: "1.2em" }}>
+      fill name and message
+    </span>
+  );
+
   return (
     <>
       <div className="formOfSupport">
@@ -79,10 +91,13 @@ function FormOfSupport({
               onChange={handleName}
               name="text"
               value={state.text}
-              placeholder="click on me, and let us what happen"
+              placeholder="click on, and let us what happen"
             />
           </label>
-          <button type="submit" className='label__button'>Send</button>
+          <button type="submit" className="label__button">
+            Send
+          </button>
+          {errorState ? errorInfo : ""}
         </form>
       </div>
       <div className="modal"></div>

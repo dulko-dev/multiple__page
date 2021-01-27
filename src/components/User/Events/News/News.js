@@ -5,7 +5,7 @@ import Articles from "./Articles";
 function News() {
   const [news, setNews] = useState([]);
   const [waiting, setWaiting] = useState(true);
-  const API_KEY = process.env.REACT_APP_NEWS_API_KEY;
+  const API_KEY = 'igBpkzksTJMnbjEuGgmgpzVyRz0Z2fEA';
 
   useEffect(() => {
     const getNews = async () => {

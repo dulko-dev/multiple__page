@@ -49,7 +49,7 @@ function Weather() {
     sunset: "",
     country: "",
   });
-  const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+  const API_KEY = 'e969589f0b166e518fa5a4c1c46fc1ca';
 
   const textRef = useRef(null);
 

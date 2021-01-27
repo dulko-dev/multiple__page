@@ -39,47 +39,53 @@ function Support() {
     <>
       <ReactTooltip border effect="float" />
       <div className="support">
-       
-          <div className="support__divSign">
-            {isShow ? (
-              <FormOfSupport
-                state={state}
-                setState={setState}
-                handleShowForm={handleShowForm}
-                setIsSend={setIsSend}
-                setError={setError}
-              />
-            ) : (
-              <i
-                className="far fa-question-circle support__sign"
-                data-tip="Have you get problem with dashboard?"
-                onClick={handleShowForm}
-              ></i>
-            )}
-            {isSend && (
-              <p
-                style={{
-                  color: "green",
-                  fontSize: "2.5em",
-                  textAlign: "center",
-                }}
-              >
-                Your message has been sent successful
-              </p>
-            )}
-            {error && (
-              <p
-                style={{
-                  color: "red",
-                  fontSize: "2.5em",
-                  textAlign: "center",
-                }}
-              >
-                There is some problem with server. Please try again latter
-              </p>
-            )}
-          </div>
-    
+        <div className="support__divSign">
+          {isShow ? (
+            <FormOfSupport
+              state={state}
+              setState={setState}
+              handleShowForm={handleShowForm}
+              setIsSend={setIsSend}
+              setError={setError}
+            />
+          ) : (
+            <i
+              className="far fa-question-circle support__sign"
+              data-tip="Have you get problem with dashboard?"
+              onClick={handleShowForm}
+            ></i>
+          )}
+          {isSend && (
+            <p
+              style={{
+                color: "green",
+                fontSize: "2.5em",
+                position: "absolute",
+                paddingTop: "20px",
+                left: "50%",
+                transform: "translateX(-50%)",
+                top: "0",
+              }}
+            >
+              Your message has been sent successful
+            </p>
+          )}
+          {error && (
+            <p
+              style={{
+                color: "red",
+                fontSize: "2.5em",
+                position: "absolute",
+                paddingTop: "20px",
+                left: "50%",
+                transform: "translateX(-50%)",
+                top: "0",
+              }}
+            >
+              There is some problem with server. Please try again latter
+            </p>
+          )}
+        </div>
       </div>
     </>
   );

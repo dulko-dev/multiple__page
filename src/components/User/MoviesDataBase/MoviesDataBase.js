@@ -7,7 +7,7 @@ function MoviesDataBase() {
   const [data, setData] = useState([]);
   const [show, setShow] = useState(false);
 
-  const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+  const API_KEY = "834b38bde83678813d5541bcdb78dead";
 
   const apiFetch = async () => {
     await fetch(
