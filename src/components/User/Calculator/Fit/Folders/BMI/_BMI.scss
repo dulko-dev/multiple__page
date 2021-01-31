@@ -86,7 +86,7 @@
     .BMI__underweight {
       max-width: 100%;
       background-color: #f45b69;
-      border-radius: 50px 0 0 50px;
+      border-radius: inherit;
       width: 0%;
       height: inherit;
       display: inline-block;
@@ -94,7 +94,7 @@
     }
     .BMI__normal {
       background-color: #48ad72;
-      border-radius: 50px 0 0 50px;
+      border-radius: inherit;
       width: 0%;
       height: inherit;
       display: inline-block;
@@ -102,24 +102,16 @@
     }
     .BMI__overweight {
       background-color: #f58a07;
-      border-radius: 50px 0 0 50px;
+      border-radius: inherit;
       width: 0%;
       height: inherit;
       display: inline-block;
       transition: width 1s ease-in;
     }
     .BMI__obese {
-      background-color: #95190c;
-      border-radius: 50px 0 0 50px;
-      width: 0%;
-      height: inherit;
-      display: inline-block;
-      transition: width 1s ease-in;
-    }
-    .BMI__obese__2 {
       max-width: 100%;
       background-color: #95190c;
-      border-radius: 50px;
+      border-radius: inherit;
       width: 0%;
       height: inherit;
       display: inline-block;

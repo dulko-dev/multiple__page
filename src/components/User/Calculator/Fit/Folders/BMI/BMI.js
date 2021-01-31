@@ -43,10 +43,8 @@ function BMI() {
       ? "BMI__normal"
       : result > 25 && result <= 30
       ? "BMI__overweight"
-      : result > 30 && result <= 37
+      : result > 30
       ? "BMI__obese"
-      : result > 37
-      ? "BMI__obese__2"
       : "";
 
   // const colorOfBackgroundForYoung = result <= 5 ? 'BMI__underweight__Y' : result >5 &&  result <
