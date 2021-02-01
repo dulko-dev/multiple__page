@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function BMR() {
+function BMR({resultBMR, setResultBMR}) {
   const [state, setState] = useState({
     age: "",
     height: "",
@@ -8,7 +8,6 @@ function BMR() {
     checkedFemale: false,
     checkedMale: false,
   });
-  const [result, setResult] = useState("");
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -37,7 +36,7 @@ function BMR() {
         66.47 + 13.75 * state.weight + 5.003 * state.height - 6.755 * state.age;
     }
 
-    setResult(result.toFixed(1));
+    setResultBMR(result.toFixed(1));
     setState({
       age: "",
       height: "",
@@ -55,7 +54,7 @@ function BMR() {
       checkedFemale: false,
       checkedMale: false,
     });
-    setResult("");
+    setResultBMR("");
   };
 
   return (
@@ -132,7 +131,7 @@ function BMR() {
         </div>
       </form>
       <div className="BMR__result">
-        Result:<span>{result} kcal </span>
+        Result:<span>{resultBMR} kcal </span>
       </div>
     </div>
   );

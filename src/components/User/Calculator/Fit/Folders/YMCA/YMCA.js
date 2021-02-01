@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 
-function YMCA() {
+function YMCA({ resultYMCA, setResultYMCA }) {
   const [state, setState] = useState({
     waist: "",
     weight: "",
     checkedFemale: false,
     checkedMale: false,
   });
-
-  const [result, setResult] = useState("");
-  const [fatMass, setFatMass] = useState("");
-  const [leanMass, setLeanMass] = useState("");
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -22,19 +18,19 @@ function YMCA() {
 
   let infoCategory;
   switch (true) {
-    case result > 0 && result <= 9:
+    case resultYMCA.result > 0 && resultYMCA.result <= 9:
       infoCategory = "Dangerous Low";
       break;
-    case result >= 10 && result <= 13:
+    case resultYMCA.result >= 10 && resultYMCA.result <= 13:
       infoCategory = "Esential Fat";
       break;
-    case result >= 14 && result <= 20:
+    case resultYMCA.result >= 14 && resultYMCA.result <= 20:
       infoCategory = "Athletic";
       break;
-    case result >= 21 && result <= 31:
+    case resultYMCA.result >= 21 && resultYMCA.result <= 31:
       infoCategory = "Acceptable";
       break;
-    case result >= 32:
+    case resultYMCA.result >= 32:
       infoCategory = "Obese";
       break;
     default:
@@ -71,9 +67,11 @@ function YMCA() {
       console.log("slaps on your face");
     }
 
-    setResult(result.toFixed(2));
-    setFatMass(fatMass.toFixed(2));
-    setLeanMass(leanMass.toFixed(2));
+    setResultYMCA({
+      result: result.toFixed(2),
+      fatMass: fatMass.toFixed(2),
+      leanMass: leanMass.toFixed(2),
+    });
 
     setState({
       waist: "",
@@ -83,7 +81,6 @@ function YMCA() {
     });
   };
 
-  console.log(fatMass);
 
   const handleClear = () => {
     setState({
@@ -92,9 +89,9 @@ function YMCA() {
       checkedFemale: false,
       checkedMale: false,
     });
-    setResult("");
-    setFatMass("");
-    setLeanMass("");
+
+    setResultYMCA({ result: "", fatMass: "", leanMass: "" });
+
   };
 
   return (
@@ -163,13 +160,13 @@ function YMCA() {
       </form>
       <div className="YMCA__result">
         <p>
-          Body Fat:<span>{result + "%"}</span>
+          Body Fat:<span>{resultYMCA.result + "%"}</span>
         </p>
         <p>
-          Fat Mass:<span>{fatMass + "kg"}</span>
+          Fat Mass:<span>{resultYMCA.fatMass + "kg"}</span>
         </p>
         <p>
-          Lean Mass:<span>{leanMass + "kg"}</span>
+          Lean Mass:<span>{resultYMCA.leanMass + "kg"}</span>
         </p>
         <p>
           Body Fat Category:<span> {infoCategory} </span>

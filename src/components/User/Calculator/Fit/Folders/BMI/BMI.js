@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 
-function BMI() {
+function BMI({resultBMI, setResultBMI}) {
   const [state, setState] = useState({
     age: "",
     height: "",
     weight: "",
     gender: "",
   });
-
-  const [result, setResult] = useState("");
-  const [resultPer, setResultPer] = useState(0);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -23,27 +20,25 @@ function BMI() {
     e.preventDefault();
     if (state.age === "" || state.height === "" || state.weight === "") return;
     let result = (state.weight / Math.pow(state.height, 2)) * 10000;
-    setResult(result.toFixed(1));
-    setResultPer((result * 2.5).toFixed(1));
+    setResultBMI(result.toFixed(1));
+  
     setState({ age: "", height: "", weight: "", gender: "" });
   };
 
   const handleClear = () => {
     setState({ age: "", height: "", weight: "", gender: "" });
-    setResultPer(0);
-    setResult("");
+    setResultBMI("");
   };
 
-  console.log(resultPer);
 
   const colorOfBackground =
-    result <= 16
+    resultBMI <= 16
       ? "BMI__underweight"
-      : result <= 25 && result > 16
+      : resultBMI <= 25 && resultBMI > 16
       ? "BMI__normal"
-      : result > 25 && result <= 30
+      : resultBMI > 25 && resultBMI <= 30
       ? "BMI__overweight"
-      : result > 30
+      : resultBMI > 30
       ? "BMI__obese"
       : "";
 
@@ -112,7 +107,7 @@ function BMI() {
       <div className="BMI__result">
         <h3>Result</h3>
         <p>
-          BMI = <span>{result}kg/m2</span>
+          BMI = <span>{resultBMI}kg/m2</span>
         </p>
       </div>
 
@@ -120,7 +115,7 @@ function BMI() {
         <div className="BMI__bar">
           <span
             className={`${colorOfBackground}`}
-            style={{ width: `${resultPer}%` }}
+            style={{ width: `${resultBMI * 2.5}%`}}
           ></span>
         </div>
         <div className="BMI__bar__class">

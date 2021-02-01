@@ -1,30 +1,32 @@
 import React, { useState } from "react";
 
-function WHR() {
+function WHR({ resultWHR, setResultWHR }) {
   const [state, setState] = useState({
     waist: "",
     hip: "",
     checkedFemale: false,
     checkedMale: false,
   });
-  const [result, setResult] = useState("");
 
   let shapeInfo;
   switch (true) {
-    case state.checkedFemale && Number(result) && result <= 0.8:
-    case state.checkedMale && Number(result) && result <= 0.95:
+    case state.checkedFemale && Number(resultWHR) && resultWHR <= 0.8:
+    case state.checkedMale && Number(resultWHR) && resultWHR <= 0.95:
       shapeInfo = "Pear shape - You looks great, keep going";
       break;
     case state.checkedFemale &&
-      Number(result) &&
-      result <= 0.84 &&
-      result > 0.8:
-    case state.checkedMale && Number(result) && result <= 1 && result > 0.95:
+      Number(resultWHR) &&
+      resultWHR <= 0.84 &&
+      resultWHR > 0.8:
+    case state.checkedMale &&
+      Number(resultWHR) &&
+      resultWHR <= 1 &&
+      resultWHR > 0.95:
       shapeInfo =
         "Avocado shape - Watchout for you and sometimes go to the park";
       break;
-    case state.checkedFemale && Number(result) && result > 0.84:
-    case state.checkedMale && Number(result) && result > 1:
+    case state.checkedFemale && Number(resultWHR) && resultWHR > 0.84:
+    case state.checkedMale && Number(resultWHR) && resultWHR > 1:
       shapeInfo = "Apple shape - Diete and training instead tv and chips";
       break;
 
@@ -33,8 +35,6 @@ function WHR() {
         "Enter data and I will tell you what kind of fruit do you have shape";
   }
 
-  console.log(result);
-  console.log(shapeInfo);
   const handleInput = (e) => {
     const { name, value } = e.target;
     setState((prev) => ({
@@ -53,38 +53,54 @@ function WHR() {
       return;
 
     let result = state.waist / state.hip;
-    setResult(result.toFixed(2));
+    setResultWHR(result.toFixed(2));
     setState((prev) => ({ ...prev, waist: "", hip: "" }));
   };
 
   const clearInput = () => {
     setState({ waist: "", hip: "", checkedFemale: false, checkedMale: false });
-    setResult("");
+    setResultWHR("");
   };
 
   const lowRisk =
     `${
-      state.checkedFemale && Number(result) && result <= 0.8 ? "#7FD1B9" : ""
+      state.checkedFemale && Number(resultWHR) && resultWHR <= 0.8
+        ? "#7FD1B9"
+        : ""
     }` ||
-    `${state.checkedMale && Number(result) && result <= 0.95 ? "#7FD1B9" : ""}`;
+    `${
+      state.checkedMale && Number(resultWHR) && resultWHR <= 0.95
+        ? "#7FD1B9"
+        : ""
+    }`;
 
   const mediumRisk =
     `${
-      state.checkedFemale && Number(result) && result >= 0.81 && result <= 0.84
+      state.checkedFemale &&
+      Number(resultWHR) &&
+      resultWHR >= 0.81 &&
+      resultWHR <= 0.84
         ? "#F08700"
         : ""
     }` ||
     `${
-      state.checkedMale && Number(result) && result >= 0.96 && result <= 1
+      state.checkedMale &&
+      Number(resultWHR) &&
+      resultWHR >= 0.96 &&
+      resultWHR <= 1
         ? "#F08700"
         : ""
     }`;
 
   const highRisk =
     `${
-      state.checkedFemale && Number(result) && result >= 0.85 ? "#E3170A" : ""
+      state.checkedFemale && Number(resultWHR) && resultWHR >= 0.85
+        ? "#E3170A"
+        : ""
     }` ||
-    `${state.checkedMale && Number(result) && result > 1 ? "#E3170A" : ""}`;
+    `${
+      state.checkedMale && Number(resultWHR) && resultWHR > 1 ? "#E3170A" : ""
+    }`;
 
   return (
     <div className="WHR">
@@ -125,7 +141,6 @@ function WHR() {
         <label htmlFor="male" className="WHR__gender">
           Male
         </label>
-
         <label className="WHR__label">
           <div>Waist [cm]</div>
           <input
@@ -155,11 +170,12 @@ function WHR() {
         <div className="WHR__result__left">
           <h3>Result</h3>
           <p>
-            <span>{result}</span>
+            <span>{resultWHR}</span>
           </p>
         </div>
         <div className="WHR__result__right">
-          {state.checkedFemale === true && (
+          
+          {state.checkedFemale && (
             <table>
               <thead>
                 <tr>

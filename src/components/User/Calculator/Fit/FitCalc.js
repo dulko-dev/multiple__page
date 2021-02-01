@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import BMI from "./Folders/BMI/BMI";
 import BMR from "./Folders/BMR/BMR";
 import WHR from "./Folders/WHR/WHR";
@@ -6,6 +6,15 @@ import YMCA from "./Folders/YMCA/YMCA";
 import Calorie from "./Folders/Calorie/Calorie";
 
 function FitCalc() {
+  const [resultBMI, setResultBMI] = useState("");
+  const [resultBMR, setResultBMR] = useState("");
+  const [resultWHR, setResultWHR] = useState("");
+  const [resultYMCA, setResultYMCA] = useState({
+    result: "",
+    fatMass: "",
+    leanMass: "",
+  });
+  const [resultCalorie, setResultCalorie] = useState("");
   const [bmi, setBmi] = useState(false);
   const [bmr, setBmr] = useState(false);
   const [whr, setWhr] = useState(false);
@@ -82,11 +91,18 @@ function FitCalc() {
           </span>
         </div>
         <div className="fitCalc__wrapperInfo">
-          {bmi && <BMI />}
-          {bmr && <BMR />}
-          {whr && <WHR />}
-          {ymca && <YMCA />}
-          {calorie && <Calorie />}
+          {bmi && <BMI resultBMI={resultBMI} setResultBMI={setResultBMI} />}
+          {bmr && <BMR resultBMR={resultBMR} setResultBMR={setResultBMR} />}
+          {whr && <WHR resultWHR={resultWHR} setResultWHR={setResultWHR} />}
+          {ymca && (
+            <YMCA resultYMCA={resultYMCA} setResultYMCA={setResultYMCA} />
+          )}
+          {calorie && (
+            <Calorie
+              resultCalorie={resultCalorie}
+              setResultCalorie={setResultCalorie}
+            />
+          )}
           <div style={{ display: `${hidden}` }} className="fitCalc__infoText">
             Select type of Calculator
           </div>
