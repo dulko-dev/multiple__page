@@ -8,9 +8,33 @@ function WHR() {
     checkedMale: false,
   });
   const [result, setResult] = useState("");
-  const [displayShape, setDisplayShape] = useState("none");
+
+  let shapeInfo;
+  switch (true) {
+    case state.checkedFemale && Number(result) && result <= 0.8:
+    case state.checkedMale && Number(result) && result <= 0.95:
+      shapeInfo = "Pear shape - You looks great, keep going";
+      break;
+    case state.checkedFemale &&
+      Number(result) &&
+      result <= 0.84 &&
+      result > 0.8:
+    case state.checkedMale && Number(result) && result <= 1 && result > 0.95:
+      shapeInfo =
+        "Avocado shape - Watchout for you and sometimes go to the park";
+      break;
+    case state.checkedFemale && Number(result) && result > 0.84:
+    case state.checkedMale && Number(result) && result > 1:
+      shapeInfo = "Apple shape - Diete and training instead tv and chips";
+      break;
+
+    default:
+      shapeInfo =
+        "Enter data and I will tell you what kind of fruit do you have shape";
+  }
 
   console.log(result);
+  console.log(shapeInfo);
   const handleInput = (e) => {
     const { name, value } = e.target;
     setState((prev) => ({
@@ -203,11 +227,7 @@ function WHR() {
           )}
         </div>
       </div>
-      <p className="WHR__result__text">
-        <span style={{ display: displayShape }}> You are Pear shape</span>
-        <span style={{ display: displayShape }}> You are Avocado shape</span>
-        <span style={{ display: displayShape }}> You are Apple shape</span>
-      </p>
+      <p className="WHR__result__text">{shapeInfo}</p>
     </div>
   );
 }
