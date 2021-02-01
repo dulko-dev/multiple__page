@@ -29,10 +29,10 @@ function BMR() {
       return;
 
     let result = 0;
-    if (state.checkedFemale === true) {
+    if (state.checkedFemale) {
       result =
         665.1 + 9.563 * state.weight + 1.85 * state.height - 4.676 * state.age;
-    } else if (state.checkedMale === true) {
+    } else if (state.checkedMale) {
       result =
         66.47 + 13.75 * state.weight + 5.003 * state.height - 6.755 * state.age;
     }
