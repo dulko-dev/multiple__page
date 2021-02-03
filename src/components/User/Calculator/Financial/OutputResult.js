@@ -99,7 +99,7 @@ function OutputResult({
         setState({ multiple: "#162537" });
         break;
       default:
-        setOperations("wrong key");
+        setOperations("");
     }
   };
   const styleBtn2 = (e) => {
@@ -148,7 +148,7 @@ function OutputResult({
         });
         break;
       default:
-        setOperations("wrong key");
+        setOperations("");
     }
   };
 

@@ -1,8 +1,35 @@
 .moviesDataBase {
+  .movieDataBase__form {
+    text-align: center;
+    .movieDataBase__title {
+      text-align: center;
+      font-size: 3em;
+      color: blanchedalmond;
+      padding: 40px 0;
+    }
+    .movieDataBase__search {
+      border-radius: 15px 0 0 15px;
+      padding: 10px 12px;
+    }
+    .movieDataBase__input {
+      border-radius: 0 15px 15px 0;
+      padding: 10px 15px;
+      border: none;
+      font-size: 1.02em;
+    }
+    .movieDataBase__btn {
+      display: block;
+      margin: 5px auto;
+      padding: 10px 15px;
+      border-radius: 10px;
+      border: none;
+    }
+  }
   .movieDataBase__wrapper {
-    width: 50%;
-    margin: 0 20px;
-    padding: 15px;
-    border: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(auto,1fr);
+    justify-items: center;
+    
   }
 }

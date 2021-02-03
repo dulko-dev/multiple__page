@@ -60,7 +60,7 @@ function FinancialCalc() {
   /* eslint no-eval: 0 */
 
   const calculate = () => {
-    if (operations === "" || operations === "wrong key") return;
+    if (operations === "") return;
     try {
       setResult([...result, eval(operations)]);
       setOperations("");
@@ -74,7 +74,7 @@ function FinancialCalc() {
     setResult([]);
   };
   const backspace = () => {
-    if (operations === "" || operations === "wrong key") return;
+    if (operations === "") return;
     setOperations(operations.slice(0, -1));
   };
 
