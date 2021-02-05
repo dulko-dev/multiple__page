@@ -2,18 +2,19 @@ import React from "react";
 import noPhoto from "../../../assets/not_available.png";
 
 function MovieDataInfo({ datas }) {
-  console.log(datas);
+ 
   return (
     <>
       <h3 className="movieData__title">{datas.title}</h3>
       <div className="movieData__wrap">
         <div className='movieData__img'>
           {datas.poster_path === null ? (
-            <img src={noPhoto} style={{ width: "175px", height: "225px" }} />
+            // eslint-disable-next-line
+            <img src={noPhoto} style={{ width: "150px", height: "175px" }} alt='photo not available'/>
           ) : (
             <img
               src={`https://image.tmdb.org/t/p/w500${datas.poster_path}`}
-              style={{ width: "175px", height: "225px" }}
+              style={{ width: "150px", height: "175px" }}
               alt="movie posters"
             />
           )}
@@ -26,10 +27,10 @@ function MovieDataInfo({ datas }) {
             popularity: <span>{datas.popularity} </span>
           </p>
           <p>
-            vote:<span>{datas.vote_average} </span>
+            avg score:<span>{datas.vote_average} </span>
           </p>
           <p>
-            count:<span>{datas.vote_count} </span>
+            vote:<span>{datas.vote_count} </span>
           </p>
         </div>
       </div>

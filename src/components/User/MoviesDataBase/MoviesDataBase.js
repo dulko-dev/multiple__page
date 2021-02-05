@@ -7,15 +7,16 @@ import ShowDataInfo from "./ShowDataInfo";
 function MoviesDataBase() {
   const [input, setInput] = useState("");
   const [data, setData] = useState([]);
-  const [show, setShow] = useState(false);
+  const [movieShow, setMovieShow] = useState(false);
+  const [tvShow, setTvShow] = useState(false);
+  const [personalShow, setPersonalShow] = useState(false);
   const [search, setSearch] = useState("movie");
   const API_KEY = "834b38bde83678813d5541bcdb78dead";
 
-  console.log(data);
 
   const apiFetchMovie = async () => {
     await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${input}&language=en&page=1`
+      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${input}&language=en`
     )
       .then((response) => {
         if (response.ok) {
@@ -25,9 +26,10 @@ function MoviesDataBase() {
       .then((data) => setData(data.results))
       .catch((err) => console.log(err));
   };
+
   const apiFetchShows = async () => {
     await fetch(
-      `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=${input}&language=en&page=1`
+      `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=${input}&language=en`
     )
       .then((response) => {
         if (response.ok) {
@@ -37,9 +39,10 @@ function MoviesDataBase() {
       .then((data) => setData(data.results))
       .catch((err) => console.log(err));
   };
+
   const apiFetchPerson = async () => {
     await fetch(
-      `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&query=${input}&language=en&page=1`
+      `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&query=${input}&language=en`
     )
       .then((response) => {
         if (response.ok) {
@@ -59,13 +62,21 @@ function MoviesDataBase() {
     if (input.length === 0) return;
     if (search === "movie") {
       apiFetchMovie();
+      setMovieShow(true);
+      setTvShow(false);
+      setPersonalShow(false);
     } else if (search === "show") {
       apiFetchShows();
+      setMovieShow(false);
+      setTvShow(true);
+      setPersonalShow(false);
     } else if (search === "person") {
       apiFetchPerson();
+      setMovieShow(false);
+      setTvShow(false);
+      setPersonalShow(true);
     }
     setInput("");
-    setShow(true);
   };
 
   return (
@@ -93,17 +104,15 @@ function MoviesDataBase() {
             Search
           </button>
         </form>
-        {show && (
-          <div className="movieDataBase__wrapper">
-            {data.map((datas) => (
-              <div className="movieData" key={datas.id}>
-                <MovieDataInfo datas={datas} />
-                {/* <ShowDataInfo />
-                  <PersonDataInfo /> */}
-              </div>
-            ))}
-          </div>
-        )}
+        <div className="movieDataBase__wrapper">
+          {data.map((datas) => (
+            <div className="movieData" key={datas.id}>
+              {movieShow && <MovieDataInfo datas={datas} />}
+              {tvShow && <ShowDataInfo datas={datas}/>}
+              {personalShow && <PersonDataInfo datas={datas} />}
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
