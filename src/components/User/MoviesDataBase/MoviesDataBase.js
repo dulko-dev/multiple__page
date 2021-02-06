@@ -13,7 +13,6 @@ function MoviesDataBase() {
   const [search, setSearch] = useState("movie");
   const API_KEY = "834b38bde83678813d5541bcdb78dead";
 
-
   const apiFetchMovie = async () => {
     await fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${input}&language=en`
@@ -100,7 +99,11 @@ function MoviesDataBase() {
             onChange={handleInput}
             value={input}
           />
-          <button type="submit" className="movieDataBase__btn">
+          <button
+            type="submit"
+            className="movieDataBase__btn"
+            disabled={input.length === 0}
+          >
             Search
           </button>
         </form>
@@ -108,8 +111,8 @@ function MoviesDataBase() {
           {data.map((datas) => (
             <div className="movieData" key={datas.id}>
               {movieShow && <MovieDataInfo datas={datas} />}
-              {tvShow && <ShowDataInfo datas={datas}/>}
-              {personalShow && <PersonDataInfo datas={datas} />}
+              {tvShow && <ShowDataInfo datas={datas} />}
+              {personalShow && <PersonDataInfo datas={datas} input={input} />}
             </div>
           ))}
         </div>
