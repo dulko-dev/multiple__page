@@ -7,7 +7,6 @@ import SearchIcon from "@material-ui/icons/Search";
 
 const StyleField = withStyles({
   root: {
-    paddingBottom: "20px",
     "& label.Mui-focused": {
       color: "#dadad9",
     },
@@ -23,15 +22,22 @@ const StyleField = withStyles({
 const StyleButton = withStyles({
   root: {
     backgroundColor: "#dadad9",
+    display: "inline-block",
     padding: "10px 40px",
-    margin: "0 auto",
+    marginLeft: "20px",
     "&:hover": {
       boxShadow: "0px 0px 10px 8px rgba(0,0,0,0.69)",
+    },
+    "& .MuiButton-label": {
+      display: "flex",
+      alignItems: "center",
     },
   },
 })(Button);
 
 function Weather() {
+  const [dataCity, setDataCity] = useState([]);
+  const [suggest, setSuggest] = useState("");
   const [error, setError] = useState(false);
   const [info, setInfo] = useState(false);
   const [inputText, setInputText] = useState("");
@@ -49,9 +55,20 @@ function Weather() {
     sunset: "",
     country: "",
   });
-  const API_KEY = 'e969589f0b166e518fa5a4c1c46fc1ca';
 
+  const API_KEY = "e969589f0b166e518fa5a4c1c46fc1ca";
   const textRef = useRef(null);
+
+  useEffect(() => {
+    const fetchCities = () => {
+      fetch(
+        `https://raw.githubusercontent.com/russ666/all-countries-and-cities-json/master/countries.json`
+      )
+        .then((response) => response.json())
+        .then((data) => setDataCity(data));
+    };
+    fetchCities();
+  }, []);
 
   useEffect(() => {
     textRef.current.focus();
@@ -98,17 +115,31 @@ function Weather() {
 
   const handleInput = (e) => {
     setInputText(e.target.value);
+    let suggest = [];
+    if (inputText.length > 1) {
+      const regex = new RegExp(`^${inputText}`, "i");
+      suggest = Object.values(dataCity).map((value) =>
+        value.sort().filter((city) => regex.test(city))
+      );
+    }
+    setSuggest(suggest.flat(1).slice(0, 15));
     setData((prev) => ({ ...prev, cityName: e.target.value }));
   };
 
+  console.log(suggest);
   const handleSubmit = (e) => {
     e.preventDefault();
     getInfo();
     setInputText("");
   };
 
-  console.log(data);
+  const updateInput = (value) => {
+    setInputText(value);
+    setData((prev) => ({ ...prev, cityName: value }));
+    setSuggest([]);
+  };
 
+  console.log(suggest);
   return (
     <>
       <UserNav />
@@ -122,27 +153,40 @@ function Weather() {
               value={inputText}
               id="custom-css-standard-input"
               label="City"
-              autoComplete='off'
+              autoComplete="off"
             />
-            <div>
-              <StyleButton
-                variant="contained"
-                type="submit"
-                disabled={inputText.length === 0}
-                endIcon={<SearchIcon />}
-              >
-                Search
-              </StyleButton>
-            </div>
+
+            <StyleButton
+              variant="contained"
+              type="submit"
+              disabled={inputText.length === 0}
+              endIcon={<SearchIcon />}
+            >
+              Search
+            </StyleButton>
           </form>
+          {suggest.length === 0 ? null : (
+            <ul className="weather__list">
+              {suggest &&
+                suggest
+                  .filter(
+                    (value, index, array) => array.indexOf(value) === index
+                  )
+                  .map((city) => (
+                    <li
+                      className="weather__autocomplete"
+                      key={Math.random() * 1000}
+                      onClick={() => updateInput(city)}
+                    >
+                      {city}
+                    </li>
+                  ))}
+            </ul>
+          )}
           {error && (
             <p className="weather__parNotExist">
-              <span
-                className="weather__spanNotExist"
-              >
-                {data.cityName}
-              </span>
-              city doesn't exist
+              <span className="weather__spanNotExist">{data.cityName}</span>
+              ups we can't find it
             </p>
           )}
           {info && <WeatherInformation data={data} inputText={inputText} />}
