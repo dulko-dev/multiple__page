@@ -60,18 +60,20 @@ function TodosElement({ element, setTodos, todos, text }) {
             </button>
           </div>
         ) : (
-          <>
-            <span>{text} </span>
-            <button onClick={completedHandler}>
-              <i className="far fa-check-circle"></i>
-            </button>
-            <button onClick={deleteHandler}>
-              <i className="far fa-trash-alt"></i>
-            </button>
-            <button onClick={openInputHandler}>
-              <i className="far fa-edit"></i>
-            </button>
-          </>
+          <div className="todosElement__list">
+            <div>{text} </div>
+            <div className="todosElement__btn">
+              <button onClick={completedHandler} className="all__btn">
+                <i className="far fa-check-circle"></i>
+              </button>
+              <button onClick={deleteHandler} className="all__btn">
+                <i className="far fa-trash-alt"></i>
+              </button>
+              <button onClick={openInputHandler} className="all__btn">
+                <i className="far fa-edit"></i>
+              </button>
+            </div>
+          </div>
         )}
       </li>
     </div>

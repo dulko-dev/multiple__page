@@ -27,10 +27,7 @@ const Form = ({ setInputText, setTodos, inputText, todos, setStatus, id }) => {
   };
   return (
     <div className="form__inside">
-      <h2>
-        <span>Your goals to step forward</span>
-        <span>to the better future: </span>
-      </h2>
+     
       <form onSubmit={addedHandler}>
         <div className="form__group field">
           <input

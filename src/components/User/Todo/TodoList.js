@@ -3,19 +3,25 @@ import TodosElement from "./TodosElement";
 
 const TodoList = ({ todos, setTodos, filteredTodos }) => {
   return (
-    <div>
-      <ul>
-        {filteredTodos.map((element) => (
-          <TodosElement
-            key={element.id}
-            text={element.text}
-            setTodos={setTodos}
-            todos={todos}
-            element={element}
-          />
-        ))}
-      </ul>
-    </div>
+
+    <ul
+      style={{
+        width: "500px",
+        marginTop: "50px",
+        backgroundColor: "rgba(34, 34, 34, 0.9)",
+        padding: "20px 0 5px 30px",
+      }}
+    >
+      {filteredTodos.map((element) => (
+        <TodosElement
+          key={element.id}
+          text={element.text}
+          setTodos={setTodos}
+          todos={todos}
+          element={element}
+        />
+      ))}
+    </ul>
   );
 };
 

@@ -4,19 +4,7 @@ $white: #fff;
 $gray: #9b9b9b;
 
 .form__inside {
-  margin: 50px 0;
   padding-bottom: 30px;
-  h2 {
-    padding: 30px 0;
-    font-size: 2.5em;
-    font-weight: 500;
-    color: #dadad9;
-    font-family: $user-nav;
-    line-height: 53px;
-    span {
-      display: inline-block;
-    }
-  }
 
   form {
     font-family: "Poppins", sans-serif;
@@ -24,9 +12,9 @@ $gray: #9b9b9b;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
     min-height: 200px;
-
+    padding-right: 200px;
+    padding-left: 350px;
     .form__group {
       position: relative;
       padding: 15px 0 0;
