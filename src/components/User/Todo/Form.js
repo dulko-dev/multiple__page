@@ -1,7 +1,6 @@
 import React from "react";
 import { db } from "../../Firebase/firebaseConfig";
 
-
 const Form = ({ setInputText, setTodos, inputText, todos, setStatus, id }) => {
   const onChangeHandler = (e) => {
     setInputText(e.target.value);
@@ -18,7 +17,7 @@ const Form = ({ setInputText, setTodos, inputText, todos, setStatus, id }) => {
       text: inputText,
       completed: false,
       id: id,
-    })
+    });
     setInputText("");
   };
 
@@ -27,21 +26,19 @@ const Form = ({ setInputText, setTodos, inputText, todos, setStatus, id }) => {
   };
   return (
     <div className="form__inside">
-     
       <form onSubmit={addedHandler}>
-        <div className="form__group field">
+        <div className="form__group">
           <input
             onChange={onChangeHandler}
             value={inputText}
             type="text"
             className="form__field"
-            placeholder="Add task"
             id="task"
             required
-            autoComplete='off'
+            autoComplete="off"
           />
           <label htmlFor="task" className="form__label">
-            Add task
+            <span className='form__name'>Add task </span>
           </label>
         </div>
         <button className="form__button">Add to list</button>
