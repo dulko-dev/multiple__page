@@ -3,11 +3,10 @@ import TodosElement from "./TodosElement";
 
 const TodoList = ({ todos, setTodos, filteredTodos }) => {
   return (
-
     <ul
       style={{
+        minHeight: "500px",
         width: "500px",
-        marginTop: "50px",
         backgroundColor: "rgba(34, 34, 34, 0.9)",
         padding: "20px 0 5px 30px",
       }}

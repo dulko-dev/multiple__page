@@ -82,12 +82,14 @@ const Todo = () => {
           setStatus={setStatus}
           id={id}
         />
-        <TodoList
-          className="todolist"
-          filteredTodos={filteredTodos}
-          todos={todos}
-          setTodos={setTodos}
-        />
+        <div>
+          <h2 className='todolist__title'>Your list of task: </h2>
+          <TodoList
+            filteredTodos={filteredTodos}
+            todos={todos}
+            setTodos={setTodos}
+          />
+        </div>
       </div>
     </>
   );

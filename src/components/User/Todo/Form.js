@@ -11,6 +11,7 @@ const Form = ({ setInputText, setTodos, inputText, todos, setStatus, id }) => {
     if (inputText.trim().length === 0) {
       return;
     }
+
     console.log(id);
 
     db.collection("todos").add({
@@ -38,10 +39,15 @@ const Form = ({ setInputText, setTodos, inputText, todos, setStatus, id }) => {
             autoComplete="off"
           />
           <label htmlFor="task" className="form__label">
-            <span className='form__name'>Add task </span>
+            <span className="form__name">Add task </span>
           </label>
         </div>
-        <button className="form__button">Add to list</button>
+        <button
+          className="form__button"
+          type="submit"
+        >
+          Add to list
+        </button>
         <select onChange={statusHandler} className="form__select">
           <option value="all">all</option>
           <option value="completed">completed</option>
