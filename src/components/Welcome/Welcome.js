@@ -4,16 +4,27 @@ import { AuthContext } from "../Firebase/Auth";
 import User from "../User/User";
 import login from "../../assets/login.png";
 import plus from "../../assets/add.png";
+import bg from "../../assets/fog-city2.jpg";
 
 export default function Welcome() {
   const { czoko } = useContext(AuthContext);
   const loaded = czoko;
 
-
   return !loaded ? (
     <User />
   ) : (
     <div className="welcome">
+      <img
+        src={bg}
+        style={{
+          position: "fixed",
+          width: "100%",
+          height: "100%",
+          left: "0",
+          bottom: "0",
+          zIndex: "-1",
+        }}
+      />
       <h1>Welcome your Dashboard</h1>
       <div className="welcome__icons">
         <NavLink

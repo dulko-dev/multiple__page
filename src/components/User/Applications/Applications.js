@@ -5,11 +5,23 @@ import newsEvents from "../../../assets/news.jpg";
 import forecast from "../../../assets/weather.jpeg";
 import movies from "../../../assets/movie.png";
 import calculator from "../../../assets/calculator.jpg";
+import bg from "../../../assets/gif.gif";
 
 function Applications() {
   return (
     <>
       <div className="applications">
+        <img
+          src={bg}
+          style={{
+            position: "fixed",
+            width: "100%",
+            height: "100%",
+            left: "0",
+            bottom: "0",
+            zIndex: "-1",
+          }}
+        />
         <div className="applications__blockbuster">
           <div className="app__common app__todo">
             <p className="app__paragraph">Schedule of your day</p>

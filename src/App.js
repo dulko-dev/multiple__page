@@ -17,8 +17,11 @@ import { AuthContext } from "./components/Firebase/Auth";
 import PrivateRoute from "./PrivateRoute";
 
 export default function App() {
-  const { value } = useContext(AuthContext);
+  const { value, czoko } = useContext(AuthContext);
   const [user] = value;
+  const loaded = czoko;
+
+  console.log(loaded);
 
   return (
     <Router>
@@ -26,13 +29,27 @@ export default function App() {
         <Route exact path="/" component={Welcome} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
-        <PrivateRoute path="/to-do-list" user={user} component={TODO} />
-        <PrivateRoute path="/calculator" user={user} component={Calculator} />
-        <PrivateRoute path="/movies" user={user} component={MoviesDataBase} />
-        <PrivateRoute exact path="/events" user={user} component={Events} />
-        <PrivateRoute path="/events/news" user={user} component={News} />
-        <PrivateRoute path="/events/sport" user={user} component={Sport} />
-        <PrivateRoute path="/weather" user={user} component={Weather} />
+
+        {!loaded && (
+          <>
+            <PrivateRoute path="/to-do-list" user={user} component={TODO} />
+
+            <PrivateRoute
+              path="/calculator"
+              user={user}
+              component={Calculator}
+            />
+            <PrivateRoute
+              path="/movies"
+              user={user}
+              component={MoviesDataBase}
+            />
+            <PrivateRoute exact path="/events" user={user} component={Events} />
+            <PrivateRoute path="/events/news" user={user} component={News} />
+            <PrivateRoute path="/events/sport" user={user} component={Sport} />
+            <PrivateRoute path="/weather" user={user} component={Weather} />
+          </>
+        )}
       </Switch>
     </Router>
   );

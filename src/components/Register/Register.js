@@ -74,7 +74,7 @@ export default function Register() {
       <Welcome />
       <div className="register__form">
         <h3>Register</h3>
-        <form>
+        <form autoComplete="off">
           <label>
             <span className="register__required">
               {errors.userName?.message}
@@ -172,7 +172,7 @@ export default function Register() {
               onKeyDown={getToSubmit}
             />
           </label>
-         
+
           <button
             ref={submitRef}
             type="button"

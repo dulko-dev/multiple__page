@@ -60,7 +60,7 @@ export default function Login() {
       <Welcome />
       <div className="login__form">
         <h3>Login</h3>
-        <form>
+        <form autoComplete="off">
           <label>
             <span className="login__required">{errors.email?.message}</span>
             <span>

@@ -36,7 +36,7 @@
           bottom: -1px;
           height: 100%;
           width: 100%;
-          border-bottom: 3px solid #bfd5e2;
+          border-bottom: 3px solid #331E36;
           transition: all 0.3s ease;
           transform: translateX(-100%);
         }
@@ -51,7 +51,7 @@
       .form__field:valid + .form__label .form__name {
         transform: translateY(-150%);
         font-size: 14px;
-        color: #bfd5e2;
+        color: #331E36;
       }
       .form__field:focus + .form__label::after,
       .form__field:valid + .form__label::after {

@@ -5,6 +5,7 @@ import UserNav from "../UserNav";
 import { db } from "../../Firebase/firebaseConfig";
 import { AuthContext } from "../../Firebase/Auth";
 import fire from "../../Firebase/firebaseConfig";
+import bg from "../../../assets/todo-background.jpg";
 
 const Todo = () => {
   const [inputText, setInputText] = useState("");
@@ -35,7 +36,6 @@ const Todo = () => {
       .onSnapshot((snapshot) => {
         setTodos(
           snapshot.docs.map((docs, index) => ({
-            
             id: docs.id,
             text: docs.data().text,
             completed: docs.data().completed,
@@ -74,6 +74,17 @@ const Todo = () => {
     <>
       <UserNav />
       <div className="todo">
+        <img
+          src={bg}
+          style={{
+            position: "fixed",
+            width: "100%",
+            height: "100%",
+            left: "0",
+            bottom: "0",
+            zIndex: "-1",
+          }}
+        />
         <Form
           className="form"
           inputText={inputText}

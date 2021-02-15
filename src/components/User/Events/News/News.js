@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import UserNav from "../../UserNav";
 import Articles from "./Articles";
+import loadingPage from "../../../../assets/loading-gif.gif";
 
 function News() {
   const [news, setNews] = useState([]);
   const [waiting, setWaiting] = useState(true);
-  
+
   const API_KEY = "igBpkzksTJMnbjEuGgmgpzVyRz0Z2fEA";
 
   useEffect(() => {
@@ -44,9 +45,10 @@ function News() {
       <div className="news">
         <h2>Most popular daily article</h2>
         {waiting ? (
-          <p style={{ textAlign: "center", fontSize: "5em" }}>
-            ...is loading...
-          </p>
+          // <p style={{ textAlign: "center", fontSize: "5em" }}>
+          //   ...is loading...
+          // </p>
+          <img src={loadingPage} style={{ width: "50%", height: "50%" }} />
         ) : (
           <div className="news__wrapped">
             {news.map((element) => (
@@ -55,7 +57,6 @@ function News() {
           </div>
         )}
       </div>
-  
     </>
   );
 }
