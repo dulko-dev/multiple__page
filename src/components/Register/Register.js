@@ -180,10 +180,6 @@ export default function Register() {
               onKeyDown={getToSubmit}
             />
           </label>
-          <div className="register__checkbox">
-            <input type="checkbox" name="isChecked" onChange={handleCheckbox} />
-            <span>Remember me!</span>
-          </div>
           <button
             ref={submitRef}
             type="button"

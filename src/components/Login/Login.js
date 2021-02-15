@@ -107,10 +107,6 @@ export default function Login() {
               onKeyDown={getToSubmit}
             />
           </label>
-          <div className="login__checkb{ox">
-            <input type="checkbox" />
-            <span>Remember me!</span>
-          </div>
           <button
             ref={submitRef}
             type="button"
