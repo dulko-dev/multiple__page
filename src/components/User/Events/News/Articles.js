@@ -4,6 +4,7 @@ import noPhoto from "../../../../assets/not_available.png";
 function Articles({ element }) {
   return (
     <div className="articles">
+    
       <h3 className="articles__title">"{element.title}"</h3>
       <a
         className="articles__text"

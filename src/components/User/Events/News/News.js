@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import UserNav from "../../UserNav";
 import Articles from "./Articles";
 import loadingPage from "../../../../assets/loading-gif.gif";
+import bg from "../../../../assets/news-bg.jpg";
 
 function News() {
   const [news, setNews] = useState([]);
@@ -43,12 +44,27 @@ function News() {
     <>
       <UserNav />
       <div className="news">
+        <img alt='newspaper'
+          src={bg}
+          style={{
+            position: "fixed",
+            width: "100%",
+            height: "100%",
+            left: "0",
+            bottom: "0",
+            zIndex: "-1",
+            opacity: "0.2",
+          }}
+        />
         <h2>Most popular daily article</h2>
         {waiting ? (
-          // <p style={{ textAlign: "center", fontSize: "5em" }}>
-          //   ...is loading...
-          // </p>
-          <img src={loadingPage} style={{ width: "50%", height: "50%" }} />
+          <div
+            style={{
+              textAlign: "center",
+            }}
+          >
+            <img src={loadingPage} alt='loading page'/>
+          </div>
         ) : (
           <div className="news__wrapped">
             {news.map((element) => (

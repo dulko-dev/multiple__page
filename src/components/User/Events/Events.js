@@ -5,6 +5,7 @@ import sport from "../../../assets/sport.png";
 import news from "../../../assets/eventNews.jpg";
 import ReactTooltip from "react-tooltip";
 import { withRouter } from "react-router-dom";
+import bg from "../../../assets/events-bg.jpg";
 
 function Events() {
   return (
@@ -13,10 +14,22 @@ function Events() {
         border
         effect="solid"
         type="dark"
+        place="right"
         className="events__tooltip"
       />
       <UserNav />
       <div className="events">
+        <img
+          src={bg}
+          style={{
+            position: "fixed",
+            width: "100%",
+            height: "100%",
+            left: "0",
+            bottom: "0",
+            zIndex: "-1",
+          }}
+        />
         <div className="events__boxes">
           <Link to="/events/news">
             <div className="events__news" data-tip="current news from world">
