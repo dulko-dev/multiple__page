@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import FormOfSupport from "./FormOfSupport";
-import ReactTooltip from "react-tooltip";
+import ReportProblem from "../../../assets/reportProblem.png";
 
 function Support() {
   const [state, setState] = useState({
@@ -37,7 +37,6 @@ function Support() {
 
   return (
     <>
-      <ReactTooltip border effect="float" />
       <div className="support">
         <div className="support__divSign">
           {isShow ? (
@@ -49,11 +48,12 @@ function Support() {
               setError={setError}
             />
           ) : (
-            <i
-              className="far fa-question-circle support__sign"
-              data-tip="Have you get problem with dashboard?"
+            <img
+              src={ReportProblem}
+              alt="report problem"
+              className="support__sign"
               onClick={handleShowForm}
-            ></i>
+            />
           )}
           {isSend && (
             <p
@@ -61,9 +61,7 @@ function Support() {
                 color: "green",
                 fontSize: "2.5em",
                 position: "absolute",
-                paddingTop: "20px",
-                left: "50%",
-                transform: "translateX(-50%)",
+                left: "0",
                 top: "0",
               }}
             >

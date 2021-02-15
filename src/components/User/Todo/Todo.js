@@ -20,11 +20,11 @@ const Todo = () => {
   // }, []);
 
   console.log(fire.auth());
+  console.log(todos);
 
   useEffect(() => {
     filteredHandler();
     // saveLocalStorage();
-    return () => filteredHandler();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [todos, status]);
 
@@ -34,7 +34,8 @@ const Todo = () => {
       .orderBy("text", "desc")
       .onSnapshot((snapshot) => {
         setTodos(
-          snapshot.docs.map((docs) => ({
+          snapshot.docs.map((docs, index) => ({
+            
             id: docs.id,
             text: docs.data().text,
             completed: docs.data().completed,
@@ -83,7 +84,7 @@ const Todo = () => {
           id={id}
         />
         <div>
-          <h2 className='todolist__title'>Your list of task: </h2>
+          <h2 className="todolist__title">Your list of task: </h2>
           <TodoList
             filteredTodos={filteredTodos}
             todos={todos}

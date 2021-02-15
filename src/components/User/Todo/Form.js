@@ -1,23 +1,23 @@
 import React from "react";
 import { db } from "../../Firebase/firebaseConfig";
 
-const Form = ({ setInputText, setTodos, inputText, todos, setStatus, id }) => {
+const Form = ({ setInputText, inputText, setStatus, id }) => {
   const onChangeHandler = (e) => {
     setInputText(e.target.value);
   };
 
+  
   const addedHandler = (e) => {
     e.preventDefault();
     if (inputText.trim().length === 0) {
       return;
     }
 
-    console.log(id);
-
     db.collection("todos").add({
       text: inputText,
       completed: false,
       id: id,
+    
     });
     setInputText("");
   };
@@ -42,10 +42,7 @@ const Form = ({ setInputText, setTodos, inputText, todos, setStatus, id }) => {
             <span className="form__name">Add task </span>
           </label>
         </div>
-        <button
-          className="form__button"
-          type="submit"
-        >
+        <button className="form__button" type="submit">
           Add to list
         </button>
         <select onChange={statusHandler} className="form__select">

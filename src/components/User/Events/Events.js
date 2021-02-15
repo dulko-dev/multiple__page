@@ -4,6 +4,7 @@ import UserNav from "../UserNav";
 import sport from "../../../assets/sport.png";
 import news from "../../../assets/eventNews.jpg";
 import ReactTooltip from "react-tooltip";
+import { withRouter } from "react-router-dom";
 
 function Events() {
   return (
@@ -19,7 +20,7 @@ function Events() {
         <div className="events__boxes">
           <Link to="/events/news">
             <div className="events__news" data-tip="current news from world">
-              <img src={news} className="events__newsImg" alt='news'/>
+              <img src={news} className="events__newsImg" alt="news" />
             </div>
           </Link>
           <Link to="/events/sport">
@@ -27,7 +28,11 @@ function Events() {
               className="events__sport"
               data-tip="results from football and basketball"
             >
-              <img src={sport} className="events__sportImg" alt='sport result'/>
+              <img
+                src={sport}
+                className="events__sportImg"
+                alt="sport result"
+              />
             </div>
           </Link>
         </div>
@@ -36,4 +41,4 @@ function Events() {
   );
 }
 
-export default Events;
+export default withRouter(Events);

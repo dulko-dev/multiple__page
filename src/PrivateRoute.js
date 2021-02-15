@@ -1,19 +1,26 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { AuthContext } from "./components/Firebase/Auth";
 
 
 function PrivateRoute({ component: Component, user, ...rest }) {
-  const {czoko} = useContext(AuthContext)
-  const loaded = czoko  
+
   return (
     <Route
       {...rest}
       render={(props) => {
-        return !loaded ? <Component {...props} /> : <Redirect to="/login" />;
+        if (user) {
+          return <Component />;
+        } else {
+          return (
+            <Redirect
+              to={{ pathname: "/login", state: { from: props.location } }}
+            />
+          );
+        }
+      
       }}
-    ></Route>
+    />
   );
 }
 
-export default PrivateRoute
+export default PrivateRoute;

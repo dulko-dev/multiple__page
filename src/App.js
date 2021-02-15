@@ -31,34 +31,23 @@ export default function App() {
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/reset" component={Reset} />
-
-        {!loaded && (
-          <>
-            <PrivateRoute
-              exact
-              path="/to-do-list"
-              user={user}
-              component={TODO}
-            />
-
-            <PrivateRoute
-              exact
-              path="/calculator"
-              user={user}
-              component={Calculator}
-            />
-            <PrivateRoute
-              exact
-              path="/movies"
-              user={user}
-              component={MoviesDataBase}
-            />
-            <PrivateRoute exact path="/events" user={user} component={Events} />
-            <PrivateRoute path="/events/news" user={user} component={News} />
-            <PrivateRoute path="/events/sport" user={user} component={Sport} />
-            <PrivateRoute path="/weather" user={user} component={Weather} />
-          </>
-        )}
+        <PrivateRoute exact path="/to-do-list" user={user} component={TODO} />
+        <PrivateRoute
+          exact
+          path="/calculator"
+          user={user}
+          component={Calculator}
+        />
+        <PrivateRoute
+          exact
+          path="/movies"
+          user={user}
+          component={MoviesDataBase}
+        />
+        <PrivateRoute exact path="/events" user={user} component={Events} />
+        <PrivateRoute path="/events/news" user={user} component={News} />
+        <PrivateRoute path="/events/sport" user={user} component={Sport} />
+        <PrivateRoute path="/weather" user={user} component={Weather} />
       </Switch>
     </Router>
   );

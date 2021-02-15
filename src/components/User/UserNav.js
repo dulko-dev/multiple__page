@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../Firebase/Auth";
 import { handleLogOut } from "../Logout/Logout";
+import Support from "../Utility/Support/Support";
 
 function UserNav({ homePage }) {
   const { value } = useContext(AuthContext);
@@ -94,6 +95,7 @@ function UserNav({ homePage }) {
           >
             Logout
           </button>
+          <Support />
         </div>
       </div>
     </div>

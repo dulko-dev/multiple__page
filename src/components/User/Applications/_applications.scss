@@ -1,6 +1,5 @@
 .applications {
   transition: all 1s ease-out;
-
   .applications__blockbuster {
     display: flex;
     flex-direction: column;
@@ -11,11 +10,11 @@
       justify-content: space-between;
       align-items: center;
       margin: 10px;
-      width: 700px;
+      width: 500px;
       height: 120px;
       overflow: hidden;
       .app__paragraph {
-        font-size: 1.4em;
+        font-size: 1.5em;
         color: white;
       }
       img {

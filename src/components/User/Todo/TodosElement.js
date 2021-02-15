@@ -49,13 +49,25 @@ function TodosElement({ element, setTodos, todos, text }) {
         {isEdit ? (
           <div>
             <input
+              style={{
+                backgroundColor: "inherit",
+                borderBottom: "1px solid white",
+                border: "none",
+                color: "white",
+              }}
               value={inputField}
               onChange={(e) => setInputField(e.target.value)}
             />
-            <button onClick={cancelInputHandler}>
+            <button
+              onClick={cancelInputHandler}
+              style={{ backgroundColor: "inherit", color: "white" }}
+            >
               <i className="far fa-window-close"></i>
             </button>
-            <button onClick={saveInputHandler}>
+            <button
+              onClick={saveInputHandler}
+              style={{ backgroundColor: "inherit", color: "white" }}
+            >
               <i className="far fa-check-square"></i>
             </button>
           </div>
