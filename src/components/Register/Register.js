@@ -57,14 +57,6 @@ export default function Register() {
     }));
   };
 
-  const handleCheckbox = ({ target }) => {
-    const value = target.type === "checkbox" ? target.checked : target.value;
-    setState((prevState) => ({
-      ...prevState,
-      isChecked: value,
-    }));
-  };
-
   const handleSubmitForm = () => {
     fire
       .auth()
@@ -105,6 +97,31 @@ export default function Register() {
               name="userName"
               type="text"
               placeholder="enter your login"
+              onChange={handleChange}
+              onKeyDown={getToEmail}
+            />
+          </label>
+          <label>
+            <span className="register__required">
+              {errors.userEmail?.message}
+            </span>
+            <span>
+              <img src={email} className="register__span" alt="email" />
+            </span>
+            <input
+              ref={(e) => {
+                register(e, {
+                  required: "This is required",
+                  pattern: {
+                    value: /^\S+@\S+\.\S+$/,
+                    message: "Invalid email",
+                  },
+                });
+                emailRef.current = e;
+              }}
+              name="userEmail"
+              type="email"
+              placeholder="enter your email"
               onChange={handleChange}
               onKeyDown={getToPass}
             />
@@ -152,34 +169,10 @@ export default function Register() {
               type="password"
               placeholder="repeat your password"
               onChange={handleChange}
-              onKeyDown={getToEmail}
-            />
-          </label>
-          <label>
-            <span className="register__required">
-              {errors.userEmail?.message}
-            </span>
-            <span>
-              <img src={email} className="register__span" alt="email" />
-            </span>
-            <input
-              ref={(e) => {
-                register(e, {
-                  required: "This is required",
-                  pattern: {
-                    value: /^\S+@\S+\.\S+$/,
-                    message: "Invalid email",
-                  },
-                });
-                emailRef.current = e;
-              }}
-              name="userEmail"
-              type="email"
-              placeholder="enter your email"
-              onChange={handleChange}
               onKeyDown={getToSubmit}
             />
           </label>
+         
           <button
             ref={submitRef}
             type="button"

@@ -5,7 +5,6 @@ import newsEvents from "../../../assets/news.jpg";
 import forecast from "../../../assets/weather.jpeg";
 import movies from "../../../assets/movie.png";
 import calculator from "../../../assets/calculator.jpg";
-import Support from "../../Utility/Support/Support";
 
 function Applications() {
   return (

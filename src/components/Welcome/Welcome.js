@@ -21,7 +21,7 @@ export default function Welcome() {
           to="/login"
           activeStyle={{
             borderRadius: "60%",
-            border: "2px solid gold",
+            border: "4px solid gold",
             outline: "none",
           }}
         >
@@ -38,7 +38,7 @@ export default function Welcome() {
           className="welcome__navlink"
           activeStyle={{
             borderRadius: "60%",
-            border: "2px solid gold",
+            border: "4px solid gold",
             outline: "none",
           }}
         >
