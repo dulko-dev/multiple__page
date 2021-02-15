@@ -12,11 +12,11 @@ export default function Login() {
     pass: "",
     errFirebase: "",
   });
+  const { register, errors, handleSubmit } = useForm();
 
   const emailRef = useRef();
   const passwordRef = useRef();
   const submitRef = useRef();
-  const { register, errors, handleSubmit } = useForm();
   const history = useHistory();
 
   useEffect(() => {

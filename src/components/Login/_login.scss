@@ -45,6 +45,7 @@
       width: 30px;
       height: 30px;
       border-radius: 12px;
+      transform: translateY(10%);
     }
     label {
       position: relative;
@@ -57,15 +58,6 @@
       padding: 7px 7px 7px 12px;
       margin-left: 15px;
       margin-bottom: 15px;
-    }
-    .login__checkbox {
-      color: #dadad9;
-      input {
-        background-color: #dadad9;
-        margin-right: 10px;
-        margin-left: 0;
-        margin-top: 10px;
-      }
     }
     .login__button {
       margin-top: 20px;
