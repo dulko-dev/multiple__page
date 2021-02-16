@@ -3,7 +3,7 @@
     text-align: center;
     padding-top: 30px;
     .weather__list {
-      margin-top:5px;
+      margin-top: 5px;
       .weather__autocomplete {
         animation: abs 1.2s ease;
         background-color: #cacfd6;
@@ -20,13 +20,14 @@
       }
     }
     .weather__parNotExist {
-      font-size: 1.7em;
-      color: #dadad9;
+      font-size: 2em;
+      color: #e08e45;
+      padding: 15px 0;
       .weather__spanNotExist {
-        font-size: 1.8em;
+        padding-top: 15px;
+        font-size: 1.5em;
         text-decoration: underline;
         color: black;
-        padding: 15px 0;
         display: block;
       }
     }

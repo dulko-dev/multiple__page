@@ -4,6 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import UserNav from "../UserNav";
 import WeatherInformation from "./WeatherInformation";
 import SearchIcon from "@material-ui/icons/Search";
+import bg from "../../../assets/weather-bg.jpg";
 
 const StyleField = withStyles({
   root: {
@@ -144,6 +145,18 @@ function Weather() {
     <>
       <UserNav />
       <div className="weather">
+        <img
+          src={bg}
+          atl="weather"
+          style={{
+            position: "fixed",
+            width: "100%",
+            height: "100%",
+            left: "0",
+            bottom: "0",
+            zIndex: "-1",
+          }}
+        />
         <div className="weather__form">
           <form onSubmit={handleSubmit}>
             <StyleField
@@ -185,8 +198,8 @@ function Weather() {
           )}
           {error && (
             <p className="weather__parNotExist">
+              ups we can't find
               <span className="weather__spanNotExist">{data.cityName}</span>
-              ups we can't find it
             </p>
           )}
           {info && <WeatherInformation data={data} inputText={inputText} />}
