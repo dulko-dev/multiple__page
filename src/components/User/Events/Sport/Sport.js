@@ -3,10 +3,13 @@ import UserNav from "../../UserNav";
 import LastSchedule from "./LastSchedule";
 import { leagueInfo } from "./leagueInfo";
 import ButtonsLeague from "./ButtonsLeague";
+import bg from "../../../../assets/sport-bg.jpg";
+import loadingBall from "../../../../assets/loading-ball.gif";
 
 function Sport() {
   const [data2, setData2] = useState([]);
   const [buttonClick, setButtonClick] = useState(4328);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const abortControl = new AbortController();
@@ -21,6 +24,7 @@ function Sport() {
           }
         })
         .then((response) => {
+          setLoading(false);
           setData2(response);
         })
         .catch((err) => {
@@ -39,6 +43,19 @@ function Sport() {
   return (
     <>
       <UserNav />
+      <img
+        src={bg}
+        alt="background"
+        style={{
+          position: "fixed",
+          width: "100%",
+          height: "100%",
+          left: "0",
+          bottom: "0",
+          zIndex: "-1",
+          opacity:'0.8'
+        }}
+      />
       <div className="sport">
         <div className="sport__buttons">
           <ButtonsLeague
@@ -52,11 +69,17 @@ function Sport() {
           </h3>
         ))}
         <div className="sport__scoresWrapper">
-          <div>
-            {Object.keys(data2).map((scores, index) => (
-              <LastSchedule scores={scores} data2={data2} key={index} />
-            ))}
-          </div>
+          {loading ? (
+            <div style={{ textAlign: "center" }}>
+              <img src={loadingBall} alt="loading" />
+            </div>
+          ) : (
+            <div>
+              {Object.keys(data2).map((scores, index) => (
+                <LastSchedule scores={scores} data2={data2} key={index} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </>

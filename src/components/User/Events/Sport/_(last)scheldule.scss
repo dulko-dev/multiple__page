@@ -4,9 +4,13 @@ th {
   border-collapse: collapse;
   padding: 15px;
   text-align: center;
+  td {
+    color: #fff9fb;
+  }
   caption {
+    font-weight: 600;
     font-size: 2em;
-    color: #dadad9;
+    color: #22181c;
     padding-bottom: 10px;
   }
   thead {
@@ -16,15 +20,20 @@ th {
     color: #f2f2f2;
   }
   tbody tr:nth-child(even) {
-    background-color: rgba(57, 62, 65, 0.6);
+    background-color: #0e1116;
   }
   a {
     text-decoration: none;
     outline: none;
     border: none;
-    color: #bfd5e2;
-    &:active, &:focus {
+    color: #fff9fb;
+    &:active,
+    &:focus {
       outline: none;
+    }
+    &:hover {
+      -webkit-box-shadow: 0px 0px 6px 5px #FFF9FB;
+      box-shadow: 0px 0px 6px 5px #FFF9FB;
     }
   }
 }

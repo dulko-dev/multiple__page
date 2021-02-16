@@ -60,6 +60,10 @@ function UserNav({ homePage }) {
     history.push("/");
   };
 
+  const backToEvents = () => {
+    history.push("/events");
+  };
+
   return (
     <div className="userNav">
       <div className="userNav__nav">
@@ -79,6 +83,17 @@ function UserNav({ homePage }) {
           </p>
         </div>
         <div className="userNav__buttons">
+          <i
+            className={`fas fa-chevron-left userNav__nav__button ${
+              window.location.pathname === "/events/news" ||
+              window.location.pathname === "/events/sport"
+                ? "userNav__nav__button__arrow"
+                : "userNav__nav__button__Notarrow"
+            } `}
+            style={{ display: `${homePage}` }}
+            onClick={backToEvents}
+          ></i>
+
           <button
             style={{ display: `${homePage}` }}
             type="button"

@@ -8,6 +8,7 @@ function News() {
   const [news, setNews] = useState([]);
   const [waiting, setWaiting] = useState(true);
 
+
   const API_KEY = "igBpkzksTJMnbjEuGgmgpzVyRz0Z2fEA";
 
   useEffect(() => {
@@ -44,7 +45,8 @@ function News() {
     <>
       <UserNav />
       <div className="news">
-        <img alt='newspaper'
+        <img
+          alt="newspaper"
           src={bg}
           style={{
             position: "fixed",
@@ -63,7 +65,7 @@ function News() {
               textAlign: "center",
             }}
           >
-            <img src={loadingPage} alt='loading page'/>
+            <img src={loadingPage} alt="loading page" />
           </div>
         ) : (
           <div className="news__wrapped">

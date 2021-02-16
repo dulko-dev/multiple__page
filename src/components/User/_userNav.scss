@@ -32,5 +32,12 @@
       font-size: 1.2em;
       background-color: #dadad9;
     }
+    .userNav__nav__button__arrow {
+      display: inline-block;
+      cursor: pointer;
+    }
+    .userNav__nav__button__Notarrow {
+      display: none;
+    }
   }
 }

@@ -74,7 +74,7 @@ const Todo = () => {
     <>
       <UserNav />
       <div className="todo">
-        <img
+        <img alt='background'
           src={bg}
           style={{
             position: "fixed",
