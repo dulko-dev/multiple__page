@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import UserNav from "../UserNav";
 import MovieDataInfo from "./MovieDataInfo";
 import PersonDataInfo from "./PersonDataInfo";
 import ShowDataInfo from "./ShowDataInfo";
+import bg from "../../../assets/cinema-bg.jpg";
 
 function MoviesDataBase() {
   const [input, setInput] = useState("");
@@ -25,6 +26,10 @@ function MoviesDataBase() {
       .then((data) => setData(data.results))
       .catch((err) => console.log(err));
   };
+
+  useEffect(() => {
+    setData([]);
+  }, [search]);
 
   const apiFetchShows = async () => {
     await fetch(
@@ -53,6 +58,9 @@ function MoviesDataBase() {
   };
 
   const handleInput = (e) => {
+    if (input.length >= 0) {
+      setData([]);
+    }
     setInput(e.target.value);
   };
 
@@ -81,6 +89,18 @@ function MoviesDataBase() {
   return (
     <>
       <UserNav />
+      <img
+        alt="background"
+        src={bg}
+        style={{
+          position: "fixed",
+          width: "100%",
+          height: "100%",
+          left: "0",
+          bottom: "0",
+          zIndex: "-1",
+        }}
+      />
       <div className="moviesDataBase">
         <form onSubmit={handleSubmit} className="movieDataBase__form">
           <h2 className="movieDataBase__title">Search Engine</h2>

@@ -66,12 +66,13 @@ function ShowDataInfo({ datas }) {
           {arrowShow && (
             <p onClick={handleMoreInfo}>
               <i
-                className="fas fa-angle-double-down"
+                className="fas fa-angle-double-down fa-lg showData__arrowDown"
                 style={{
                   margin: "0 auto",
                   cursor: "pointer",
                   display: "block",
                   width: "20px",
+                  textAlign:'center'
                 }}
               ></i>
             </p>
@@ -108,7 +109,8 @@ function ShowDataInfo({ datas }) {
                     style={{
                       width: "20px",
                       height: "20px",
-                      paddingLeft: "10px",
+                      paddingLeft: "7px",
+                      paddingBottom:'3px'
                     }}
                     alt="prohibit sign"
                   />
