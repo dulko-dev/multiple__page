@@ -5,7 +5,7 @@ function KeyPad({ handleNumber, state }) {
     <>
       <div className="financialCalc__calc__1st">
         <button
-          value="Escape"
+          value="AC"
           className="calc__grey"
           onClick={(e) => handleNumber(e.target.value)}
           style={{ backgroundColor: `${state.ac}` }}
@@ -13,9 +13,10 @@ function KeyPad({ handleNumber, state }) {
           AC
         </button>
         <button
+         
           value="Backspace"
           className="calc__grey"
-          onClick={(e) => handleNumber(e.target.value)}
+          onClick={(e) => handleNumber(e.currentTarget.value)}
           style={{ backgroundColor: `${state.backArrow}` }}
         >
           <i className="fas fa-long-arrow-alt-left"></i>

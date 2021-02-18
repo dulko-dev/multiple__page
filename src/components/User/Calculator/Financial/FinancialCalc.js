@@ -28,12 +28,13 @@ function FinancialCalc() {
     multiple: "",
   });
 
+  console.log(operations);
   const handleNumber = (keypad) => {
     if (keypad === "Enter") {
       calculate();
     } else if (keypad === "Backspace") {
       backspace();
-    } else if (keypad === "Escape") {
+    } else if (keypad === "AC") {
       reset();
     } else if (keypad === "CE") {
       clearOperations();
@@ -42,6 +43,7 @@ function FinancialCalc() {
     } else {
       setOperations(operations + keypad);
     }
+    console.log(keypad);
   };
 
   const pressKey = (e) => {
@@ -56,7 +58,6 @@ function FinancialCalc() {
     setOperations(operations / 100);
   };
 
-  console.log(operations);
   /* eslint no-eval: 0 */
 
   const calculate = () => {
@@ -70,9 +71,9 @@ function FinancialCalc() {
   };
 
   const reset = () => {
-    setOperations("");
     setResult([]);
   };
+
   const backspace = () => {
     if (operations === "") return;
     setOperations(operations.slice(0, -1));
@@ -93,6 +94,7 @@ function FinancialCalc() {
           setOperations={setOperations}
           pressKey={pressKey}
           setState={setState}
+          handleNumber={handleNumber}
         />
         <KeyPad handleNumber={handleNumber} state={state} />
       </div>

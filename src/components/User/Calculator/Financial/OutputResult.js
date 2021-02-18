@@ -7,12 +7,12 @@ function OutputResult({
   setOperations,
   pressKey,
   setState,
+  handleNumber,
 }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageNumbersArray, setPageNumbersArray] = useState("");
   const [numberPerPage] = useState(1);
 
-  console.log(pageNumbersArray);
   const refInput = useRef(null);
 
   useEffect(() => {
@@ -186,7 +186,6 @@ function OutputResult({
       </div>
       <input
         ref={refInput}
-        type="text"
         className="outPutResult__screen outPutResult__screen__common"
         onChange={(e) => setOperations(e.target.value)}
         value={operations}
