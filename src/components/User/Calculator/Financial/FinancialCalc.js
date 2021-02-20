@@ -5,6 +5,7 @@ import OutputResult from "./OutputResult";
 function FinancialCalc() {
   const [result, setResult] = useState([]);
   const [operations, setOperations] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
   const [state, setState] = useState({
     one: "",
     two: "",
@@ -28,7 +29,6 @@ function FinancialCalc() {
     multiple: "",
   });
 
-  console.log(operations);
   const handleNumber = (keypad) => {
     if (keypad === "Enter") {
       calculate();
@@ -36,6 +36,7 @@ function FinancialCalc() {
       backspace();
     } else if (keypad === "AC") {
       reset();
+      setCurrentPage(1);
     } else if (keypad === "CE") {
       clearOperations();
     } else if (keypad === "%") {
@@ -43,7 +44,6 @@ function FinancialCalc() {
     } else {
       setOperations(operations + keypad);
     }
-    console.log(keypad);
   };
 
   const pressKey = (e) => {
@@ -55,8 +55,9 @@ function FinancialCalc() {
   };
 
   const percentage = () => {
-    setOperations(operations / 100);
+    setOperations((operations / 100).toString());
   };
+
 
   /* eslint no-eval: 0 */
 
@@ -95,6 +96,8 @@ function FinancialCalc() {
           pressKey={pressKey}
           setState={setState}
           handleNumber={handleNumber}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
         />
         <KeyPad handleNumber={handleNumber} state={state} />
       </div>

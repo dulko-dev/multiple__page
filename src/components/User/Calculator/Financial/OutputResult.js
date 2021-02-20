@@ -1,3 +1,4 @@
+import { SyncDisabled } from "@material-ui/icons";
 import React, { useEffect, useRef, useState } from "react";
 import Pagination from "./Pagination";
 
@@ -7,9 +8,10 @@ function OutputResult({
   setOperations,
   pressKey,
   setState,
-  handleNumber,
+  currentPage,
+  setCurrentPage
 }) {
-  const [currentPage, setCurrentPage] = useState(1);
+ 
   const [pageNumbersArray, setPageNumbersArray] = useState("");
   const [numberPerPage] = useState(1);
 
