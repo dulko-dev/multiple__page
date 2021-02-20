@@ -9,6 +9,7 @@ function Calorie({ resultCalorie, setResultCalorie }) {
     checkedFemale: false,
     checkedMale: false,
   });
+  const [error, setError] = useState(false);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -26,20 +27,27 @@ function Calorie({ resultCalorie, setResultCalorie }) {
       state.weight === "" ||
       state.select === "" ||
       (state.checkedFemale === false && state.checkedMale === false)
-    )
+    ) {
+      setError(true);
       return;
+    } else {
+      let result = 0;
+      if (state.checkedFemale) {
+        result =
+          665.1 +
+          9.563 * state.weight +
+          1.85 * state.height -
+          4.676 * state.age;
+      } else if (state.checkedMale) {
+        result =
+          66.47 +
+          13.75 * state.weight +
+          5.003 * state.height -
+          6.755 * state.age;
+      }
 
-    let result = 0;
-    if (state.checkedFemale) {
-      result =
-        665.1 + 9.563 * state.weight + 1.85 * state.height - 4.676 * state.age;
-    } else if (state.checkedMale) {
-      result =
-        66.47 + 13.75 * state.weight + 5.003 * state.height - 6.755 * state.age;
+      setResultCalorie((result * state.select).toFixed(1));
     }
-
-    setResultCalorie((result * state.select).toFixed(1));
-
     setState({
       age: "",
       height: "",
@@ -48,6 +56,7 @@ function Calorie({ resultCalorie, setResultCalorie }) {
       checkedFemale: false,
       checkedMale: false,
     });
+    setError(false);
   };
 
   const handleClear = () => {
@@ -59,6 +68,7 @@ function Calorie({ resultCalorie, setResultCalorie }) {
       checkedMale: false,
     });
     setResultCalorie("");
+    setError(false);
   };
 
   let mildLossPerentage = resultCalorie * 0.1;
@@ -159,12 +169,14 @@ function Calorie({ resultCalorie, setResultCalorie }) {
         </label>
         <div className="calorie__button">
           <button type="submit">Calculate</button>
-          <button onClick={handleClear}>Clear</button>
+          <button type="button" onClick={handleClear}>
+            Clear
+          </button>
         </div>
       </form>
       <div className="calorie__result">
         <p>
-          Maintain weight: <span>{resultCalorie} [kcal] </span>
+          Maintain weight: <span>{resultCalorie * 1} [kcal] </span>
         </p>
         <p>
           Mild weight loss:
@@ -173,7 +185,6 @@ function Calorie({ resultCalorie, setResultCalorie }) {
         <p>
           Weight loss:
           <span>
-            {" "}
             {(resultCalorie - normalLossPercentage).toFixed(1)} [kcal]
           </span>
         </p>
@@ -182,6 +193,18 @@ function Calorie({ resultCalorie, setResultCalorie }) {
           <span> {(resultCalorie - highLossPercentage).toFixed(1)} [kcal]</span>
         </p>
       </div>
+      {error && (
+        <p
+          style={{
+            color: "rgb(255, 73, 92)",
+            fontWeight: "600",
+            textAlign: "center",
+            paddingTop: "10px",
+          }}
+        >
+          Error: complete the blank
+        </p>
+      )}
     </div>
   );
 }

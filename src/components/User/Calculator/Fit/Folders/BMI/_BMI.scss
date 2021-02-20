@@ -68,12 +68,10 @@
     }
   }
   .BMI__result {
-    p {
-      padding-top: 5px;
-      span {
-        font-weight: 600;
-        font-size: 1.5em;
-      }
+    padding-top: 5px;
+    span {
+      font-weight: 600;
+      font-size: 1.5em;
     }
   }
   .BMI__bar {
@@ -121,10 +119,12 @@
   .BMI__bar__class {
     position: relative;
     span {
-      font-size: 0.8em;
-      padding-right: 3px;
+      font-size: 0.6em;
+      display: inline-block;
+      text-align: center;
       &:nth-child(1) {
         color: #f45b69;
+        width: 100px;
       }
       &:nth-child(1)::after {
         content: "";
@@ -136,6 +136,7 @@
         background: #f45b69;
       }
       &:nth-child(2) {
+        width: 45px;
         color: #48ad72;
       }
       &:nth-child(2):after {
@@ -149,6 +150,8 @@
       }
       &:nth-child(3) {
         color: #f58a07;
+        width: 45px;
+        text-align: left;
       }
       &:nth-child(3):after {
         content: "";
@@ -161,15 +164,8 @@
       }
       &:nth-child(4) {
         color: #95190c;
-      }
-      &:nth-child(4):after {
-        content: "";
-        position: absolute;
-        top: -30px;
-        left: 180px;
-        height: 30px;
-        width: 1px;
-        background: #95190c;
+        width: 40px;
+        text-align: right;
       }
     }
   }

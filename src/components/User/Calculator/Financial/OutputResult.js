@@ -1,4 +1,3 @@
-import { SyncDisabled } from "@material-ui/icons";
 import React, { useEffect, useRef, useState } from "react";
 import Pagination from "./Pagination";
 

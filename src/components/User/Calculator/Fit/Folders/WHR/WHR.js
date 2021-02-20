@@ -7,6 +7,7 @@ function WHR({ resultWHR, setResultWHR }) {
     checkedFemale: false,
     checkedMale: false,
   });
+  const [error, setError] = useState(false);
 
   let shapeInfo;
   switch (true) {
@@ -49,17 +50,21 @@ function WHR({ resultWHR, setResultWHR }) {
       state.waist === "" ||
       state.hip === "" ||
       (state.checkedFemale === false && state.checkedMale === false)
-    )
+    ) {
+      setError(true);
       return;
-
-    let result = state.waist / state.hip;
-    setResultWHR(result.toFixed(2));
-    setState((prev) => ({ ...prev, waist: "", hip: "" }));
+    } else {
+      let result = state.waist / state.hip;
+      setResultWHR(result.toFixed(2));
+      setState((prev) => ({ ...prev, waist: "", hip: "" }));
+      setError(false);
+    }
   };
 
   const clearInput = () => {
     setState({ waist: "", hip: "", checkedFemale: false, checkedMale: false });
     setResultWHR("");
+    setError(false);
   };
 
   const lowRisk =
@@ -163,7 +168,9 @@ function WHR({ resultWHR, setResultWHR }) {
         </label>
         <div className="WHR__button">
           <button type="submit">Calculate</button>
-          <button onClick={clearInput}>Clear</button>
+          <button type="button" onClick={clearInput}>
+            Clear
+          </button>
         </div>
       </form>
       <div className="WHR__result">
@@ -174,7 +181,6 @@ function WHR({ resultWHR, setResultWHR }) {
           </p>
         </div>
         <div className="WHR__result__right">
-          
           {state.checkedFemale && (
             <table>
               <thead>
@@ -244,6 +250,18 @@ function WHR({ resultWHR, setResultWHR }) {
         </div>
       </div>
       <p className="WHR__result__text">{shapeInfo}</p>
+      {error && (
+        <p
+          style={{
+            color: "rgb(255, 73, 92)",
+            fontWeight: "600",
+            textAlign: "center",
+            paddingTop: "10px",
+          }}
+        >
+          Error: complete the blank
+        </p>
+      )}
     </div>
   );
 }

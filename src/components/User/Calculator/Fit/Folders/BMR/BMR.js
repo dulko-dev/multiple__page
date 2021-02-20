@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function BMR({resultBMR, setResultBMR}) {
+function BMR({ resultBMR, setResultBMR }) {
   const [state, setState] = useState({
     age: "",
     height: "",
@@ -8,6 +8,7 @@ function BMR({resultBMR, setResultBMR}) {
     checkedFemale: false,
     checkedMale: false,
   });
+  const [error, setError] = useState(false);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -24,26 +25,34 @@ function BMR({resultBMR, setResultBMR}) {
       state.height === "" ||
       state.weight === "" ||
       (state.checkedFemale === false && state.checkedMale === false)
-    )
+    ) {
+      setError(true);
       return;
-
-    let result = 0;
-    if (state.checkedFemale) {
-      result =
-        665.1 + 9.563 * state.weight + 1.85 * state.height - 4.676 * state.age;
-    } else if (state.checkedMale) {
-      result =
-        66.47 + 13.75 * state.weight + 5.003 * state.height - 6.755 * state.age;
+    } else {
+      let result = 0;
+      if (state.checkedFemale) {
+        result =
+          665.1 +
+          9.563 * state.weight +
+          1.85 * state.height -
+          4.676 * state.age;
+      } else if (state.checkedMale) {
+        result =
+          66.47 +
+          13.75 * state.weight +
+          5.003 * state.height -
+          6.755 * state.age;
+      }
+      setResultBMR(result.toFixed(1));
+      setState({
+        age: "",
+        height: "",
+        weight: "",
+        checkedFemale: false,
+        checkedMale: false,
+      });
+      setError(false);
     }
-
-    setResultBMR(result.toFixed(1));
-    setState({
-      age: "",
-      height: "",
-      weight: "",
-      checkedFemale: false,
-      checkedMale: false,
-    });
   };
 
   const handleClear = () => {
@@ -55,6 +64,7 @@ function BMR({resultBMR, setResultBMR}) {
       checkedMale: false,
     });
     setResultBMR("");
+    setError(false);
   };
 
   return (
@@ -66,6 +76,7 @@ function BMR({resultBMR, setResultBMR}) {
           type="radio"
           value="female"
           id="female"
+          name="gender"
           onChange={() =>
             setState((prev) => ({
               ...prev,
@@ -127,12 +138,26 @@ function BMR({resultBMR, setResultBMR}) {
         </label>
         <div className="BMR__button">
           <button type="submit">Calculate</button>
-          <button onClick={handleClear}>Clear</button>
+          <button type="button" onClick={handleClear}>
+            Clear
+          </button>
         </div>
       </form>
       <div className="BMR__result">
-        Result:<span>{resultBMR} kcal </span>
+        Result:<span>{resultBMR} [kcal] </span>
       </div>
+      {error && (
+        <p
+          style={{
+            color: "rgb(255, 73, 92)",
+            fontWeight: "600",
+            textAlign: "center",
+            paddingTop: "10px",
+          }}
+        >
+          Error: complete the blank
+        </p>
+      )}
     </div>
   );
 }

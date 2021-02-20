@@ -7,6 +7,7 @@ function YMCA({ resultYMCA, setResultYMCA }) {
     checkedFemale: false,
     checkedMale: false,
   });
+  const [error, setError] = useState(false);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -44,43 +45,47 @@ function YMCA({ resultYMCA, setResultYMCA }) {
       state.waist === "" ||
       state.weight === "" ||
       (state.checkedFemale === false && state.checkedMale === false)
-    )
+    ) {
+      setError(true);
       return;
-
-    let result = 0;
-    let fatMass = 0;
-    let leanMass = 0;
-
-    if (state.checkedFemale) {
-      result =
-        (-76.76 + 4.15 * state.waist - (0.082 * state.weight) / state.weight) /
-        10;
-      fatMass = (result / 100) * state.weight;
-      leanMass = state.weight - fatMass;
-    } else if (state.checkedMale) {
-      result =
-        (-98.42 + 4.15 * state.waist - (0.082 * state.weight) / state.weight) /
-        10;
-      fatMass = (result / 100) * state.weight;
-      leanMass = state.weight - fatMass;
     } else {
-      console.log("slaps on your face");
+      let result = 0;
+      let fatMass = 0;
+      let leanMass = 0;
+
+      if (state.checkedFemale) {
+        result =
+          (-76.76 +
+            4.15 * state.waist -
+            (0.082 * state.weight) / state.weight) /
+          10;
+        fatMass = (result / 100) * state.weight;
+        leanMass = state.weight - fatMass;
+      } else if (state.checkedMale) {
+        result =
+          (-98.42 +
+            4.15 * state.waist -
+            (0.082 * state.weight) / state.weight) /
+          10;
+        fatMass = (result / 100) * state.weight;
+        leanMass = state.weight - fatMass;
+      }
+
+      setResultYMCA({
+        result: result.toFixed(2),
+        fatMass: fatMass.toFixed(2),
+        leanMass: leanMass.toFixed(2),
+      });
+
+      setState({
+        waist: "",
+        weight: "",
+        checkedFemale: false,
+        checkedMale: false,
+      });
+      setError(false);
     }
-
-    setResultYMCA({
-      result: result.toFixed(2),
-      fatMass: fatMass.toFixed(2),
-      leanMass: leanMass.toFixed(2),
-    });
-
-    setState({
-      waist: "",
-      weight: "",
-      checkedFemale: false,
-      checkedMale: false,
-    });
   };
-
 
   const handleClear = () => {
     setState({
@@ -89,9 +94,8 @@ function YMCA({ resultYMCA, setResultYMCA }) {
       checkedFemale: false,
       checkedMale: false,
     });
-
+    setError(false);
     setResultYMCA({ result: "", fatMass: "", leanMass: "" });
-
   };
 
   return (
@@ -155,23 +159,37 @@ function YMCA({ resultYMCA, setResultYMCA }) {
         </label>
         <div className="YMCA__button">
           <button type="submit">Calculate</button>
-          <button onClick={handleClear}>Clear</button>
+          <button type="button" onClick={handleClear}>
+            Clear
+          </button>
         </div>
       </form>
       <div className="YMCA__result">
         <p>
-          Body Fat:<span>{resultYMCA.result + "%"}</span>
+          Body Fat:<span>{resultYMCA.result}[%]</span>
         </p>
         <p>
-          Fat Mass:<span>{resultYMCA.fatMass + "kg"}</span>
+          Fat Mass:<span>{resultYMCA.fatMass}[kg]</span>
         </p>
         <p>
-          Lean Mass:<span>{resultYMCA.leanMass + "kg"}</span>
+          Lean Mass:<span>{resultYMCA.leanMass}[kg]</span>
         </p>
         <p>
           Body Fat Category:<span> {infoCategory} </span>
         </p>
       </div>
+      {error && (
+        <p
+          style={{
+            color: "rgb(255, 73, 92)",
+            fontWeight: "600",
+            textAlign: "center",
+            paddingTop: "10px",
+          }}
+        >
+          Error: complete the blank
+        </p>
+      )}
     </div>
   );
 }

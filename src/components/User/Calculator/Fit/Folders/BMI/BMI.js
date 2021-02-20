@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 
-function BMI({resultBMI, setResultBMI}) {
+function BMI({ resultBMI, setResultBMI }) {
   const [state, setState] = useState({
     age: "",
     height: "",
     weight: "",
-    gender: "",
+    checkedFemale: false,
+    checkedMale: false,
   });
+  const [error, setError] = useState(false);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -18,18 +20,41 @@ function BMI({resultBMI, setResultBMI}) {
 
   const handlCalculate = (e) => {
     e.preventDefault();
-    if (state.age === "" || state.height === "" || state.weight === "") return;
-    let result = (state.weight / Math.pow(state.height, 2)) * 10000;
-    setResultBMI(result.toFixed(1));
-  
-    setState({ age: "", height: "", weight: "", gender: "" });
+    if (
+      state.age === "" ||
+      state.height === "" ||
+      state.weight === "" ||
+      (state.checkedFemale === false && state.checkedMale === false)
+    ) {
+      setError(true);
+      return;
+    } else {
+      let result = 0;
+      result = (state.weight / Math.pow(state.height, 2)) * 10000;
+      setResultBMI(result.toFixed(1));
+      setError(false);
+    }
+
+    setState({
+      age: "",
+      height: "",
+      weight: "",
+      checkedFemale: false,
+      checkedMale: false,
+    });
   };
 
   const handleClear = () => {
-    setState({ age: "", height: "", weight: "", gender: "" });
+    setState({
+      age: "",
+      height: "",
+      weight: "",
+      checkedFemale: false,
+      checkedMale: false,
+    });
     setResultBMI("");
+    setError(false);
   };
-
 
   const colorOfBackground =
     resultBMI <= 16
@@ -53,8 +78,14 @@ function BMI({resultBMI, setResultBMI}) {
           type="radio"
           value="female"
           id="female"
-          name="gender"
-          onChange={handleInput}
+          onChange={() =>
+            setState((prev) => ({
+              ...prev,
+              checkedFemale: true,
+              checkedMale: false,
+            }))
+          }
+          checked={state.checkedFemale}
         />
         <label htmlFor="female" className="BMI__gender">
           Female
@@ -63,8 +94,14 @@ function BMI({resultBMI, setResultBMI}) {
           type="radio"
           value="male"
           id="male"
-          name="gender"
-          onChange={handleInput}
+          onChange={() =>
+            setState((prev) => ({
+              ...prev,
+              checkedFemale: false,
+              checkedMale: true,
+            }))
+          }
+          checked={state.checkedMale}
         />
         <label htmlFor="male" className="BMI__gender">
           Male
@@ -101,21 +138,18 @@ function BMI({resultBMI, setResultBMI}) {
         </label>
         <div className="BMI__button">
           <button type="submit">Calculate</button>
-          <button onClick={handleClear}>Clear</button>
+          <button type='button' onClick={handleClear}>Clear</button>
         </div>
       </form>
       <div className="BMI__result">
-        <h3>Result</h3>
-        <p>
-          BMI = <span>{resultBMI}kg/m2</span>
-        </p>
+        Result: <span>{resultBMI}[kg/m2]</span>
       </div>
 
       <>
         <div className="BMI__bar">
           <span
             className={`${colorOfBackground}`}
-            style={{ width: `${resultBMI * 2.5}%`}}
+            style={{ width: `${resultBMI * 2.5}%` }}
           ></span>
         </div>
         <div className="BMI__bar__class">
@@ -124,6 +158,18 @@ function BMI({resultBMI, setResultBMI}) {
           <span>Overweight</span>
           <span>Obesity</span>
         </div>
+        {error && (
+          <p
+            style={{
+              color: "rgb(255, 73, 92)",
+              fontWeight: "600",
+              textAlign: "center",
+              paddingTop: "10px",
+            }}
+          >
+            Error: complete the blank
+          </p>
+        )}
       </>
     </div>
   );
