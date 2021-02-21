@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { db } from "../../Firebase/firebaseConfig";
 
-function TodosElement({ element, setTodos, todos, text }) {
+function TodosElement({ element, text }) {
   const [isEdit, setIsEdit] = useState(false);
   const [inputField, setInputField] = useState("");
+  const inputRef = useRef();
 
   const deleteHandler = async () => {
     await db
@@ -19,6 +20,10 @@ function TodosElement({ element, setTodos, todos, text }) {
       completed: !element.completed,
     });
   };
+
+  useEffect(() => {
+    inputRef.current && inputRef.current.focus();
+  }, [isEdit]);
 
   const openInputHandler = () => {
     setIsEdit(true);
@@ -49,6 +54,7 @@ function TodosElement({ element, setTodos, todos, text }) {
         {isEdit ? (
           <div>
             <input
+              ref={inputRef}
               style={{
                 backgroundColor: "inherit",
                 borderBottom: "1px solid white",

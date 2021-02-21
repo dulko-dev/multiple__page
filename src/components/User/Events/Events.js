@@ -32,12 +32,12 @@ function Events() {
           }}
         />
         <div className="events__boxes">
-          <Link to="/events/news" style={{ width: "200px" }}>
+          <Link to="/events/news" style={{ width: "200px", outline: "none" }}>
             <div className="events__news" data-tip="current news from world">
               <img src={news} className="events__newsImg" alt="news" />
             </div>
           </Link>
-          <Link to="/events/sport" style={{ width: "200px" }}>
+          <Link to="/events/sport" style={{ width: "200px", outline: "none" }}>
             <div
               className="events__sport"
               data-tip="results from football and basketball"

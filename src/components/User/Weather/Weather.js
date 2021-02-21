@@ -127,7 +127,6 @@ function Weather() {
     setData((prev) => ({ ...prev, cityName: e.target.value }));
   };
 
-  console.log(suggest);
   const handleSubmit = (e) => {
     e.preventDefault();
     getInfo();
@@ -140,7 +139,6 @@ function Weather() {
     setSuggest([]);
   };
 
-  console.log(suggest);
   return (
     <>
       <UserNav />

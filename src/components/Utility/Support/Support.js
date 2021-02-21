@@ -58,11 +58,12 @@ function Support() {
           {isSend && (
             <p
               style={{
+                position: "fixed",
+                left: "50%",
+                transform: "translateX(-50%)",
+                top: "70px",
                 color: "green",
                 fontSize: "2.5em",
-                position: "absolute",
-                left: "0",
-                top: "0",
               }}
             >
               Your message has been sent successful
@@ -71,13 +72,12 @@ function Support() {
           {error && (
             <p
               style={{
-                color: "red",
-                fontSize: "2.5em",
-                position: "absolute",
-                paddingTop: "20px",
+                position: "fixed",
                 left: "50%",
                 transform: "translateX(-50%)",
-                top: "0",
+                top: "70px",
+                color: "red",
+                fontSize: "2.5em",
               }}
             >
               There is some problem with server. Please try again latter

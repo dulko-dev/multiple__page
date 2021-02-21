@@ -6,7 +6,6 @@ function ShowDataInfo({ datas }) {
   const [textShow, setTextShow] = useState(false);
   const [arrowShow, setArrowShow] = useState(true);
   const [dataId, setDataId] = useState("");
-  console.log(dataId);
 
   const handleMoreInfo = () => {
     setTextShow(true);
@@ -72,7 +71,7 @@ function ShowDataInfo({ datas }) {
                   cursor: "pointer",
                   display: "block",
                   width: "20px",
-                  textAlign:'center'
+                  textAlign: "center",
                 }}
               ></i>
             </p>
@@ -110,7 +109,7 @@ function ShowDataInfo({ datas }) {
                       width: "20px",
                       height: "20px",
                       paddingLeft: "7px",
-                      paddingBottom:'3px'
+                      paddingBottom: "3px",
                     }}
                     alt="prohibit sign"
                   />

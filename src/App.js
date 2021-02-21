@@ -21,8 +21,6 @@ export default function App() {
   const [user] = value;
   const loaded = czoko;
 
-  console.log(loaded);
-
   return (
     <Router>
       <Switch>

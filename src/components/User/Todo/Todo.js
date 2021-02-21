@@ -20,9 +20,6 @@ const Todo = () => {
   //   getLocalStorage();
   // }, []);
 
-  console.log(fire.auth());
-  console.log(todos);
-
   useEffect(() => {
     filteredHandler();
     // saveLocalStorage();
