@@ -143,7 +143,7 @@ function Weather() {
     <>
       <UserNav />
       <div className="weather">
-        <img alt='background'
+        <img alt='background' loading='lazy'
           src={bg}
           atl="weather"
           style={{

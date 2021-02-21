@@ -11,7 +11,9 @@ function Applications() {
   return (
     <>
       <div className="applications">
-        <img alt='background'
+        <img
+          alt="background"
+          loading="lazy"
           src={bg}
           style={{
             position: "fixed",

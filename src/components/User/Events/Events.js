@@ -19,7 +19,7 @@ function Events() {
       />
       <UserNav />
       <div className="events">
-        <img
+        <img loading='lazy'
           alt="background"
           src={bg}
           style={{

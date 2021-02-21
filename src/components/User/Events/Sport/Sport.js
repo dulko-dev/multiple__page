@@ -43,7 +43,7 @@ function Sport() {
   return (
     <>
       <UserNav />
-      <img
+      <img loading='lazy'
         src={bg}
         alt="background"
         style={{

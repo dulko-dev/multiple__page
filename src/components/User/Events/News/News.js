@@ -45,7 +45,7 @@ function News() {
     <>
       <UserNav />
       <div className="news">
-        <img
+        <img loading='lazy'
           alt="newspaper"
           src={bg}
           style={{

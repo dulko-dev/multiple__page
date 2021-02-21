@@ -14,7 +14,9 @@ export default function Welcome() {
     <User />
   ) : (
     <div className="welcome">
-      <img alt='background'
+      <img
+        loading="lazy"
+        alt="background"
         src={bg}
         style={{
           position: "fixed",

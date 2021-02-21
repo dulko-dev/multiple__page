@@ -89,7 +89,7 @@ function MoviesDataBase() {
   return (
     <>
       <UserNav />
-      <img
+      <img loading='lazy'
         alt="background"
         src={bg}
         style={{
