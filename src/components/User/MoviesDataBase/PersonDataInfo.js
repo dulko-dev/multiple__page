@@ -40,7 +40,7 @@ function PersonDataInfo({ datas, input }) {
         known for:
         {datas.known_for.map((movie) => (
           <span key={movie.id} style={{ color: "#d5ac4e", paddingLeft: "5px" }}>
-            {movie.title} 
+            {movie.title}
           </span>
         ))}
       </p>
