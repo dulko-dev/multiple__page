@@ -1,5 +1,5 @@
 //library
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //components
 import Welcome from "./components/Welcome/Welcome";
@@ -21,30 +21,7 @@ export default function App() {
   const [user] = value;
   const loaded = czoko;
 
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    let timeEffect = setTimeout(() => {
-      setIsLoading(false);
-    }, 700);
-
-    return () => clearTimeout(timeEffect);
-  }, []);
-
-  return isLoading ? (
-    <div
-      style={{
-        position: "fixed",
-        width: "100%",
-        height: "100%",
-        left: "0",
-        bottom: "0",
-        backgroundColor: "rgba(34, 34, 34, 0.8)",
-      }}
-    >
-      <div className="loader"></div>
-    </div>
-  ) : (
+  return (
     <Router>
       <Switch>
         <Route exact path="/" component={Welcome} />

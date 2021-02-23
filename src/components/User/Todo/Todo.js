@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, Suspense } from "react";
 import Form from "./Form";
 import TodoList from "./TodoList";
-import UserNav from "../UserNav";
 import { db } from "../../Firebase/firebaseConfig";
 import { AuthContext } from "../../Firebase/Auth";
 import fire from "../../Firebase/firebaseConfig";
 import bg from "../../../assets/todo-background.jpg";
+const UserNav = React.lazy(() => import("../UserNav"));
 
 const Todo = () => {
   const [inputText, setInputText] = useState("");
@@ -69,9 +69,13 @@ const Todo = () => {
 
   return (
     <>
-      <UserNav />
+      <Suspense fallback={<div>...loading page</div>}>
+        <UserNav />
+      </Suspense>
       <div className="todo">
-        <img alt='background' loading='lazy'
+        <img
+          alt="background"
+          loading="lazy"
           src={bg}
           style={{
             position: "fixed",

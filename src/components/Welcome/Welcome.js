@@ -5,6 +5,7 @@ import User from "../User/User";
 import login from "../../assets/login.png";
 import plus from "../../assets/add.png";
 import bg from "../../assets/fog-city2.jpg";
+import bgWeb from "../../assets/fog-city2.webp";
 
 export default function Welcome() {
   const { czoko } = useContext(AuthContext);
@@ -14,19 +15,21 @@ export default function Welcome() {
     <User />
   ) : (
     <div className="welcome">
-      <img
-        loading="lazy"
-        alt="background"
-        src={bg}
-        style={{
-          position: "fixed",
-          width: "100%",
-          height: "100%",
-          left: "0",
-          bottom: "0",
-          zIndex: "-1",
-        }}
-      />
+      <picture>
+        <source srcSet={bgWeb} type="image/webp" />
+        <img
+          src={bg}
+          alt="background"
+          style={{
+            position: "fixed",
+            width: "100%",
+            height: "100%",
+            left: "0",
+            bottom: "0",
+            zIndex: "-1",
+          }}
+        />
+      </picture>
       <h1>Welcome your Dashboard</h1>
       <div className="welcome__icons">
         <NavLink
