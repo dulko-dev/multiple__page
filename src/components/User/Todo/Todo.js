@@ -5,7 +5,9 @@ import { db } from "../../Firebase/firebaseConfig";
 import { AuthContext } from "../../Firebase/Auth";
 import fire from "../../Firebase/firebaseConfig";
 import bg from "../../../assets/todo-background.jpg";
+import bgWeb from '../../../assets/todo-background.webp'
 const UserNav = React.lazy(() => import("../UserNav"));
+
 
 const Todo = () => {
   const [inputText, setInputText] = useState("");
@@ -73,6 +75,21 @@ const Todo = () => {
         <UserNav />
       </Suspense>
       <div className="todo">
+      <picture>
+        <source srcSet={bgWeb} type="image/webp" />
+        <img
+          src={bg}
+          alt="background"
+          style={{
+            position: "fixed",
+            width: "100%",
+            height: "100%",
+            left: "0",
+            bottom: "0",
+            zIndex: "-1",
+          }}
+        />
+      </picture>
         <img
           alt="background"
           loading="lazy"
