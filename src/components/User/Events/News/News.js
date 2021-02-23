@@ -3,6 +3,7 @@ import UserNav from "../../UserNav";
 import Articles from "./Articles";
 import loadingPage from "../../../../assets/loading-gif.gif";
 import bg from "../../../../assets/news-bg.jpg";
+import bgWebp from "../../../../assets/webP/news-bg.webp";
 
 function News() {
   const [news, setNews] = useState([]);
@@ -45,9 +46,12 @@ function News() {
     <>
       <UserNav />
       <div className="news">
-        <img loading='lazy'
-          alt="newspaper"
+      <picture>
+        <source srcSet={bgWebp} type="image/webp" />
+        <source srcSet={bg} type="images/jpg" />
+        <img
           src={bg}
+          alt="background"
           style={{
             position: "fixed",
             width: "100%",
@@ -55,9 +59,9 @@ function News() {
             left: "0",
             bottom: "0",
             zIndex: "-1",
-            opacity: "0.2",
           }}
         />
+      </picture>
         <h2>Most popular daily article</h2>
         {waiting ? (
           <div

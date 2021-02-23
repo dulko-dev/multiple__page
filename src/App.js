@@ -1,20 +1,25 @@
 //library
-import React, { useContext } from "react";
+import React, { lazy, useContext, Suspense } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-//components
-import Welcome from "./components/Welcome/Welcome";
-import Login from "./components/Login/Login";
-import Register from "./components/Register/Register";
-import TODO from "./components/User/Todo/Todo";
-import Calculator from "./components/User/Calculator/Calculator";
-import MoviesDataBase from "./components/User/MoviesDataBase/MoviesDataBase";
-import Events from "./components/User/Events/Events";
-import Weather from "./components/User/Weather/Weather";
-import News from "./components/User/Events/News/News";
-import Sport from "./components/User/Events/Sport/Sport";
 //utility
 import { AuthContext } from "./components/Firebase/Auth";
 import PrivateRoute from "./PrivateRoute";
+
+const Welcome = lazy(() => import("./components/Welcome/Welcome"));
+const TODO = lazy(() => import("./components/User/Todo/Todo"));
+const Login = lazy(() => import("./components/Login/Login"));
+const Register = lazy(() => import("./components/Register/Register"));
+const Calculator = lazy(() =>
+  import("./components/User/Calculator/Calculator")
+);
+const MoviesDataBase = lazy(() =>
+  import("./components/User/MoviesDataBase/MoviesDataBase")
+);
+const Events = lazy(() => import("./components/User/Events/Events"));
+const Weather = lazy(() => import("./components/User/Weather/Weather"));
+const News = lazy(() => import("./components/User/Events/News/News"));
+const Sport = lazy(() => import("./components/User/Events/Sport/Sport"));
+const loading = () => <div className="loader"></div>;
 
 export default function App() {
   const { value, czoko } = useContext(AuthContext);
@@ -24,30 +29,41 @@ export default function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={Welcome} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
+        <Suspense fallback={loading()}>
+          <Route exact path="/" component={Welcome} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
 
-        {!loaded && (
-          <>
-            <PrivateRoute path="/to-do-list" user={user} component={TODO} />
+          {!loaded && (
+            <>
+              <PrivateRoute path="/to-do-list" user={user} component={TODO} />
 
-            <PrivateRoute
-              path="/calculator"
-              user={user}
-              component={Calculator}
-            />
-            <PrivateRoute
-              path="/movies"
-              user={user}
-              component={MoviesDataBase}
-            />
-            <PrivateRoute exact path="/events" user={user} component={Events} />
-            <PrivateRoute path="/events/news" user={user} component={News} />
-            <PrivateRoute path="/events/sport" user={user} component={Sport} />
-            <PrivateRoute path="/weather" user={user} component={Weather} />
-          </>
-        )}
+              <PrivateRoute
+                path="/calculator"
+                user={user}
+                component={Calculator}
+              />
+              <PrivateRoute
+                path="/movies"
+                user={user}
+                component={MoviesDataBase}
+              />
+              <PrivateRoute
+                exact
+                path="/events"
+                user={user}
+                component={Events}
+              />
+              <PrivateRoute path="/events/news" user={user} component={News} />
+              <PrivateRoute
+                path="/events/sport"
+                user={user}
+                component={Sport}
+              />
+              <PrivateRoute path="/weather" user={user} component={Weather} />
+            </>
+          )}
+        </Suspense>
       </Switch>
     </Router>
   );

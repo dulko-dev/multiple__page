@@ -4,6 +4,7 @@ import MovieDataInfo from "./MovieDataInfo";
 import PersonDataInfo from "./PersonDataInfo";
 import ShowDataInfo from "./ShowDataInfo";
 import bg from "../../../assets/cinema-bg.jpg";
+import bgWebp from "../../../assets/webP/cinema-bg.webp";
 
 function MoviesDataBase() {
   const [input, setInput] = useState("");
@@ -89,18 +90,22 @@ function MoviesDataBase() {
   return (
     <>
       <UserNav />
-      <img loading='lazy'
-        alt="background"
-        src={bg}
-        style={{
-          position: "fixed",
-          width: "100%",
-          height: "100%",
-          left: "0",
-          bottom: "0",
-          zIndex: "-1",
-        }}
-      />
+      <picture>
+        <source srcSet={bgWebp} type="image/webp" />
+        <source srcSet={bg} type="images/jpg" />
+        <img
+          src={bg}
+          alt="background"
+          style={{
+            position: "fixed",
+            width: "100%",
+            height: "100%",
+            left: "0",
+            bottom: "0",
+            zIndex: "-1",
+          }}
+        />
+      </picture>
       <div className="moviesDataBase">
         <form onSubmit={handleSubmit} className="movieDataBase__form">
           <h2 className="movieDataBase__title">Search Engine</h2>

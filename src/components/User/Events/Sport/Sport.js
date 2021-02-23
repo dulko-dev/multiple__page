@@ -4,6 +4,7 @@ import LastSchedule from "./LastSchedule";
 import { leagueInfo } from "./leagueInfo";
 import ButtonsLeague from "./ButtonsLeague";
 import bg from "../../../../assets/sport-bg.jpg";
+import bgWebp from "../../../../assets/webP/sport-bg.webp";
 import loadingBall from "../../../../assets/loading-ball.gif";
 
 function Sport() {
@@ -43,19 +44,22 @@ function Sport() {
   return (
     <>
       <UserNav />
-      <img loading='lazy'
-        src={bg}
-        alt="background"
-        style={{
-          position: "fixed",
-          width: "100%",
-          height: "100%",
-          left: "0",
-          bottom: "0",
-          zIndex: "-1",
-          opacity:'0.8'
-        }}
-      />
+      <picture>
+        <source srcSet={bgWebp} type="image/webp" />
+        <source srcSet={bg} type="images/jpg" />
+        <img
+          src={bg}
+          alt="background"
+          style={{
+            position: "fixed",
+            width: "100%",
+            height: "100%",
+            left: "0",
+            bottom: "0",
+            zIndex: "-1",
+          }}
+        />
+      </picture>
       <div className="sport">
         <div className="sport__buttons">
           <ButtonsLeague

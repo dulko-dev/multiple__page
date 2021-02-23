@@ -1,13 +1,12 @@
-import React, { useContext, useEffect, useState, Suspense } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Form from "./Form";
 import TodoList from "./TodoList";
+import UserNav from "../../User/UserNav";
 import { db } from "../../Firebase/firebaseConfig";
 import { AuthContext } from "../../Firebase/Auth";
 import fire from "../../Firebase/firebaseConfig";
 import bg from "../../../assets/todo-background.jpg";
-import bgWeb from '../../../assets/todo-background.webp'
-const UserNav = React.lazy(() => import("../UserNav"));
-
+import bgWeb from "../../../assets/webP/todo-background.webp";
 
 const Todo = () => {
   const [inputText, setInputText] = useState("");
@@ -71,38 +70,24 @@ const Todo = () => {
 
   return (
     <>
-      <Suspense fallback={<div>...loading page</div>}>
-        <UserNav />
-      </Suspense>
+      <UserNav />
       <div className="todo">
-      <picture>
-        <source srcSet={bgWeb} type="image/webp" />
-        <img
-          src={bg}
-          alt="background"
-          style={{
-            position: "fixed",
-            width: "100%",
-            height: "100%",
-            left: "0",
-            bottom: "0",
-            zIndex: "-1",
-          }}
-        />
-      </picture>
-        <img
-          alt="background"
-          loading="lazy"
-          src={bg}
-          style={{
-            position: "fixed",
-            width: "100%",
-            height: "100%",
-            left: "0",
-            bottom: "0",
-            zIndex: "-1",
-          }}
-        />
+        <picture>
+          <source srcSet={bgWeb} type="image/webp" />
+          <source srcSet={bg} type="image/jpg" />
+          <img
+            src={bg}
+            alt="background"
+            style={{
+              position: "fixed",
+              width: "100%",
+              height: "100%",
+              left: "0",
+              bottom: "0",
+              zIndex: "-1",
+            }}
+          />
+        </picture>
         <Form
           className="form"
           inputText={inputText}

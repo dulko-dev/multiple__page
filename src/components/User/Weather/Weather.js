@@ -5,6 +5,7 @@ import UserNav from "../UserNav";
 import WeatherInformation from "./WeatherInformation";
 import SearchIcon from "@material-ui/icons/Search";
 import bg from "../../../assets/weather-bg.jpg";
+import bgWebp from "../../../assets/webP/weather-bg.webp";
 
 const StyleField = withStyles({
   root: {
@@ -143,9 +144,12 @@ function Weather() {
     <>
       <UserNav />
       <div className="weather">
-        <img alt='background' loading='lazy'
+      <picture>
+        <source srcSet={bgWebp} type="image/webp" />
+        <source srcSet={bg} type="images/jpg" />
+        <img
           src={bg}
-          atl="weather"
+          alt="background"
           style={{
             position: "fixed",
             width: "100%",
@@ -155,6 +159,7 @@ function Weather() {
             zIndex: "-1",
           }}
         />
+      </picture>
         <div className="weather__form">
           <form onSubmit={handleSubmit}>
             <StyleField
