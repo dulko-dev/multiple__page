@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import User from "../User/User";
 import login from "../../assets/login.png";
 import plus from "../../assets/add.png";
 import bg from "../../assets/fog-city2.jpg";
 import bgWebp from "../../assets/webP/fog-city2.webp";
+import { AuthContext } from "../Firebase/Auth";
 
 export default function Welcome() {
-  const logIn = JSON.parse(localStorage.getItem("logIn"));
-  return logIn ? (
+  const { czoko } = useContext(AuthContext);
+  const loaded = czoko;
+
+  return !loaded ? (
     <User />
   ) : (
     <div className="welcome">

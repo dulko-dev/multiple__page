@@ -7,14 +7,17 @@ export const Auth = ({ children }) => {
   const [user, setUser] = useState("");
   const [loaded, setLoaded] = useState(true);
   const [userId, setUserId] = useState("");
+  const [logInUser, setLogInUser] = useState(
+    localStorage.getItem("logIn") === "true"
+  );
 
   useEffect(() => {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
         setUserId(user.uid);
         setUser(user.email);
-        localStorage.setItem("logIn", true);
         setLoaded(false);
+        setLogInUser(true);
       } else {
         setUser(null);
         setLoaded(true);
@@ -23,12 +26,17 @@ export const Auth = ({ children }) => {
     });
   }, [user]);
 
+  useEffect(() => {
+    localStorage.setItem("logIn", logInUser);
+  }, [logInUser]);
+
   return (
     <AuthContext.Provider
       value={{
         value: [user, setUser],
         czoko: loaded,
         userId: userId,
+        logInUser: logInUser,
       }}
     >
       {children}
