@@ -59,6 +59,7 @@ function News() {
             left: "0",
             bottom: "0",
             zIndex: "-1",
+            opacity:'0.3'
           }}
         />
       </picture>

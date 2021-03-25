@@ -8,16 +8,17 @@ export const Auth = ({ children }) => {
   const [loaded, setLoaded] = useState(true);
   const [userId, setUserId] = useState("");
 
-
   useEffect(() => {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
         setUserId(user.uid);
         setUser(user.email);
+        localStorage.setItem("logIn", true);
         setLoaded(false);
       } else {
         setUser(null);
         setLoaded(true);
+        localStorage.removeItem("logIn");
       }
     });
   }, [user]);

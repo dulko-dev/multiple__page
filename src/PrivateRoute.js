@@ -1,14 +1,12 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-
-function PrivateRoute({ component: Component, user, ...rest }) {
-
+function PrivateRoute({ component: Component, log, ...rest }) {
   return (
     <Route
       {...rest}
       render={(props) => {
-        if (user) {
+        if (!log) {
           return <Component />;
         } else {
           return (
@@ -17,7 +15,6 @@ function PrivateRoute({ component: Component, user, ...rest }) {
             />
           );
         }
-      
       }}
     />
   );

@@ -1,18 +1,14 @@
-import React, { lazy, Suspense } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import "./scss/main.scss";
 import reportWebVitals from "./reportWebVitals";
 import { Auth } from "./components/Firebase/Auth";
-
-const App = lazy(() => import("./App"));
-const loading = () => <div className="loader"></div>;
+import App from "./App";
 
 ReactDOM.render(
   <React.StrictMode>
     <Auth>
-      <Suspense fallback={loading()}>
-        <App />
-      </Suspense>
+      <App />
     </Auth>
   </React.StrictMode>,
   document.getElementById("root")

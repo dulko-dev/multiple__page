@@ -1,14 +1,14 @@
 //library
-import React, { lazy, useContext, Suspense } from "react";
+import React, { lazy, Suspense, useContext } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //utility
-import { AuthContext } from "./components/Firebase/Auth";
 import PrivateRoute from "./PrivateRoute";
+import Login from "../src/components/Login/Login.js";
+import Register from "../src/components/Register/Register";
+import { AuthContext } from "./components/Firebase/Auth";
 
 const Welcome = lazy(() => import("./components/Welcome/Welcome"));
 const TODO = lazy(() => import("./components/User/Todo/Todo"));
-const Login = lazy(() => import("./components/Login/Login"));
-const Register = lazy(() => import("./components/Register/Register"));
 const Calculator = lazy(() =>
   import("./components/User/Calculator/Calculator")
 );
@@ -22,8 +22,7 @@ const Sport = lazy(() => import("./components/User/Events/Sport/Sport"));
 const loading = () => <div className="loader"></div>;
 
 export default function App() {
-  const { value, czoko } = useContext(AuthContext);
-  const [user] = value;
+  const { czoko } = useContext(AuthContext);
   const loaded = czoko;
 
   return (
@@ -33,36 +32,21 @@ export default function App() {
           <Route exact path="/" component={Welcome} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-
-          {!loaded && (
-            <>
-              <PrivateRoute path="/to-do-list" user={user} component={TODO} />
-
-              <PrivateRoute
-                path="/calculator"
-                user={user}
-                component={Calculator}
-              />
-              <PrivateRoute
-                path="/movies"
-                user={user}
-                component={MoviesDataBase}
-              />
-              <PrivateRoute
-                exact
-                path="/events"
-                user={user}
-                component={Events}
-              />
-              <PrivateRoute path="/events/news" user={user} component={News} />
-              <PrivateRoute
-                path="/events/sport"
-                user={user}
-                component={Sport}
-              />
-              <PrivateRoute path="/weather" user={user} component={Weather} />
-            </>
-          )}
+          <PrivateRoute path="/to-do-list" log={loaded} component={TODO} />
+          <PrivateRoute
+            path="/calculator"
+            log={loaded}
+            component={Calculator}
+          />
+          <PrivateRoute
+            path="/movies"
+            log={loaded}
+            component={MoviesDataBase}
+          />
+          <PrivateRoute exact path="/events" log={loaded} component={Events} />
+          <PrivateRoute path="/events/news" log={loaded} component={News} />
+          <PrivateRoute path="/events/sport" log={loaded} component={Sport} />
+          <PrivateRoute path="/weather" log={loaded} component={Weather} />
         </Suspense>
       </Switch>
     </Router>

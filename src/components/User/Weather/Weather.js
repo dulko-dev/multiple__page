@@ -144,22 +144,23 @@ function Weather() {
     <>
       <UserNav />
       <div className="weather">
-      <picture>
-        <source srcSet={bgWebp} type="image/webp" />
-        <source srcSet={bg} type="images/jpg" />
-        <img
-          src={bg}
-          alt="background"
-          style={{
-            position: "fixed",
-            width: "100%",
-            height: "100%",
-            left: "0",
-            bottom: "0",
-            zIndex: "-1",
-          }}
-        />
-      </picture>
+        <picture>
+          <source srcSet={bgWebp} type="image/webp" />
+          <source srcSet={bg} type="images/jpg" />
+          <img
+            src={bg}
+            alt="background"
+            style={{
+              position: "fixed",
+              width: "100%",
+              height: "100%",
+              left: "0",
+              bottom: "0",
+              zIndex: "-1",
+              opacity: "0.8",
+            }}
+          />
+        </picture>
         <div className="weather__form">
           <form onSubmit={handleSubmit}>
             <StyleField

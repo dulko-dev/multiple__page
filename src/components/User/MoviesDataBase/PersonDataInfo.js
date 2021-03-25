@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import noPhoto from "../../../assets/not_available.png";
 
 function PersonDataInfo({ datas, input }) {
   const [data, setData] = useState("");
 
-  useState(() => {
+  useEffect(() => {
     const abortFetch = new AbortController();
     async function fetchDeep() {
       await fetch(
+        
         `https://api.themoviedb.org/3/person/${datas.id}?api_key=834b38bde83678813d5541bcdb78dead&language=en-US`,
         {
           signal: abortFetch.signal,
@@ -23,6 +24,7 @@ function PersonDataInfo({ datas, input }) {
     }
     fetchDeep();
     return () => abortFetch.abort();
+    // eslint-disable-next-line
   }, [input]);
 
   return (
