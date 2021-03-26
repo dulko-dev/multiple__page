@@ -1,10 +1,11 @@
 //library
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useContext } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //utility
 import PrivateRoute from "./PrivateRoute";
 import Login from "../src/components/Login/Login.js";
 import Register from "../src/components/Register/Register";
+import { AuthContext } from "./components/Firebase/Auth";
 
 const Welcome = lazy(() => import("./components/Welcome/Welcome"));
 const TODO = lazy(() => import("./components/User/Todo/Todo"));
@@ -21,6 +22,9 @@ const Sport = lazy(() => import("./components/User/Events/Sport/Sport"));
 const loading = () => <div className="loader"></div>;
 
 export default function App() {
+const {czoko} = useContext(AuthContext);
+const loaded = czoko;
+
   return (
     <Router>
       <Switch>
@@ -28,7 +32,7 @@ export default function App() {
           <Route exact path="/" component={Welcome} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <PrivateRoute path="/to-do-list" component={TODO} />
+          {!loaded && <PrivateRoute path="/to-do-list" component={TODO}  />}
           <PrivateRoute path="/calculator" component={Calculator} />
           <PrivateRoute path="/movies" component={MoviesDataBase} />
           <PrivateRoute exact path="/events" component={Events} />

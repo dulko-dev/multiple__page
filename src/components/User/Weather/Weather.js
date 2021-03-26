@@ -132,6 +132,7 @@ function Weather() {
     e.preventDefault();
     getInfo();
     setInputText("");
+    setSuggest([]);
   };
 
   const updateInput = (value) => {

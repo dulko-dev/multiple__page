@@ -22,6 +22,18 @@ const Todo = () => {
   // }, []);
 
   useEffect(() => {
+    const filteredHandler = () => {
+      switch (status) {
+        case "completed":
+          setFilteredTodos(todos.filter((el) => el.completed === true));
+          break;
+        case "uncompleted":
+          setFilteredTodos(todos.filter((el) => el.completed === false));
+          break;
+        default:
+          setFilteredTodos(todos);
+      }
+    };
     filteredHandler();
     // saveLocalStorage();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -33,7 +45,7 @@ const Todo = () => {
       .orderBy("text", "desc")
       .onSnapshot((snapshot) => {
         setTodos(
-          snapshot.docs.map((docs, index) => ({
+          snapshot.docs.map((docs) => ({
             id: docs.id,
             text: docs.data().text,
             completed: docs.data().completed,
@@ -42,18 +54,6 @@ const Todo = () => {
       });
   }, []);
 
-  const filteredHandler = () => {
-    switch (status) {
-      case "completed":
-        setFilteredTodos(todos.filter((el) => el.completed === true));
-        break;
-      case "uncompleted":
-        setFilteredTodos(todos.filter((el) => el.completed === false));
-        break;
-      default:
-        setFilteredTodos(todos);
-    }
-  };
 
   // const saveLocalStorage = () => {
   //   localStorage.setItem("todos", JSON.stringify(todos));
