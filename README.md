@@ -13,13 +13,13 @@
 - [Acknowledgments](#acknowledgments)
 
 <h2>Demo</h2>
-<p>Here is a working live demo - [Dashboard App] (https://dulko-dashboard.netlify.app)</p>
+<p>Here is a working live demo - https://dulko-dashboard.netlify.app</p>
 
 ## Introduction
 <table>
   <tr>
   <td>
-    <p>This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)</p>
+    <p>This project was bootstrapped with Create React App - https://github.com/facebook/create-react-app</p>
   <p>In this application you can create your own profile and you have accesibility to few functionality tools such as:</p>
   <ul>
     <li>✔ to-do-list - <span>you can set your goals, check is done, edit or delete</span></li>
@@ -59,7 +59,7 @@ Project is created with:
 <ol>
   <li>Clone repo to your desktop</li>
   <li>run `npm install` to install all the dependencies</li>
-  <li>Once the dependencies are installed, you can run `npm start` to start the application. You will then be able to access it at localhost:3000</li>
+  <li>Once the dependencies are installed, you can run <code>npm start</code> to start the application. You will then be able to access it at localhost:3000</li>
   </ol>
 
 
