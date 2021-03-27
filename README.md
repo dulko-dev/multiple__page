@@ -2,25 +2,20 @@
 <p align='center'><img src='https://github.com/dulko-dev/react_dashboard/blob/master/dashboard%20-%20screen.png' alt='dashboard login' title='dashboard' /></p>
 
 ## Table of Contents
-
 - [Introduction](#introduction)
 - [Technologies](#technologies)
 - [Build Process](#build-process)
 - [Site](#site)
-
-- [Backers](#backers-)
-- [Sponsors](#sponsors-)
-- [Acknowledgments](#acknowledgments)
+- [License](#license)
 
 <h2>Demo</h2>
-<p>Here is a working live demo - https://dulko-dashboard.netlify.app</p>
+<p>Here is a working live demo - <a target='_blanket' href='https://dulko-dashboard.netlify.app' <p>DashboardApp</p> </a></p>
 
 ## Introduction
 <table>
   <tr>
   <td>
-    <p>This project was bootstrapped with Create React App - https://github.com/facebook/create-react-app</p>
-  <p>In this application you can create your own profile and you have accesibility to few functionality tools such as:</p>
+  <p>In this application you can create your own profile and after then you obtain access to few functionality tools, such as:</p>
   <ul>
     <li>✔ to-do-list - <span>you can set your goals, check is done, edit or delete</span></li>
     <li>🌦 weather-forecast - <span>search a forecast for cities</span></li>
@@ -28,6 +23,9 @@
     <li>🎞 description of movies, serials and acting professions - <span>search data of interesting film or cast</span></li>
     <li>➕ financial and healthy calculator - <span>calculate and save result in financial calculator or check that your healhy is in good condition</span></li>
   </ul>
+    <p>This is the desktop version</p>
+    <p>This project was bootstrapped with - <a href='https://github.com/facebook/create-react-app' <p>Create React App </p></a></p>
+    </td>
   </tr>
   </table>
   
@@ -58,7 +56,7 @@ Project is created with:
 ## Build Process
 <ol>
   <li>Clone repo to your desktop</li>
-  <li>run `npm install` to install all the dependencies</li>
+  <li>run <code>npm install</code> to install all the dependencies</li>
   <li>Once the dependencies are installed, you can run <code>npm start</code> to start the application. You will then be able to access it at localhost:3000</li>
   </ol>
 
@@ -82,3 +80,6 @@ Project is created with:
 <h3>Calculator</h3>
 <p align='center'><img src='https://github.com/dulko-dev/react_dashboard/blob/master/dashboard%20-%20calculator.png' alt='dashboard landing' title='dashboard' /></p>
 
+## License
+>You can check out the full license [here](https://github.com/IgorAntun/node-chat/blob/master/LICENSE)
+<p>This project is licensed under the terms of the MIT license</p>
