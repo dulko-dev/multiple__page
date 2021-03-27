@@ -13,13 +13,13 @@
 - [Acknowledgments](#acknowledgments)
 
 <h2>Demo</h2>
-<p>Here is a working live demo - <a href="https://dulko-dashboard.netlify.app" target="_blank"</a></p>
+<p>Here is a working live demo - [Dashboard App] (https://dulko-dashboard.netlify.app)</p>
 
 ## Introduction
 <table>
   <tr>
   <td>
-    <p>This project was bootstrapped with Create React App - https://github.com/facebook/create-react-app</p>
+    <p>This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)</p>
   <p>In this application you can create your own profile and you have accesibility to few functionality tools such as:</p>
   <ul>
     <li>✔ to-do-list - <span>you can set your goals, check is done, edit or delete</span></li>
