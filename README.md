@@ -1,5 +1,12 @@
 <h1 align='center'>Dashboard app</h1>
-<p align='center'><img
+<p align='center'><img src='https://github.com/dulko-dev/react_dashboard/blob/master/dashboard%20-%20screen.png' alt='dashboard login' title='dashboard' /></p>
+
+
+
+
+<h2>Demo</h2> 
+<p>Here is a working live demo - https://dulko-dashboard.netlify.app/</p>
+
 
 
 
