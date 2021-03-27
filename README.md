@@ -10,6 +10,10 @@
 
 <h2>Demo</h2>
 <p>Here is a working live demo - <a target='_blanket' href='https://dulko-dashboard.netlify.app' <p>DashboardApp</p> </a></p>
+<p>Here is a already account for test:</p>
+<p>email: <b>ziomek@wp.pl</b></p>
+<p>password: <b>ziomek</b></p> 
+
 
 ## Introduction
 <table>
