@@ -12,6 +12,8 @@ function UserNav({ homePage }) {
 
   const [nameDay, setNameDay] = useState("");
   const [date, setDate] = useState(new Date());
+  const [error, setError] = useState("");
+  const [isError, setIsError] = useState(false);
 
   const today = new Date().toLocaleDateString("en-GB", {
     weekday: "long",
@@ -34,9 +36,12 @@ function UserNav({ homePage }) {
         signal: abortControl.signal,
       })
         .then((response) => {
-          if (response) {
+          if (response.ok) {
+            setIsError(false);
             return response;
           }
+          setIsError(true);
+          throw Error("something went wrong");
         })
         .then((res) => res.json())
         .then((data) => {
@@ -45,9 +50,8 @@ function UserNav({ homePage }) {
         .catch((err) => {
           if (err.name === "AbortError") {
             console.log("fetch abort");
-          } else {
-            console.log(err);
           }
+          setError(err.message);
         });
     };
 
@@ -55,6 +59,7 @@ function UserNav({ homePage }) {
 
     return () => abortControl.abort();
   }, []);
+
 
   const backMenuHandle = () => {
     history.push("/");
@@ -76,7 +81,7 @@ function UserNav({ homePage }) {
             Today is : <span>{today}</span>
           </p>
           <p>
-            Name-day : <span>{nameDay}</span>
+            Name-day : <span>{isError ? error : nameDay}</span>
           </p>
           <p>
             TimeZone : <span>{date.toLocaleTimeString()}</span>

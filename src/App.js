@@ -1,11 +1,6 @@
 //library
 import React, { lazy, Suspense, useContext } from "react";
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Route,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //utility
 import PrivateRoute from "./PrivateRoute";
 import Login from "../src/components/Login/Login.js";
@@ -38,7 +33,6 @@ export default function App() {
           <Route exact path="/" component={Welcome} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <Redirect path="/" />
           {!loaded && <PrivateRoute path="/to-do-list" component={TODO} />}
           <PrivateRoute path="/calculator" component={Calculator} />
           <PrivateRoute path="/movies" component={MoviesDataBase} />
