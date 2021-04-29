@@ -29,7 +29,7 @@ function Articles({ element }) {
                 <img
                   key={media}
                   style={{ width: "400px" }}
-                  src={media["media-metadata"][2].url}
+                  src={media["media-metadata"][1].url}
                   alt={media["media-metadata"].caption}
                 />
               ))}
